@@ -1,0 +1,515 @@
+/* ==========================================================================
+   1. Variables & Base Reset
+   ========================================================================== */
+:root {
+  --sidebar-w: 320px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #fff;
+  color: #222;
+  display: flex;
+  min-height: 100vh;
+}
+
+a {
+  color: #222;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: #888;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   2. Main Layout
+   ========================================================================== */
+#sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  padding: 48px 32px 48px 40px;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  bottom: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: #fff;
+  z-index: 100;
+  border-right: 1px solid transparent; 
+}
+
+#main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+}
+
+.site-name {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+.site-tagline {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   3. Navigation
+   ========================================================================== */
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item, 
+.nav-child {
+  transition: color 0.15s ease;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.nav-item {
+  font-size: 13px;
+  color: #222;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  user-select: none;
+  width: 100%;
+}
+
+.nav-item:hover, 
+.nav-child:hover {
+  color: #888;
+}
+
+.nav-item.active, 
+.nav-child.active {
+  color: #222;
+  font-weight: 600;
+}
+
+.nav-arrow {
+  font-size: 16px;
+  color: #aaa;
+  transition: transform 0.18s ease;
+  display: inline-block;
+}
+
+.nav-item.open .nav-arrow {
+  transform: rotate(90deg);
+}
+
+.nav-children {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-children.open {
+  max-height: 400px;
+}
+
+.nav-child {
+  font-size: 12px;
+  color: #555;
+  padding: 4px 0;
+}
+
+.nav-divider {
+  height: 1px;
+  background: #e8e8e8;
+  margin: 10px 0;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sidebar-footer a {
+  font-size: 11px;
+  color: #999;
+}
+
+.sidebar-footer a:hover {
+  color: #222;
+}
+
+/* ==========================================================================
+   4. UI Components (Toggles)
+   ========================================================================== */
+#sound-toggle,
+#theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(0, 0, 0, 0.15);
+  border: none;
+  border-radius: 20px;
+  padding: 7px 10px;
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  transition: gap 0.2s ease, padding 0.2s ease, background 0.2s ease;
+}
+
+#sound-toggle:hover,
+#theme-toggle:hover {
+  gap: 8px;
+  padding: 7px 14px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+#sound-label,
+#theme-label {
+  font-size: 12px;
+  max-width: 0;
+  width: 0;            
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 0.2s ease, width 0.2s ease;
+}
+
+#sound-toggle:hover #sound-label,
+#theme-toggle:hover #theme-label {
+  max-width: 80px;
+  width: auto;         
+}
+
+#sound-toggle.sound-on i {
+  color: #e8a000;      
+  transition: color 0.2s ease;
+}
+
+#mobile-nav-toggle {
+  display: none;
+  position: fixed;
+  top: 16px; 
+  left: 16px;
+  z-index: 200;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 36px; 
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   5. Page Content & Modules
+   ========================================================================== */
+.page {
+  display: none;
+  padding: 48px 60px 80px 60px;
+  max-width: 1100px;
+  animation: fadein 0.2s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* --- Portfolio Grid --- */
+.image-grid {
+  columns: 2;
+  column-gap: 16px;
+}
+
+.image-grid img,
+.image-full {
+  width: 100%;
+  margin-bottom: 16px;
+  background: #f4f4f4;
+}
+
+.image-grid img {
+  break-inside: avoid;
+}
+
+.highlight-section {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* --- About / Contact --- */
+.page-heading {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   6. Dark Theme
+   ========================================================================== */
+body.dark {
+  background: #1a1a1a;
+  color: #ddd;
+}
+
+body.dark a,
+body.dark .nav-item,
+body.dark .site-name,
+body.dark .resume-entry-title {
+  color: #ddd;
+}
+
+body.dark #sidebar {
+  background: #111;
+  border-right-color: #2a2a2a;
+}
+
+body.dark .nav-child {
+  color: #999;
+}
+
+body.dark .nav-item:hover,
+body.dark .nav-child:hover {
+  color: #fff;
+}
+
+body.dark .nav-divider {
+  background: #2a2a2a;
+}
+
+body.dark .site-tagline,
+body.dark .sidebar-footer a,
+body.dark .resume-entry-desc {
+  color: #666;
+}
+
+body.dark .page-heading {
+  color: #555;
+}
+
+body.dark .about-text {
+  color: #bbb;
+}
+
+body.dark .resume-entry-company {
+  color: #888;
+}
+
+body.dark #sound-toggle,
+body.dark #theme-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ddd;
+}
+
+body.dark #sound-toggle:hover,
+body.dark #theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ==========================================================================
+   7. Responsive / Media Queries
+   ========================================================================== */
+@media (max-width: 768px) {
+  #sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    border-right-color: #eee;
+  }
+  
+  #sidebar.open {
+    transform: translateX(0);
+  }
+
+  #mobile-nav-toggle {
+    display: flex;
+  }
+
+  #main {
+    margin-left: 0;
+  }
+
+  .page {
+    padding: 64px 24px 60px;
+  }
+
+  .image-grid {
+    columns: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 60px 16px 48px;
+  }
+}
+
+/* ==========================================================================
+   8. Cards
+   ========================================================================== */
+/* --- The Card Container --- */
+.member-card {
+  width: 240px;
+  height: 360px;
+  border-radius: 16px;
+  border: 2px solid #eee;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  background: #fff;
+  
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --glare-x: 50%;
+  --glare-y: 50%;
+  
+  transform: perspective(800px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+}
+
+.member-card:hover {
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.2);
+  border-color: #222;
+  transition: transform 0.05s linear, box-shadow 0.15s ease-out, border-color 0.3s ease;
+  transform: perspective(800px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) scale(1.05);
+}
+
+/* --- The Glare Effect --- */
+.member-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    circle at var(--glare-x) var(--glare-y),
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.member-card:hover::after {
+  opacity: 1;
+}
+
+/* --- Top Half: Avatar --- */
+.member-avatar {
+  height: 50%;
+  width: 100%;
+  position: relative;
+  background: #f4f4f4;
+  overflow: hidden;
+  border-bottom: 2px solid #eee;
+}
+
+.member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0; left: 0;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Subtle zoom on hover instead of a swap */
+.member-card:hover .member-avatar img {
+  transform: scale(1.08);
+}
+
+/* --- Bottom Half: Content --- */
+.member-info {
+  height: 50%;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+}
+
+.member-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.member-role {
+  font-size: 12px;
+  color: #888;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+/* ==========================================================================
+   9. Ultilities
+   ========================================================================== */
+.text-center {
+    text-align: center;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.mx-auto {
+    margin-inline: auto;
+}
+
+.px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+}
+
+.max-w-2xl {
+    max-width: var(--container-2xl);
+}

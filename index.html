@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Mobile hamburger -->
+  <button id="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
+
+  <!-- ── Sidebar ── -->
+  <aside id="sidebar">
+
+    <div>
+      <div class="site-name">DEGUNER</div>
+      <div class="site-tagline">Rising Game Studio</div>
+    </div>
+
+    <nav>
+      <!-- Expandable: GAMES -->
+      <button class="nav-item" data-group="games" data-page="game-page">
+        Our Games <span class="nav-arrow">›</span>
+      </button>
+       <!-- Game List -->
+      <div class="nav-children">
+        <div class="nav-child" data-page="work-project-a">Game A</div>
+        <div class="nav-child" data-page="work-project-b">Game B</div>
+        <div class="nav-child" data-page="work-project-c">Game C</div>
+      </div>
+      
+       <!-- Illustration Page -->
+      <button class="nav-item" data-page="illustration">Illustration</button>
+
+      <div class="nav-divider"></div>
+
+      <!-- Team Information -->
+      <!-- Expandable: ABOUT US -->
+      <button class="nav-item" data-group="members" data-page="about-us">
+        About Us <span class="nav-arrow">›</span>
+      </button>
+       <!-- Member List -->
+      <div class="nav-children">
+        <div class="nav-child" data-page="member-kiet">Tukibee</div>
+        <div class="nav-child" data-page="member-trang">Mouchee</div>
+      </div>
+
+      <div class="nav-divider"></div>
+
+      <!-- Configuration -->
+      <div display: flex; justify-content: space-between;>
+        <button id="sound-toggle">
+          <i class="fas fa-volume-up" id="sound-icon"></i>
+          <span id="sound-label">SOUND ON</span>
+        </button>
+      
+        <button id="theme-toggle">
+          <i class="fas fa-sun" id="theme-icon"></i>
+          <span id="theme-label">LIGHT</span>
+        </button>
+      </div>
+    </nav>
+
+  </aside>
+
+  <!-- ── Main ── -->
+  <main id="main">
+
+    <!-- ── Professional Work: Project A ── -->
+    <section class="page" id="page-work-project-a">
+      <p class="page-heading">Professional Work</p>
+      <div class="image-grid">
+        <img src="assets/placeholder-1.jpg" alt="Project A — image 1" />
+        <img src="assets/placeholder-2.jpg" alt="Project A — image 2" />
+        <img src="assets/placeholder-3.jpg" alt="Project A — image 3" />
+        <img src="assets/placeholder-4.jpg" alt="Project A — image 4" />
+      </div>
+    </section>
+
+    <!-- ── Professional Work: Project B ── -->
+    <section class="page" id="page-work-project-b">
+      <p class="page-heading">Professional Work</p>
+      <div class="image-grid">
+        <img src="assets/placeholder-1.jpg" alt="Project B — image 1" />
+        <img src="assets/placeholder-2.jpg" alt="Project B — image 2" />
+      </div>
+    </section>
+
+    <!-- ── Professional Work: Project C ── -->
+    <section class="page" id="page-work-project-c">
+      <p class="page-heading">Professional Work</p>
+      <img class="image-full" src="assets/placeholder-1.jpg" alt="Project C" />
+      <img class="image-full" src="assets/placeholder-2.jpg" alt="Project C" />
+    </section>
+
+    <!-- ── Personal: Project A ── -->
+    <section class="page" id="page-personal-project-a">
+      <p class="page-heading">Personal Projects</p>
+      <div class="image-grid">
+        <img src="assets/placeholder-3.jpg" alt="Personal A — image 1" />
+        <img src="assets/placeholder-4.jpg" alt="Personal A — image 2" />
+        <img src="assets/placeholder-1.jpg" alt="Personal A — image 3" />
+      </div>
+    </section>
+
+    <!-- ── Personal: Project B ── -->
+    <section class="page" id="page-personal-project-b">
+      <p class="page-heading">Personal Projects</p>
+      <img class="image-full" src="assets/placeholder-2.jpg" alt="Personal B" />
+    </section>
+
+    <!-- ── Illustration ── -->
+    <section class="page" id="page-illustration">
+      <p class="page-heading">Illustration</p>
+      <div class="image-grid">
+        <img src="assets/placeholder-1.jpg" alt="Illustration 1" />
+        <img src="assets/placeholder-2.jpg" alt="Illustration 2" />
+        <img src="assets/placeholder-3.jpg" alt="Illustration 3" />
+        <img src="assets/placeholder-4.jpg" alt="Illustration 4" />
+      </div>
+    </section>
+
+    <!-- ── About + Contact ── -->
+    <section class="page" id="page-about-us">
+      <!--<p class="page-heading">About Us</p> -->
+      
+      <div class="w-full mx-auto text-center max-w-2xl">
+
+        <div class="highlight-section">Team Members</div>
+        <div>The horde responsible for bringing Massive Monster's devious creations to life, each loyal pet offers a little something special to the group, or are otherwise eaten whole.</div>
+
+      </div>
+      
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; align-items: center;">
+        
+        <div class="member-card" data-tilt="10">
+          <div class="member-avatar">
+            <img src="assets/tukibee.jpg" alt="Team Member">
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">Tukibee</h3>
+            <p class="member-role">Programmer</p>
+          </div>
+        </div>
+
+        <div class="member-card" data-tilt="10">
+          <div class="member-avatar">
+            <img src="assets/tukibee.jpg" alt="Team Member">
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">Tukibee</h3>
+            <p class="member-role">Programmer</p>
+          </div>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- Default landing page -->
+    <section class="page" id="page-work">
+      <div class="image-grid">
+        <img src="assets/placeholder-1.jpg" alt="" />
+        <img src="assets/placeholder-2.jpg" alt="" />
+        <img src="assets/placeholder-3.jpg" alt="" />
+        <img src="assets/placeholder-4.jpg" alt="" />
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
