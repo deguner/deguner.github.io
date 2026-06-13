@@ -135,6 +135,21 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('click', () => UI_Audio.play(600, 100, 0.025));
   });
 
+  // --- Card Audio & Navigation Logic ---
+  document.querySelectorAll('.member-card').forEach(card => {
+    
+    // 1. Add distinct sounds to the card hover and press
+    card.addEventListener('mouseenter', () => {
+      // Deeper frequency for card hover: 400 -> 200
+      UI_Audio.play(400, 200, 0.02);
+    });
+    
+    card.addEventListener('click', () => {
+      // Heavier frequency for card click: 300 -> 100
+      UI_Audio.play(300, 100, 0.035);
+    });
+  });
+
   // --- Sound Toggle Button ---
   const soundBtn = document.getElementById('sound-toggle');
   const soundIcon = document.getElementById('sound-icon');
@@ -203,6 +218,47 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.setProperty('--rotate-y', '0deg');
       card.style.setProperty('--glare-x', '50%');
       card.style.setProperty('--glare-y', '50%');
+    });
+  });
+
+  // --- Card Action Buttons Logic ---
+  document.querySelectorAll('.card-action-btn').forEach(btn => {
+    
+    btn.addEventListener('mouseenter', () => {
+      // Snappy mid-tone sound for the inner buttons
+      UI_Audio.play(900, 450, 0.015); 
+    });
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent the parent card click event
+      UI_Audio.play(700, 150, 0.02);
+
+      const targetPageId = btn.dataset.targetPage;
+      const targetSection = btn.dataset.targetSection;
+
+      // 1. Navigate to the correct member page
+      navigateTo(targetPageId);
+
+      // 2. Automatically expand the sidebar navigation group 
+      const activeNavChild = document.querySelector(`.nav-child[data-page="${targetPageId}"]`);
+      if (activeNavChild) {
+        const parentContainer = activeNavChild.closest('.nav-children');
+        if (parentContainer && !parentContainer.classList.contains('open')) {
+          parentContainer.classList.add('open');
+          const parentBtn = parentContainer.previousElementSibling;
+          if (parentBtn) parentBtn.classList.add('open');
+        }
+      }
+
+      // 3. Smooth scroll to the relevant section (cv or portfolio)
+      setTimeout(() => {
+        const prefix = targetPageId.replace('member-', '');
+        const sectionEl = document.getElementById(`${prefix}-${targetSection}`);
+        
+        if (sectionEl) {
+          sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50); // slight delay to ensure DOM is active and transition completes
     });
   });
 });
