@@ -56,34 +56,87 @@ const UI_Audio = (() => {
 /* ==========================================================================
    2. Navigation & UI Logic
    ========================================================================== */
-function navigateTo(pageId) {
-  // Hide all pages
+function navigateTo(pageId, sectionId = null) {
+  // 1. Hide all pages and show the target page
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  
-  // Show target page
   const page = document.getElementById('page-' + pageId);
   if (page) page.classList.add('active');
 
-  // Update direct nav items and children
+  // 2. Update direct nav items
   document.querySelectorAll('.nav-item[data-page], .nav-child[data-page]').forEach(el => {
     el.classList.toggle('active', el.dataset.page === pageId);
   });
 
-  // Activate parent group if a child is selected OR if the parent itself is selected
+  // 3. Activate and expand parent groups in the sidebar
   document.querySelectorAll('.nav-group-header, .nav-item[data-group]').forEach(parent => {
     const children = parent.nextElementSibling;
     if (children) {
       const hasActiveChild = children.querySelector('.nav-child.active');
-      
-      // Check if the parent button is the page we just navigated to
       const isParentItselfActive = parent.dataset.page === pageId;
-      
-      // It gets the active class if EITHER the parent is the page, OR a child is active
       parent.classList.toggle('active', !!hasActiveChild || isParentItselfActive);
+      
+      // Auto-expand the folder if a child inside it was selected
+      if (hasActiveChild && !parent.classList.contains('open')) {
+        parent.classList.add('open');
+        children.classList.add('open');
+      }
     }
   });
 
   closeMobileNav();
+
+  // 4. Update the URL Hash (UPDATED FOR CLEAN HOME URL)
+  if (pageId === 'work' && !sectionId) {
+    // If we are going to the default landing page, remove the hash completely
+    if (window.location.hash) {
+      // window.location.pathname gets the base URL without the # part
+      window.history.pushState(null, '', window.location.pathname); 
+    }
+  } else {
+    // For all other pages, add the hash normally
+    const newHash = sectionId ? `#${sectionId}` : `#${pageId}`;
+    if (window.location.hash !== newHash) {
+      window.history.pushState(null, '', newHash);
+    }
+  }
+
+  // 5. Handle Scrolling
+  if (sectionId) {
+    setTimeout(() => {
+      const sectionEl = document.getElementById(sectionId);
+      if (sectionEl) sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function handleInitialRoute() {
+  const hash = window.location.hash.substring(1); // Remove the '#'
+  
+  if (!hash) {
+    handleInitialRoute(); // Default home page
+    return;
+  }
+
+  // Check if the hash is a main page (like #member-kiet or #illustration)
+  if (document.getElementById('page-' + hash)) {
+    navigateTo(hash);
+  } 
+  // Check if it's a specific section (like #kiet-cv or #trang-portfolio)
+  else if (document.getElementById(hash)) {
+    let targetPage = '';
+    if (hash.startsWith('kiet-')) targetPage = 'member-kiet';
+    if (hash.startsWith('trang-')) targetPage = 'member-trang';
+    
+    if (targetPage) {
+      navigateTo(targetPage, hash);
+    } else {
+      handleInitialRoute(); // Fallback if section doesn't match a page
+    }
+  } else {
+    handleInitialRoute(); // Fallback if hash doesn't exist
+  }
 }
 
 function toggleGroup(header) {
@@ -122,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Load initial page
-  navigateTo('work');
+  handleInitialRoute();
 
   // --- Relaxing UI Sounds ---
   document.querySelectorAll('.nav-item').forEach(el => {
@@ -223,42 +276,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Card Action Buttons Logic ---
   document.querySelectorAll('.card-action-btn').forEach(btn => {
-    
-    btn.addEventListener('mouseenter', () => {
-      // Snappy mid-tone sound for the inner buttons
-      UI_Audio.play(900, 450, 0.015); 
-    });
+    btn.addEventListener('mouseenter', () => UI_Audio.play(900, 450, 0.015));
 
     btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Prevent the parent card click event
+      e.stopPropagation();
       UI_Audio.play(700, 150, 0.02);
 
       const targetPageId = btn.dataset.targetPage;
       const targetSection = btn.dataset.targetSection;
+      
+      // Combine prefix and section to create the full ID (e.g., 'kiet-cv')
+      const prefix = targetPageId.replace('member-', '');
+      const fullSectionId = `${prefix}-${targetSection}`;
 
-      // 1. Navigate to the correct member page
-      navigateTo(targetPageId);
-
-      // 2. Automatically expand the sidebar navigation group 
-      const activeNavChild = document.querySelector(`.nav-child[data-page="${targetPageId}"]`);
-      if (activeNavChild) {
-        const parentContainer = activeNavChild.closest('.nav-children');
-        if (parentContainer && !parentContainer.classList.contains('open')) {
-          parentContainer.classList.add('open');
-          const parentBtn = parentContainer.previousElementSibling;
-          if (parentBtn) parentBtn.classList.add('open');
-        }
-      }
-
-      // 3. Smooth scroll to the relevant section (cv or portfolio)
-      setTimeout(() => {
-        const prefix = targetPageId.replace('member-', '');
-        const sectionEl = document.getElementById(`${prefix}-${targetSection}`);
-        
-        if (sectionEl) {
-          sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 50); // slight delay to ensure DOM is active and transition completes
+      // This one line now handles the page change, sidebar expanding, URL updating, and scrolling!
+      navigateTo(targetPageId, fullSectionId);
     });
   });
+
+  window.addEventListener('popstate', handleInitialRoute);
 });

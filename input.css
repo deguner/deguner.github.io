@@ -1,9 +1,0 @@
-@import "tailwindcss";
-
-@theme {
-  --color-accent: #f59e0b;
-  --font-sans: "Inter", "Helvetica Neue", "Arial", sans-serif;
-}
-
-/* Tells Tailwind to use the "dark" class on the body for dark mode */
-@custom-variant dark (&:is(.dark *));

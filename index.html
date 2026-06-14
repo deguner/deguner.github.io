@@ -12,7 +12,7 @@
       darkMode: 'class',
       theme: {
         extend: {
-          colors: { accent: '#f59e0b' },
+          colors: { accent: '#d22731' },
           fontFamily: { sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'] }
         }
       }
@@ -25,7 +25,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Custom overrides -->
-  <link rel="stylesheet" href="css/tailwind-output.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="font-sans bg-white text-gray-900 flex min-h-screen transition-colors duration-300">
@@ -136,7 +135,7 @@
     <section class="page w-full" id="page-about-us">
 
       <div class="max-w-xl mx-auto text-center mb-6">
-        <p class="text-xs font-bold tracking-widest uppercase text-amber-500 mb-3">The Team</p>
+        <p class="text-xs font-bold tracking-widest uppercase text-accent mb-3">The Team</p>
         <h1 class="highlight-section">Meet The Crew</h1>
         <p class="about-sub mt-3">
           A small, fierce studio making games with a lot of heart.
@@ -199,17 +198,159 @@
     <section class="page w-full" id="page-member-kiet">
       <p class="page-heading">Tukibee</p>
       
-      <div id="kiet-cv" class="mb-12">
-        <h2 class="highlight-section">Curriculum Vitae</h2>
-        <p class="about-sub ml-0 text-left">Programmer & Designer with 5+ years of experience in system architecture, physics pipelines, and user interface development. Dedicated to building performant and scalable mechanics...</p>
-        <p class="about-sub ml-0 text-left">Programmer & Designer with 5+ years of experience in system architecture, physics pipelines, and user interface development. Dedicated to building performant and scalable mechanics...</p>
-        <p class="about-sub ml-0 text-left">Programmer & Designer with 5+ years of experience in system architecture, physics pipelines, and user interface development. Dedicated to building performant and scalable mechanics...</p>
-        <p class="about-sub ml-0 text-left">Programmer & Designer with 5+ years of experience in system architecture, physics pipelines, and user interface development. Dedicated to building performant and scalable mechanics...</p>
-        <p class="about-sub ml-0 text-left">Programmer & Designer with 5+ years of experience in system architecture, physics pipelines, and user interface development. Dedicated to building performant and scalable mechanics...</p>
-        <p class="about-sub ml-0 text-left">Programmer & Designer with 5+ years of experience in system architecture, physics pipelines, and user interface development. Dedicated to building performant and scalable mechanics...</p>
-        <p class="about-sub ml-0 text-left">Programmer & Designer with 5+ years of experience in system architecture, physics pipelines, and user interface development. Dedicated to building performant and scalable mechanics...</p>
-      </div>
+      <div id="kiet-cv" class="mb-20 max-w-3xl mx-auto text-left">
+        <!-- Section Title & Contact Info -->
+        <div class="text-center mb-12">
+          <!-- Name -->
+          <h2 class="highlight-section mb-2">Nguyen Tuan Kiet</h2>
+          
+          <!-- Role -->
+          <p class="text-sm sm:text-base font-bold text-accent mb-4 tracking-widest uppercase">
+            Game Developer
+          </p>
+          
+          <!-- Contact Links -->
+          <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-[#8a8580]">
+            <a href="mailto:your.email@example.com" class="hover:text-accent transition-colors">
+              <i class="fas fa-envelope mr-1"></i> your.email@example.com
+            </a>
+            <a href="tel:+84123456789" class="hover:text-accent transition-colors">
+              <i class="fas fa-phone-alt mr-1"></i> 039 532 7732
+            </a>
+            <a href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+              <i class="fas fa-globe mr-1"></i> Portfolio
+            </a>
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+              <i class="fab fa-github mr-1"></i> GitHub
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+              <i class="fab fa-linkedin mr-1"></i> LinkedIn
+            </a>
+          </div>
+        </div>
 
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Experience
+          </h3>
+
+          <div class="mb-8 relative pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Studio Beta</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Aug 2022 – Present</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-3">Gameplay Programmer</div>
+            <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+              <li>Engineered a custom physics-based character controller handling complex collision and state-machine transitions.</li>
+              <li>Optimized memory allocation pooling for projectile systems, increasing frame rate by 15% on mid-tier hardware.</li>
+              <li>Collaborated closely with animators to integrate state-driven animation blueprints using root motion.</li>
+            </ul>
+          </div>
+
+          <div class="mb-4 relative pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Indie Co.</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Jun 2020 – Jul 2022</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-3">Technical Designer</div>
+            <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+              <li>Designed and implemented scalable state-machine driven AI behaviors for over 15 enemy types.</li>
+              <li>Built editor utility tools to streamline the level design pipeline, reducing iteration time by 20%.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Selected Projects
+          </h3>
+
+          <div class="mb-6 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Project Omega (Shipped Title)</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: Oct 2023</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Lead Developer | Unity, C#</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              A fast-paced roguelike action game. Designed the core combat loop and implemented procedural level generation algorithms to ensure endless replayability.
+            </p>
+          </div>
+
+          <div class="mb-4 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Echoes of the Past</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Global Game Jam 2022</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Solo Developer | Unreal Engine 5, Blueprints</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              A puzzle-platformer built in 48 hours focusing on time-manipulation mechanics. Handled all programming, level design, and UI implementation.
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-5 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Skills
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm pl-2">
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Engines:</span> Unity, Unreal Engine 5, Godot
+            </div>
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Languages:</span> C#, C++, Python, HLSL
+            </div>
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Tools:</span> Git, Perforce, Wwise, RenderDoc
+            </div>
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Core:</span> Physics, Networking, UI Pipelines
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-5 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Education
+          </h3>
+          <div class="pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">B.S. in Computer Science</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Graduated 2020</span>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-[#8a8580] mt-1">Ho Chi Minh City University of Technology (HCMUT)</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-5 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Awards
+          </h3>
+          
+          <div class="mb-6 pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">First Place Overall</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2022</span>
+            </div>
+            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">Global Game Jam (Ho Chi Minh City)</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              Awarded for outstanding technical execution and core loop design among 50+ participating local teams.
+            </p>
+          </div>
+
+          <div class="pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Excellence in Programming</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2020</span>
+            </div>
+            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">HCMUT Senior Capstone Showcase</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              Recognized for developing a highly optimized custom rendering pipeline for mobile devices as part of the final year project.
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <p class="page-heading"></p>
       <div id="kiet-portfolio">
         <h2 class="highlight-section">Portfolio</h2>
         <div class="image-grid">
@@ -268,7 +409,7 @@
         <h2 class="highlight-section">Curriculum Vitae</h2>
         <p class="about-sub ml-0 text-left">Artist & Designer specializing in concept art, 2D illustration, and character animation. Passionate about bringing vibrant worlds to life through pixel perfection...</p>
       </div>
-
+      <p class="page-heading"></p>
       <div id="trang-portfolio">
         <h2 class="highlight-section">Portfolio</h2>
         <div class="image-grid">
@@ -324,9 +465,7 @@
 
     // DEGUNER title → home
     document.getElementById('site-title').addEventListener('click', () => {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      const home = document.getElementById('page-work');
-      if (home) home.classList.add('active');
+      navigateTo('work');
     });
   </script>
 </body>
