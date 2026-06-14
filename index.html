@@ -54,9 +54,11 @@
         Our Games <span class="nav-arrow">›</span>
       </button>
       <div class="nav-children">
-        <div class="nav-child" data-page="work-project-a">Game A</div>
-        <div class="nav-child" data-page="work-project-b">Game B</div>
-        <div class="nav-child" data-page="work-project-c">Game C</div>
+        <div class="nav-child" data-page="game-envicard">Envicard</div>
+        <div class="nav-child" data-page="game-make-me-laugh">Make Me Laugh</div>
+        <div class="nav-child" data-page="game-bong-bang">Bong Bang</div>
+        <div class="nav-child" data-page="game-foodiemon">Foodiemon</div>
+        <div class="nav-child" data-page="game-that-xmas">That Xmas</div>
       </div>
 
       <!-- Illustration -->
@@ -69,8 +71,8 @@
         About Us <span class="nav-arrow">›</span>
       </button>
       <div class="nav-children">
-        <div class="nav-child" data-page="member-kiet">Tukibee</div>
-        <div class="nav-child" data-page="member-trang">Mouchee</div>
+        <div class="nav-child" data-page="member-kiet">Tuan Kiet</div>
+        <div class="nav-child" data-page="member-trang">Thuy Trang</div>
       </div>
 
       <div class="nav-divider"></div>
@@ -94,8 +96,8 @@
   <main id="main">
 
     <!-- Game A -->
-    <section class="page" id="page-work-project-a">
-      <p class="page-heading">Game A</p>
+    <section class="page" id="page-game-make-me-laugh">
+      <p class="page-heading">Make Me Laugh</p>
       <div class="image-grid">
         <img src="assets/placeholder-1.jpg" alt="Game A — image 1" />
         <img src="assets/placeholder-2.jpg" alt="Game A — image 2" />
@@ -151,8 +153,8 @@
           <div class="member-avatar">
             <img src="assets/tukibee.jpg" alt="Tukibee" />
             <div class="card-actions">
-              <button class="card-action-btn" data-target-page="member-kiet" data-target-section="cv">CV</button>
-              <button class="card-action-btn" data-target-page="member-kiet" data-target-section="portfolio">Portfolio</button>
+              <button class="card-action-btn" data-target-page="member-kiet" data-target-section="kiet-cv">CV</button>
+              <button class="card-action-btn" data-target-page="member-kiet" data-target-section="kiet-portfolio">Portfolio</button>
             </div>
           </div>
           <div class="member-info">
@@ -196,7 +198,7 @@
     </section>
 
     <section class="page w-full" id="page-member-kiet">
-      <p class="page-heading">Tukibee</p>
+      <p class="page-heading">Curriculum Vitae</p>
       
       <div id="kiet-cv" class="mb-20 max-w-3xl mx-auto text-left">
         <!-- Section Title & Contact Info -->
@@ -212,20 +214,20 @@
           <!-- Contact Links -->
           <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-[#8a8580]">
             <a href="mailto:your.email@example.com" class="hover:text-accent transition-colors">
-              <i class="fas fa-envelope mr-1"></i> your.email@example.com
+              <i class="fas fa-envelope mr-1"></i> motchut1106@gmail.com
             </a>
             <a href="tel:+84123456789" class="hover:text-accent transition-colors">
               <i class="fas fa-phone-alt mr-1"></i> 039 532 7732
             </a>
-            <a href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
-              <i class="fas fa-globe mr-1"></i> Portfolio
+            <a href="https://deguner.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+              <i class="fas fa-globe mr-1"></i> Website
             </a>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+            <!-- <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
               <i class="fab fa-github mr-1"></i> GitHub
-            </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+            </a> -->
+            <!-- <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
               <i class="fab fa-linkedin mr-1"></i> LinkedIn
-            </a>
+            </a> -->
           </div>
         </div>
 
@@ -236,26 +238,20 @@
 
           <div class="mb-8 relative pl-4 border-l-2 border-accent">
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
-              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Studio Beta</h4>
-              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Aug 2022 – Present</span>
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Athena Studio</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Feb 2023 – Present</span>
             </div>
-            <div class="text-sm font-semibold text-accent mb-3">Gameplay Programmer</div>
+            <div class="text-sm font-semibold text-accent mb-3">Game Designer</div>
             <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
-              <li>Engineered a custom physics-based character controller handling complex collision and state-machine transitions.</li>
-              <li>Optimized memory allocation pooling for projectile systems, increasing frame rate by 15% on mid-tier hardware.</li>
-              <li>Collaborated closely with animators to integrate state-driven animation blueprints using root motion.</li>
-            </ul>
-          </div>
-
-          <div class="mb-4 relative pl-4 border-l-2 border-accent">
-            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
-              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Indie Co.</h4>
-              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Jun 2020 – Jul 2022</span>
-            </div>
-            <div class="text-sm font-semibold text-accent mb-3">Technical Designer</div>
-            <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
-              <li>Designed and implemented scalable state-machine driven AI behaviors for over 15 enemy types.</li>
-              <li>Built editor utility tools to streamline the level design pipeline, reducing iteration time by 20%.</li>
+              <li>Designed core gameplay loops, narrative beats, and in-game economy systems.</li>
+              <li>Blocked out and designed levels from initial concept to playable states.</li>
+              <li>Teamed up to analyze player data, tracking metrics like retention and ROI to improve the game.</li>
+              <li>Handled LiveOps, planning and running regular in-game events and content updates.</li>
+              <li>Built quick, playable prototypes to test out new mechanics and ideas for the team.</li>
+              <li>Created custom level editor tools to speed up the workflow for level design.</li>
+              <li>Design and set up Behavior Trees for enemy AI and bosses in a mid-core dungeon crawler.</li>
+              <li>Sketched out UX wireframes and hooked up sound effects (SE) to improve game feel.</li>
+              <li>Helped with QA/QC, testing builds and tracking down bugs to ensure smooth releases.</li>
             </ul>
           </div>
         </div>
@@ -294,16 +290,16 @@
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm pl-2">
             <div class="text-gray-600 dark:text-[#8a8580]">
-              <span class="font-bold text-accent mr-1">Engines:</span> Unity, Unreal Engine 5, Godot
+              <span class="font-bold text-accent mr-1">Languages:</span> Vietnamese, English
             </div>
             <div class="text-gray-600 dark:text-[#8a8580]">
-              <span class="font-bold text-accent mr-1">Languages:</span> C#, C++, Python, HLSL
+              <span class="font-bold text-accent mr-1">Engines:</span> Godot, RPG Maker, Unity, Renpy
             </div>
             <div class="text-gray-600 dark:text-[#8a8580]">
-              <span class="font-bold text-accent mr-1">Tools:</span> Git, Perforce, Wwise, RenderDoc
+              <span class="font-bold text-accent mr-1">Programming:</span> GDScript, C#, C++, Python
             </div>
             <div class="text-gray-600 dark:text-[#8a8580]">
-              <span class="font-bold text-accent mr-1">Core:</span> Physics, Networking, UI Pipelines
+              <span class="font-bold text-accent mr-1">Tools:</span> VSCode, Github, Audacity, Aseprite, Photoshop
             </div>
           </div>
         </div>
@@ -314,10 +310,10 @@
           </h3>
           <div class="pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
-              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">B.S. in Computer Science</h4>
-              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Graduated 2020</span>
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Bachelor of Software Engineering</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Graduated 2024</span>
             </div>
-            <div class="text-sm text-gray-500 dark:text-[#8a8580] mt-1">Ho Chi Minh City University of Technology (HCMUT)</div>
+            <div class="text-sm text-gray-500 dark:text-[#8a8580] mt-1">University of Information Technology (UIT)</div>
           </div>
         </div>
 
@@ -328,29 +324,31 @@
           
           <div class="mb-6 pl-4 border-l-2 border-accent">
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
-              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">First Place Overall</h4>
-              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2022</span>
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Third Place Overall</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2024</span>
             </div>
-            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">Global Game Jam (Ho Chi Minh City)</div>
+            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">Global Game Jam</div>
             <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
-              Awarded for outstanding technical execution and core loop design among 50+ participating local teams.
+              Competed in a 36-hrs Game Jam themed "Make Me Laugh" against 300+ participants across 70+ games.
+            </p>
+          </div>
+          
+          <div class="pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">First Place Overall</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2023</span>
+            </div>
+            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">Game UIT Hackathon</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              Competed in a 24-hrs Game Jam themed "Environmental Protection" against ~300 participants across 73 teams.
             </p>
           </div>
 
-          <div class="pl-4 border-l-2 border-accent">
-            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
-              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Excellence in Programming</h4>
-              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2020</span>
-            </div>
-            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">HCMUT Senior Capstone Showcase</div>
-            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
-              Recognized for developing a highly optimized custom rendering pipeline for mobile devices as part of the final year project.
-            </p>
-          </div>
+          
         </div>
 
       </div>
-      <p class="page-heading"></p>
+      <p class="page-heading">Portfolio</p>
       <div id="kiet-portfolio">
         <h2 class="highlight-section">Portfolio</h2>
         <div class="image-grid">
@@ -434,39 +432,5 @@
 
   <script src="js/app.js"></script>
 
-  <!-- Inline: card tilt + diagonal shine (shine lives on avatar only) -->
-  <script>
-    document.querySelectorAll('.member-card').forEach(card => {
-      const MAX_TILT = parseFloat(card.dataset.tilt) || 10;
-      const avatar   = card.querySelector('.member-avatar');
-
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const cx   = rect.left + rect.width  / 2;
-        const cy   = rect.top  + rect.height / 2;
-        const dx   = (e.clientX - cx) / (rect.width  / 2); // -1 … 1
-        const dy   = (e.clientY - cy) / (rect.height / 2); // -1 … 1
-
-        // 3-D tilt on card
-        card.style.setProperty('--rotate-x', `${-dy * MAX_TILT}deg`);
-        card.style.setProperty('--rotate-y', `${ dx * MAX_TILT}deg`);
-
-        // Shine pos on avatar (CSS var used by .member-avatar::after)
-        const shinePos = ((dx + 1) / 2) * 0.6 + ((dy + 1) / 2) * 0.4;
-        if (avatar) avatar.style.setProperty('--shine-pos', shinePos);
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.setProperty('--rotate-x', '0deg');
-        card.style.setProperty('--rotate-y', '0deg');
-        if (avatar) avatar.style.setProperty('--shine-pos', '-1');
-      });
-    });
-
-    // DEGUNER title → home
-    document.getElementById('site-title').addEventListener('click', () => {
-      navigateTo('work');
-    });
-  </script>
 </body>
 </html>
