@@ -98,7 +98,7 @@ function navigateTo(pageId, sectionId = null) {
       const sectionEl = document.getElementById(sectionId);
       if (sectionEl) {
         const yPosition = sectionEl.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({ top: yPosition - 64, behavior: 'smooth' });
+        window.scrollTo({ top: yPosition - 96, behavior: 'smooth' });
       } else {
         console.warn("Could not find section:", sectionId);
       }
@@ -187,6 +187,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-child').forEach(el => {
     el.addEventListener('mouseenter', () => UI_Audio.play(1400, 200, 0.015));
     el.addEventListener('click', () => UI_Audio.play(600, 100, 0.025));
+  });
+
+  // --- Game Cards Audio ---
+  document.querySelectorAll('.game-card').forEach(card => {
+    card.addEventListener('mouseenter', () => UI_Audio.play(400, 200, 0.02));
+    card.addEventListener('click', () => UI_Audio.play(300, 100, 0.035));
+  });
+
+  // --- Social Buttons Audio ---
+  document.querySelectorAll('.social-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => UI_Audio.play(1400, 200, 0.015));
+    btn.addEventListener('click', () => UI_Audio.play(600, 100, 0.025));
   });
 
   // --- Toggles ---

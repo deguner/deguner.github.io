@@ -62,7 +62,7 @@
       </div>
 
       <!-- Illustration -->
-      <button class="nav-item" data-page="illustration">Illustration</button>
+      <button class="nav-item" data-page="blog">Blog</button>
 
       <div class="nav-divider"></div>
 
@@ -88,12 +88,108 @@
           <span id="theme-label">Light</span>
         </button>
       </div>
+
     </nav>
+
+    <!-- Anchored Bottom Section (Divider + Socials) -->
+    <div class="mt-auto w-full">
+      <!-- <div class="nav-divider mb-5"></div> -->
+      
+      <div class="flex items-center gap-5 pl-1 pb-1">
+        <a href="https://www.facebook.com/deguner" target="_blank" rel="noopener noreferrer" class="social-btn text-gray-500 dark:text-[#8a8580] hover:text-accent dark:hover:text-accent transition-colors text-xl" title="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.youtube.com/@DEGUNER" target="_blank" rel="noopener noreferrer" class="social-btn text-gray-500 dark:text-[#8a8580] hover:text-accent dark:hover:text-accent transition-colors text-xl" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
 
   </aside>
 
   <!-- ══════════════════════ MAIN ══════════════════════ -->
   <main id="main">
+
+    <!-- Our Games (Main Hub Page) -->
+    <section class="page w-full" id="page-game-page">
+      <div class="max-w-xl mx-auto text-center mb-10">
+        <p class="text-xs font-bold tracking-widest uppercase text-accent mb-3">The Games</p>
+        <h1 class="highlight-section">Our Games</h1>
+        <p class="about-sub mt-3">
+          Explore the worlds we've built. Click on any project to see the details, screenshots, and our development process.
+        </p>
+      </div>
+
+      <!-- Game Cards Grid -->
+      <div class="flex flex-wrap justify-center gap-6">
+
+        <!-- Card 1: Envicard -->
+        <div 
+          class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
+          onclick="navigateTo('game-envicard')"
+        >
+          <!-- Background Image -->
+          <img src="assets/tukibee.jpg" alt="Envicard" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          
+          <!-- Lighter Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          
+          <!-- Title Rectangle -->
+          <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
+            Envicard
+          </div>
+        </div>
+
+        <!-- Card 2: Make Me Laugh -->
+        <div 
+          class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
+          onclick="navigateTo('game-make-me-laugh')"
+        >
+          <img src="assets/placeholder-2.jpg" alt="Make Me Laugh" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
+            Make Me Laugh
+          </div>
+        </div>
+
+        <!-- Card 3: Bong Bang -->
+        <div 
+          class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
+          onclick="navigateTo('game-bong-bang')"
+        >
+          <img src="assets/placeholder-3.jpg" alt="Bong Bang" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
+            Bong Bang
+          </div>
+        </div>
+
+        <!-- Card 4: Foodiemon -->
+        <div 
+          class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
+          onclick="navigateTo('game-foodiemon')"
+        >
+          <img src="assets/placeholder-4.jpg" alt="Foodiemon" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
+            Foodiemon
+          </div>
+        </div>
+
+        <!-- Card 5: That Xmas -->
+        <div 
+          class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
+          onclick="navigateTo('game-that-xmas')"
+        >
+          <img src="assets/thatxmas.jpg" alt="That Xmas" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
+            That Xmas
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- Game A -->
     <section class="page" id="page-game-make-me-laugh">
@@ -122,9 +218,9 @@
       <img class="image-full" src="assets/placeholder-2.jpg" alt="Game C — 2" />
     </section>
 
-    <!-- Illustration -->
-    <section class="page" id="page-illustration">
-      <p class="page-heading">Illustration</p>
+    <!-- Blog -->
+    <section class="page" id="page-blog">
+      <p class="page-heading">Blog</p>
       <div class="image-grid">
         <img src="assets/placeholder-1.jpg" alt="Illustration 1" />
         <img src="assets/placeholder-2.jpg" alt="Illustration 2" />
@@ -151,7 +247,7 @@
         <!-- Card 1: Tukibee -->
         <div class="member-card" data-tilt="5">
           <div class="member-avatar">
-            <img src="assets/tukibee.jpg" alt="Tukibee" />
+            <img src="assets/kiet_portrait.JPG" alt="Tukibee" />
             <div class="card-actions">
               <button class="card-action-btn" data-target-page="member-kiet" data-target-section="kiet-cv">CV</button>
               <button class="card-action-btn" data-target-page="member-kiet" data-target-section="kiet-portfolio">Portfolio</button>
@@ -174,7 +270,7 @@
         <!-- Card 2: Mouchee -->
         <div class="member-card" data-tilt="5">
           <div class="member-avatar">
-            <img src="assets/mouchee.jpg" alt="Mouchee" />
+            <img src="assets/trang_portrait.JPG" alt="Mouchee" />
             <div class="card-actions">
               <button class="card-action-btn" data-target-page="member-trang" data-target-section="cv">CV</button>
               <button class="card-action-btn" data-target-page="member-trang" data-target-section="portfolio">Portfolio</button>
@@ -203,6 +299,14 @@
       <div id="kiet-cv" class="mb-20 max-w-3xl mx-auto text-left">
         <!-- Section Title & Contact Info -->
         <div class="text-center mb-12">
+          <div class="mb-6">
+            <div class="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full overflow-hidden shadow-lg border-4 border-gray-100 dark:border-[#242220]">
+              
+              <img src="assets/kiet_icon.JPG" alt="Nguyen Tuan Kiet" class="w-full h-full object-cover scale-110 origin-center translate-y-1 translate-x-1" />
+              
+            </div>
+          </div>
+
           <!-- Name -->
           <h2 class="highlight-section mb-2">Nguyen Tuan Kiet</h2>
           
@@ -261,15 +365,127 @@
             Selected Projects
           </h3>
 
+          <div class="mb-5">
+            <span class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-[#8a8580] bg-gray-100 dark:bg-[#1a1917] px-2 py-1 rounded">
+              Work Projects
+            </span>
+          </div>
+
           <div class="mb-6 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
-              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Project Omega (Shipped Title)</h4>
-              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: Oct 2023</span>
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Clue Sudoku</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: 2026</span>
             </div>
-            <div class="text-sm font-semibold text-accent mb-2">Lead Developer | Unity, C#</div>
+            <div class="text-sm font-semibold text-accent mb-2">Game Designer | Unity</div>
             <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
-              A fast-paced roguelike action game. Designed the core combat loop and implemented procedural level generation algorithms to ensure endless replayability.
+              [Brief description of the game and your specific contributions, like designing the economy or writing the narrative.]
             </p>
+          </div>
+
+          <div class="mb-6 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Suika Pool</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: 2026</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Game Designer | [Engine, e.g., Unity]</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+                <li>Acted as the solo game designer, taking full ownership of core mechanics, new features, boosters, and overall difficulty balancing.</li>
+                <li>Used Unity to directly create levels (prefabs).</li>
+                <li>Handled all level design.</li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="mb-6 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Clue Master</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: [Year]</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Game Designer | Tool Developer</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+                <li>Designed and programmed a custom level editor tool to drastically speed up the level creation workflow.</li>
+                <li>Handled level design, carefully integrating puzzle mechanics and narrative beats directly into the gameplay.</li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="mb-6 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Apocalypse Drifter</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: [Year]</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Game Designer | Enemies Developer - Unity</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+                <li>Acted as core gameplay designer, building the procedural dungeon generation for randomized layouts, objects, and enemy spawns.</li>
+                <li>Led enemy design, balancing their base stats, powers, and overall difficulty curve.</li>
+                <li>Programmed enemy AI and combat logic using Behavior Trees.</li>
+                <li>Designed alternate game modes and handled LiveOps for regular content updates.</li>
+                <li>Helped design and fine-tune player skills, weapons, and combat mechanics.</li>
+              </ul>
+              <div> 
+                  <a href="YOUR_YOUTUBE_OR_DRIVE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                      <i class="fas fa-play-circle mr-1"></i>Preview
+                  </a>
+              </div>
+            </p>
+          </div>
+
+          <div class="mb-10 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Collection of Prototypes</h4>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-3">Rapid Prototyping - Godot Engine - 1 Day Each</div>
+            
+            <ul class="space-y-3">
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Traffic Light:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">3D game, inspired by traditional red light - green light game.</span>
+                <div> 
+                  <a href="YOUR_YOUTUBE_OR_DRIVE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                      <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+              
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Minions:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, inspired by Lemmings. Assign actions to minions to help them reach the target.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+              
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Jump Wizard:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, inspired by Jump King with time-rewinding mechanic.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Auto Ball:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, about setting up the stage for the ball to reach goal.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mb-5">
+            <span class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-[#8a8580] bg-gray-100 dark:bg-[#1a1917] px-2 py-1 rounded">
+              Personal Projects
+            </span>
           </div>
 
           <div class="mb-4 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
@@ -277,11 +493,61 @@
               <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Echoes of the Past</h4>
               <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Global Game Jam 2022</span>
             </div>
-            <div class="text-sm font-semibold text-accent mb-2">Solo Developer | Unreal Engine 5, Blueprints</div>
+            <div class="text-sm font-semibold text-accent mb-2">Solo Developer | Godot</div>
             <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
-              A puzzle-platformer built in 48 hours focusing on time-manipulation mechanics. Handled all programming, level design, and UI implementation.
+              A puzzle-platformer built in 48 hours focusing on time-manipulation mechanics. Handled all programming, level design, and UI.
             </p>
           </div>
+
+          <div class="mb-10 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Tiny Little Games</h4>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-3">Rapid Prototyping - Godot Engine - 1 Day Each</div>
+            
+            <ul class="space-y-3">
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Traffic Light:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">3D game, inspired by traditional red light - green light game.</span>
+                <div> 
+                  <a href="YOUR_YOUTUBE_OR_DRIVE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                      <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+              
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Minions:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, inspired by Lemmings. Assign actions to minions to help them reach the target.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+              
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Jump Wizard:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, inspired by Jump King with time-rewinding mechanic.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Auto Ball:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, about setting up the stage for the ball to reach goal.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
         <div class="mb-10">
@@ -352,49 +618,7 @@
       <div id="kiet-portfolio">
         <h2 class="highlight-section">Portfolio</h2>
         <div class="image-grid">
-          <img src="assets/placeholder-1.jpg" alt="Tukibee Project 1" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
-          <img src="assets/placeholder-2.jpg" alt="Tukibee Project 2" />
+          
         </div>
       </div>
     </section>
@@ -420,6 +644,12 @@
     <!-- Default landing -->
     <section class="page active" id="page-work">
       <p class="page-heading">Featured Work</p>
+
+      <div class="w-full mb-10 rounded-xl overflow-hidden">
+        <!-- Just replace 'assets/your-gif-here.gif' with your actual file name -->
+        <img src="assets/LOGO.GIF" alt="Featured Gameplay" class="w-full h-auto max-h-[450px] object-cover block" />
+      </div>
+
       <div class="image-grid">
         <img src="assets/placeholder-1.jpg" alt="" />
         <img src="assets/placeholder-2.jpg" alt="" />

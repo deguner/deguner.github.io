@@ -6,14 +6,16 @@
    1. CSS Variables & Base Reset
    -------------------------------------------------------------------------- */
 :root {
-  --sidebar-w: 280px;
-  --accent:    #d22731;
-  --surface:   #ffffff;
-  --ink:       #111827;
-  --muted:     #6b7280;
-  --border:    #e5e7eb;
+  --sidebar-w:   280px;
+  --accent:      #d22731;
+  --surface:     #ffffff;
+  --ink:         #111827;
+  --muted:       #6b7280;
+  --border:      #e5e7eb;
+  
+  --game-card-w: 480px;
+  --game-card-h: 270px;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { 
   font-size: 16px; 
@@ -535,4 +537,18 @@ body.dark .site-name span {
 @media (max-width: 480px) {
   .page { padding: 3.5rem 1rem 3rem; }
   .member-card { width: 100%; }
+}
+
+/* --------------------------------------------------------------------------
+   10. Game Cards
+   -------------------------------------------------------------------------- */
+.game-card {
+  width: 100%;
+  height: var(--game-card-h);
+}
+
+@media (min-width: 640px) {
+  .game-card {
+    width: var(--game-card-w);
+  }
 }
