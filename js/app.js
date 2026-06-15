@@ -111,8 +111,9 @@ function navigateTo(pageId, sectionId = null) {
 function handleInitialRoute() {
   const hash = window.location.hash.substring(1); 
   
+  // FIX: Navigate directly to the 'work' page instead of calling itself in an infinite loop!
   if (!hash) {
-    handleInitialRoute(); 
+    navigateTo('work'); 
     return;
   }
 
@@ -126,10 +127,10 @@ function handleInitialRoute() {
     if (targetPage) {
       navigateTo(targetPage, hash);
     } else {
-      handleInitialRoute(); 
+      navigateTo('work'); // Fallback to home if the link is broken
     }
   } else {
-    handleInitialRoute(); 
+    navigateTo('work'); // Fallback to home if the link is broken
   }
 }
 
