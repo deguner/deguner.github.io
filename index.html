@@ -129,7 +129,7 @@
           onclick="navigateTo('game-envicard')"
         >
           <!-- Background Image -->
-          <img src="assets/tukibee.jpg" alt="Envicard" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img draggable="false" src="assets/envicard_title.jpg" alt="Envicard" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           
           <!-- Lighter Gradient Overlay -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
@@ -145,7 +145,7 @@
           class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
           onclick="navigateTo('game-make-me-laugh')"
         >
-          <img src="assets/placeholder-2.jpg" alt="Make Me Laugh" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img draggable="false" src="assets/mml_title.png" alt="Make Me Laugh" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
             Make Me Laugh
@@ -157,7 +157,7 @@
           class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
           onclick="navigateTo('game-bong-bang')"
         >
-          <img src="assets/placeholder-3.jpg" alt="Bong Bang" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img draggable="false" src="assets/bongbang_title.png" alt="Bong Bang" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
             Bong Bang
@@ -169,7 +169,7 @@
           class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
           onclick="navigateTo('game-foodiemon')"
         >
-          <img src="assets/placeholder-4.jpg" alt="Foodiemon" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img draggable="false" src="assets/foodiemon_title.png" alt="Foodiemon" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
             Foodiemon
@@ -181,7 +181,7 @@
           class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
           onclick="navigateTo('game-that-xmas')"
         >
-          <img src="assets/thatxmas.jpg" alt="That Xmas" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img draggable="false" src="assets/thatxmas.jpg" alt="That Xmas" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
             That Xmas
@@ -191,41 +191,107 @@
       </div>
     </section>
 
-    <!-- Game A -->
-    <section class="page" id="page-game-make-me-laugh">
-      <p class="page-heading">Make Me Laugh</p>
-      <div class="image-grid">
-        <img src="assets/placeholder-1.jpg" alt="Game A — image 1" />
-        <img src="assets/placeholder-2.jpg" alt="Game A — image 2" />
-        <img src="assets/placeholder-3.jpg" alt="Game A — image 3" />
-        <img src="assets/placeholder-4.jpg" alt="Game A — image 4" />
+    <!-- Game: MAKE ME LAUGH -->
+    <section class="page w-full" id="page-game-make-me-laugh">
+      
+      <div class="relative w-full h-[400px] sm:h-[300px] rounded-2xl overflow-hidden mb-8 shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220]">
+        <img draggable="false" src="assets/mml_title.png" alt="Game Banner" class="select-none absolute inset-0 w-full h-[400px] object-cover" />
+        
+        <!-- <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <h1 class="text-5xl sm:text-7xl font-black text-white tracking-tight text-center px-4 uppercase drop-shadow-lg">
+            Make Me Laugh
+          </h1>
+        </div> -->
+        
       </div>
+
+      <p class="text-base text-center text-gray-600 dark:text-[#8a8580] mb-8 leading-relaxed">
+          This is a game about two cute zodiacs trying to craft the Happy Potion.
+      </p>
+
+      <div class="mb-16">
+        <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+          The Details
+        </h3>
+        
+        <div class="flex flex-col md:flex-row gap-8 items-center">
+          <div class="w-full md:w-1/2 rounded-xl overflow-hidden">
+            <img draggable="false" src="assets/roles.JPG" alt="The Team" class="select-none w-full h-auto object-cover" />
+          </div>
+          
+          <div class="w-full md:w-1/2">
+            <ul class="list-disc list-outside ml-5 text-base text-gray-600 dark:text-[#8a8580] space-y-4 leading-relaxed">
+              <li><strong class="text-gray-900 dark:text-[#e8e6e3]">Theme:</strong> Make Me Laugh</li>
+              <li><strong class="text-gray-900 dark:text-[#e8e6e3]">Team Size:</strong> 2 Members</li>
+              <li><strong class="text-gray-900 dark:text-[#e8e6e3]">Engine:</strong> Godot</li>
+              <li><strong class="text-gray-900 dark:text-[#e8e6e3]">Duration:</strong> 36 Hours</li>
+              <li><strong class="text-gray-900 dark:text-[#e8e6e3]">Link:</strong> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-16">
+        <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+          The Process
+        </h3>
+        <p class="text-base text-gray-600 dark:text-[#8a8580] mb-4 leading-relaxed">
+          We started with a massive brainstorming session, mapping out different ways to force a player to laugh using quirky physics and unexpected UI interactions.
+        </p>
+        <div class="w-full rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220]">
+          <img draggable="false" src="assets/brainstorm.JPG" alt="Brainstorming Process" class="select-none w-full h-auto object-cover max-h-[600px]" />
+        </div>
+      </div>
+
+      <div class="mb-10">
+        <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+          Key Features
+        </h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          
+          <div class="bg-gray-50 dark:bg-[#1a1917] rounded-xl overflow-hidden shadow border-[1.5px] border-gray-200 dark:border-[#242220] transition-transform duration-300 hover:-translate-y-1">
+            <img draggable="false" src="assets/LOGO.GIF" alt="Ragdoll Physics GIF" class="select-none w-full h-48 object-cover border-b-[1.5px] border-gray-200 dark:border-[#242220]" />
+            <div class="p-5">
+              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-lg mb-2">Feature 1</h4>
+              <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+                Lorem Ipsum.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 dark:bg-[#1a1917] rounded-xl overflow-hidden shadow border-[1.5px] border-gray-200 dark:border-[#242220] transition-transform duration-300 hover:-translate-y-1">
+            <img draggable="false" src="assets/LOGO.GIF" alt="Audience AI GIF" class="select-none w-full h-48 object-cover border-b-[1.5px] border-gray-200 dark:border-[#242220]" />
+            <div class="p-5">
+              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-lg mb-2">Feature 2</h4>
+              <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+                Lorem Ipsum.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
     </section>
 
     <!-- Game B -->
     <section class="page" id="page-work-project-b">
       <p class="page-heading">Game B</p>
-      <div class="image-grid">
-        <img src="assets/placeholder-1.jpg" alt="Game B — image 1" />
-        <img src="assets/placeholder-2.jpg" alt="Game B — image 2" />
-      </div>
+      
     </section>
 
     <!-- Game C -->
     <section class="page" id="page-work-project-c">
       <p class="page-heading">Game C</p>
-      <img class="image-full" src="assets/placeholder-1.jpg" alt="Game C — 1" />
-      <img class="image-full" src="assets/placeholder-2.jpg" alt="Game C — 2" />
+      
     </section>
 
     <!-- Blog -->
     <section class="page" id="page-blog">
       <p class="page-heading">Blog</p>
-      <div class="image-grid">
-        <img src="assets/placeholder-1.jpg" alt="Illustration 1" />
-        <img src="assets/placeholder-2.jpg" alt="Illustration 2" />
-        <img src="assets/placeholder-3.jpg" alt="Illustration 3" />
-        <img src="assets/placeholder-4.jpg" alt="Illustration 4" />
+      <div class="w-full rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220]">
+        <img draggable="false" src="assets/notfound.JPG" alt="Brainstorming Process" class="w-full h-auto object-cover max-h-[600px]" />
       </div>
     </section>
 
@@ -247,10 +313,10 @@
         <!-- Card 1: Tukibee -->
         <div class="member-card" data-tilt="5">
           <div class="member-avatar">
-            <img src="assets/kiet_portrait.JPG" alt="Tukibee" />
+            <img draggable="false" src="assets/kiet_portrait.JPG" alt="Tukibee" class="select-none" />
             <div class="card-actions">
-              <button class="card-action-btn" data-target-page="member-kiet" data-target-section="cv">CV</button>
-              <button class="card-action-btn" data-target-page="member-kiet" data-target-section="portfolio">Portfolio</button>
+              <button class="card-action-btn" data-target-page="member-kiet" data-target-section="kiet-cv">CV</button>
+              <button class="card-action-btn" data-target-page="member-kiet" data-target-section="kiet-portfolio">Portfolio</button>
             </div>
           </div>
           <div class="member-info">
@@ -270,10 +336,10 @@
         <!-- Card 2: Mouchee -->
         <div class="member-card" data-tilt="5">
           <div class="member-avatar">
-            <img src="assets/trang_portrait.JPG" alt="Mouchee" />
+            <img draggable="false" src="assets/trang_portrait.JPG" alt="Mouchee" class="select-none" />
             <div class="card-actions">
-              <button class="card-action-btn" data-target-page="member-trang" data-target-section="cv">CV</button>
-              <button class="card-action-btn" data-target-page="member-trang" data-target-section="portfolio">Portfolio</button>
+              <button class="card-action-btn" data-target-page="member-trang" data-target-section="trang-cv">CV</button>
+              <button class="card-action-btn" data-target-page="member-trang" data-target-section="trang-portfolio">Portfolio</button>
             </div>
           </div>
           <div class="member-info">
@@ -302,7 +368,7 @@
           <div class="mb-6">
             <div class="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full overflow-hidden shadow-lg border-4 border-gray-100 dark:border-[#242220]">
               
-              <img src="assets/kiet_icon.JPG" alt="Nguyen Tuan Kiet" class="w-full h-full object-cover scale-110 origin-center translate-y-1 translate-x-1" />
+              <img draggable="false" src="assets/kiet_icon.JPG" alt="Nguyen Tuan Kiet" class="select-none w-full h-full object-cover scale-110 origin-center translate-y-1 translate-x-1" />
               
             </div>
           </div>
@@ -621,24 +687,339 @@
           
         </div>
       </div>
+
     </section>
 
-    <!-- NEW: Mouchee Page -->
+    <!-- NEW: Trang Page -->
     <section class="page w-full" id="page-member-trang">
-      <p class="page-heading">Mouchee</p>
+      <p class="page-heading">Curriculum Vitae</p>
 
-      <div id="trang-cv" class="mb-12">
-        <h2 class="highlight-section">Curriculum Vitae</h2>
-        <p class="about-sub ml-0 text-left">Artist & Designer specializing in concept art, 2D illustration, and character animation. Passionate about bringing vibrant worlds to life through pixel perfection...</p>
+      <div id="trang-cv" class="mb-20 max-w-3xl mx-auto text-left">
+        <!-- Section Title & Contact Info -->
+        <div class="text-center mb-12">
+          <div class="mb-6">
+            <div class="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full overflow-hidden shadow-lg border-4 border-gray-100 dark:border-[#242220]">
+              
+              <img draggable="false" src="assets/trang_icon.JPG" alt="Nguyen Vu Thuy Trang" class="select-none w-full h-full object-cover scale-110 origin-center translate-y-1" />
+              
+            </div>
+          </div>
+
+          <!-- Name -->
+          <h2 class="highlight-section mb-2">Nguyen Tuan Kiet</h2>
+          
+          <!-- Role -->
+          <p class="text-sm sm:text-base font-bold text-accent mb-4 tracking-widest uppercase">
+            Game Developer
+          </p>
+          
+          <!-- Contact Links -->
+          <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-[#8a8580]">
+            <a href="mailto:your.email@example.com" class="hover:text-accent transition-colors">
+              <i class="fas fa-envelope mr-1"></i> motchut1106@gmail.com
+            </a>
+            <a href="tel:+84123456789" class="hover:text-accent transition-colors">
+              <i class="fas fa-phone-alt mr-1"></i> 039 532 7732
+            </a>
+            <a href="https://deguner.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+              <i class="fas fa-globe mr-1"></i> Website
+            </a>
+            <!-- <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+              <i class="fab fa-github mr-1"></i> GitHub
+            </a> -->
+            <!-- <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+              <i class="fab fa-linkedin mr-1"></i> LinkedIn
+            </a> -->
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Experience
+          </h3>
+
+          <div class="mb-8 relative pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Athena Studio</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Feb 2023 – Present</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-3">Game Designer</div>
+            <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+              <li>Designed core gameplay loops, narrative beats, and in-game economy systems.</li>
+              <li>Blocked out and designed levels from initial concept to playable states.</li>
+              <li>Teamed up to analyze player data, tracking metrics like retention and ROI to improve the game.</li>
+              <li>Handled LiveOps, planning and running regular in-game events and content updates.</li>
+              <li>Built quick, playable prototypes to test out new mechanics and ideas for the team.</li>
+              <li>Created custom level editor tools to speed up the workflow for level design.</li>
+              <li>Design and set up Behavior Trees for enemy AI and bosses in a mid-core dungeon crawler.</li>
+              <li>Sketched out UX wireframes and hooked up sound effects (SE) to improve game feel.</li>
+              <li>Helped with QA/QC, testing builds and tracking down bugs to ensure smooth releases.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Selected Projects
+          </h3>
+
+          <div class="mb-5">
+            <span class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-[#8a8580] bg-gray-100 dark:bg-[#1a1917] px-2 py-1 rounded">
+              Work Projects
+            </span>
+          </div>
+
+          <div class="mb-6 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Clue Sudoku</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: 2026</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Game Designer | Unity</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              [Brief description of the game and your specific contributions, like designing the economy or writing the narrative.]
+            </p>
+          </div>
+
+          <div class="mb-6 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Suika Pool</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: 2026</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Game Designer | [Engine, e.g., Unity]</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+                <li>Acted as the solo game designer, taking full ownership of core mechanics, new features, boosters, and overall difficulty balancing.</li>
+                <li>Used Unity to directly create levels (prefabs).</li>
+                <li>Handled all level design.</li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="mb-6 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Clue Master</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: [Year]</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Game Designer | Tool Developer</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+                <li>Designed and programmed a custom level editor tool to drastically speed up the level creation workflow.</li>
+                <li>Handled level design, carefully integrating puzzle mechanics and narrative beats directly into the gameplay.</li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="mb-6 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Apocalypse Drifter</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Released: [Year]</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Game Designer | Enemies Developer - Unity</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+                <li>Acted as core gameplay designer, building the procedural dungeon generation for randomized layouts, objects, and enemy spawns.</li>
+                <li>Led enemy design, balancing their base stats, powers, and overall difficulty curve.</li>
+                <li>Programmed enemy AI and combat logic using Behavior Trees.</li>
+                <li>Designed alternate game modes and handled LiveOps for regular content updates.</li>
+                <li>Helped design and fine-tune player skills, weapons, and combat mechanics.</li>
+              </ul>
+              <div> 
+                  <a href="YOUR_YOUTUBE_OR_DRIVE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                      <i class="fas fa-play-circle mr-1"></i>Preview
+                  </a>
+              </div>
+            </p>
+          </div>
+
+          <div class="mb-10 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Collection of Prototypes</h4>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-3">Rapid Prototyping - Godot Engine - 1 Day Each</div>
+            
+            <ul class="space-y-3">
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Traffic Light:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">3D game, inspired by traditional red light - green light game.</span>
+                <div> 
+                  <a href="YOUR_YOUTUBE_OR_DRIVE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                      <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+              
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Minions:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, inspired by Lemmings. Assign actions to minions to help them reach the target.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+              
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Jump Wizard:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, inspired by Jump King with time-rewinding mechanic.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Auto Ball:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, about setting up the stage for the ball to reach goal.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mb-5">
+            <span class="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-[#8a8580] bg-gray-100 dark:bg-[#1a1917] px-2 py-1 rounded">
+              Personal Projects
+            </span>
+          </div>
+
+          <div class="mb-4 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Echoes of the Past</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Global Game Jam 2022</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-2">Solo Developer | Godot</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              A puzzle-platformer built in 48 hours focusing on time-manipulation mechanics. Handled all programming, level design, and UI.
+            </p>
+          </div>
+
+          <div class="mb-10 relative pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Tiny Little Games</h4>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-3">Rapid Prototyping - Godot Engine - 1 Day Each</div>
+            
+            <ul class="space-y-3">
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Traffic Light:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">3D game, inspired by traditional red light - green light game.</span>
+                <div> 
+                  <a href="YOUR_YOUTUBE_OR_DRIVE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                      <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+              
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Minions:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, inspired by Lemmings. Assign actions to minions to help them reach the target.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+              
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Jump Wizard:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, inspired by Jump King with time-rewinding mechanic.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+
+              <li class="text-sm leading-relaxed">
+                <span class="font-bold text-gray-800 dark:text-[#d6d3cf]">Auto Ball:</span> 
+                <span class="text-gray-600 dark:text-[#8a8580]">2D game, about setting up the stage for the ball to reach goal.</span>
+                <div>
+                  <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-accent hover:text-gray-900 dark:hover:text-[#e8e6e3] transition-colors ml-1 font-semibold">
+                    <i class="fas fa-play-circle mr-1"></i>Preview Video
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-5 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Skills
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm pl-2">
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Languages:</span> Vietnamese, English
+            </div>
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Engines:</span> Godot, RPG Maker, Unity, Renpy
+            </div>
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Programming:</span> GDScript, C#, C++, Python
+            </div>
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Tools:</span> VSCode, Github, Audacity, Aseprite, Photoshop
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-5 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Education
+          </h3>
+          <div class="pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Bachelor of Software Engineering</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Graduated 2024</span>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-[#8a8580] mt-1">University of Information Technology (UIT)</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-5 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Awards
+          </h3>
+          
+          <div class="mb-6 pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Third Place Overall</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2024</span>
+            </div>
+            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">Global Game Jam</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              Competed in a 36-hrs Game Jam themed "Make Me Laugh" against 300+ participants across 70+ games.
+            </p>
+          </div>
+          
+          <div class="pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">First Place Overall</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2023</span>
+            </div>
+            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">Game UIT Hackathon</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              Competed in a 24-hrs Game Jam themed "Environmental Protection" against ~300 participants across 73 teams.
+            </p>
+          </div>
+
+          
+        </div>
+
       </div>
-      <p class="page-heading"></p>
+      <p class="page-heading">Portfolio</p>
       <div id="trang-portfolio">
         <h2 class="highlight-section">Portfolio</h2>
         <div class="image-grid">
-          <img src="assets/placeholder-3.jpg" alt="Mouchee Project 1" />
-          <img src="assets/placeholder-4.jpg" alt="Mouchee Project 2" />
+          
         </div>
       </div>
+
     </section>
     
     <!-- Default landing -->
@@ -647,14 +1028,7 @@
 
       <div class="w-full mb-10 rounded-xl overflow-hidden">
         <!-- Just replace 'assets/your-gif-here.gif' with your actual file name -->
-        <img src="assets/LOGO.GIF" alt="Featured Gameplay" class="w-full h-auto max-h-[450px] object-cover block" />
-      </div>
-
-      <div class="image-grid">
-        <img src="assets/placeholder-1.jpg" alt="" />
-        <img src="assets/placeholder-2.jpg" alt="" />
-        <img src="assets/placeholder-3.jpg" alt="" />
-        <img src="assets/placeholder-4.jpg" alt="" />
+        <img draggable="false" src="assets/LOGO.GIF" alt="Featured Gameplay" class="select-none w-full h-auto max-h-[450px] object-cover block" />
       </div>
     </section>
 

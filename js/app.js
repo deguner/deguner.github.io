@@ -284,4 +284,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('popstate', handleInitialRoute);
+
+  // Disable right-click on all images to deter downloading
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.nodeName === 'IMG') {
+      e.preventDefault();
+    }
+  });
 });
