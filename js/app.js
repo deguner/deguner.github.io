@@ -291,4 +291,133 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
     }
   });
+
+  // --- Gallery & Lightbox System ---
+  const lightbox = document.getElementById('global-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  let currentGalleryImages = [];
+  let currentImageIndex = 0;
+  let activeGalleryElement = null; // Tracks which gallery opened the lightbox
+  let autoSlideTimers = {}; // Tracks auto-slide intervals
+
+  // Helper function to thoroughly update a gallery's visual state
+  function updateGallery(gallery, newIndex) {
+    const thumbs = gallery.querySelectorAll('.gallery-thumb');
+    const mainImg = gallery.querySelector('img[id^="main-img-"]');
+    
+    // Wrap around logic
+    if (newIndex >= thumbs.length) newIndex = 0;
+    if (newIndex < 0) newIndex = thumbs.length - 1;
+    
+    const targetThumb = thumbs[newIndex];
+    
+    // Update main preview image
+    mainImg.src = targetThumb.getAttribute('data-full');
+    mainImg.setAttribute('data-index', newIndex);
+
+    // Update thumbnail styles
+    thumbs.forEach(t => {
+      t.classList.remove('border-accent', 'opacity-100');
+      t.classList.add('border-transparent', 'opacity-60');
+    });
+    targetThumb.classList.remove('border-transparent', 'opacity-60');
+    targetThumb.classList.add('border-accent', 'opacity-100');
+    
+    // FIX: Strictly scroll ONLY the thumbnail container horizontally (prevents vertical page jumping)
+    const thumbContainer = targetThumb.parentElement;
+    const scrollPos = targetThumb.offsetLeft - (thumbContainer.clientWidth / 2) + (targetThumb.clientWidth / 2);
+    thumbContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
+
+    // Reset the auto-slide timer
+    startAutoSlide(gallery);
+  }
+
+  // Helper function to handle the 4-second Auto-Slide Carousel
+  function startAutoSlide(gallery) {
+    const galleryId = gallery.getAttribute('data-gallery-id');
+    clearInterval(autoSlideTimers[galleryId]);
+    
+    autoSlideTimers[galleryId] = setInterval(() => {
+      // Pause the carousel if the user is currently viewing this gallery in Fullscreen
+      if (activeGalleryElement === gallery && !lightbox.classList.contains('hidden')) return;
+      
+      const mainImg = gallery.querySelector('img[id^="main-img-"]');
+      const currentIndex = parseInt(mainImg.getAttribute('data-index') || 0);
+      updateGallery(gallery, currentIndex + 1);
+    }, 4000); // 4000ms = 4 seconds!
+  }
+
+  // 1. Initialize all galleries on the page
+  document.querySelectorAll('.project-gallery').forEach(gallery => {
+    startAutoSlide(gallery);
+
+    // Thumbnail Clicks
+    gallery.querySelectorAll('.gallery-thumb').forEach((thumb, index) => {
+      thumb.addEventListener('click', () => updateGallery(gallery, index));
+    });
+
+    // Inline Prev/Next Button Clicks
+    gallery.querySelectorAll('.gallery-nav-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Crucial: Stop the click from opening the fullscreen lightbox!
+        const dir = parseInt(btn.getAttribute('data-dir'));
+        const mainImg = gallery.querySelector('img[id^="main-img-"]');
+        const currentIndex = parseInt(mainImg.getAttribute('data-index') || 0);
+        updateGallery(gallery, currentIndex + dir);
+      });
+    });
+
+    // Click main image to open Fullscreen Lightbox
+    const mainPreview = gallery.querySelector('img[id^="main-img-"]');
+    mainPreview.addEventListener('click', () => {
+      if (!lightbox) return;
+      activeGalleryElement = gallery; // Remember exactly which gallery we are looking at
+      
+      const thumbs = gallery.querySelectorAll('.gallery-thumb');
+      currentGalleryImages = Array.from(thumbs).map(t => t.getAttribute('data-full'));
+      currentImageIndex = parseInt(mainPreview.getAttribute('data-index'));
+
+      lightboxImg.src = currentGalleryImages[currentImageIndex];
+      
+      lightbox.classList.remove('hidden');
+      setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
+      document.body.style.overflow = 'hidden'; // Stop background page scrolling
+    });
+  });
+
+  // 2. Lightbox Navigation (Buttons & Keyboard)
+  function closeLightbox() {
+    // FIX: Sync the main gallery IMMEDIATELY while the screen is still black!
+    if (activeGalleryElement) {
+      updateGallery(activeGalleryElement, currentImageIndex);
+      activeGalleryElement = null; // Clear it out
+    }
+
+    lightbox.classList.add('opacity-0');
+    setTimeout(() => {
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = ''; // Restore background scrolling
+    }, 300);
+  }
+
+  function slideLightbox(direction) {
+    if (currentGalleryImages.length === 0) return;
+    currentImageIndex = (currentImageIndex + direction + currentGalleryImages.length) % currentGalleryImages.length;
+    lightboxImg.src = currentGalleryImages[currentImageIndex];
+  }
+
+  document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-next')?.addEventListener('click', () => slideLightbox(1));
+  document.getElementById('lightbox-prev')?.addEventListener('click', () => slideLightbox(-1));
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox(); 
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox || lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') slideLightbox(1);
+    if (e.key === 'ArrowLeft') slideLightbox(-1);
+  });
 });
