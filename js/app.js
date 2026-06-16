@@ -50,11 +50,16 @@ const UI_Audio = (() => {
 /* ==========================================================================
    2. Navigation & UI Logic
    ========================================================================== */
+/* ==========================================================================
+   2. Navigation & UI Logic
+   ========================================================================== */
 function navigateTo(pageId, sectionId = null) {
+  const targetPage = document.getElementById('page-' + pageId);
+  const isAlreadyOnPage = targetPage && targetPage.classList.contains('active');
+
   // 1. Hide all pages and show the target page
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const page = document.getElementById('page-' + pageId);
-  if (page) page.classList.add('active');
+  if (targetPage) targetPage.classList.add('active');
 
   // 2. Update direct nav items
   document.querySelectorAll('.nav-item[data-page], .nav-child[data-page]').forEach(el => {
@@ -90,19 +95,26 @@ function navigateTo(pageId, sectionId = null) {
     }
   }
 
-  // 5. Handle Scrolling (Bulletproof Method)
+  // 5. Handle Scrolling (Smarter Method)
   if (sectionId) {
-    window.scrollTo(0, 0); // Snap to top to calculate math cleanly
-    
-    setTimeout(() => {
+    if (isAlreadyOnPage) {
+      // If we are already on the page, smoothly scroll directly to it!
       const sectionEl = document.getElementById(sectionId);
       if (sectionEl) {
         const yPosition = sectionEl.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({ top: yPosition - 96, behavior: 'smooth' });
-      } else {
-        console.warn("Could not find section:", sectionId);
+        window.scrollTo({ top: yPosition - 64, behavior: 'smooth' });
       }
-    }, 350); // Wait for page fade-in animation to finish
+    } else {
+      // If switching from another page, reset to top instantly so math is clean, then wait for fade
+      window.scrollTo(0, 0); 
+      setTimeout(() => {
+        const sectionEl = document.getElementById(sectionId);
+        if (sectionEl) {
+          const yPosition = sectionEl.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: yPosition - 96, behavior: 'smooth' });
+        }
+      }, 350); 
+    }
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -295,25 +307,83 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Gallery & Lightbox System ---
   const lightbox = document.getElementById('global-lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxVid = document.getElementById('lightbox-vid');
   let currentGalleryImages = [];
   let currentImageIndex = 0;
-  let activeGalleryElement = null; // Tracks which gallery opened the lightbox
-  let autoSlideTimers = {}; // Tracks auto-slide intervals
+  let activeGalleryElement = null; 
+  let autoSlideTimers = {};
 
-  // Helper function to thoroughly update a gallery's visual state
-  function updateGallery(gallery, newIndex) {
+  const videoProgress = {};
+
+  // ==========================================
+  // 🎨 GALLERY DATA 
+  // ==========================================
+  const galleryData = {
+    'meowknight': [
+      'assets/video/meowknight-title.mp4',
+      'assets/video/meowknight-1.mp4',
+      'assets/video/meowknight-2.mp4',
+      'assets/meowknight-p1.jpg',
+      'assets/meowknight-p2.jpg',
+      'assets/meowknight-p3.jpg',
+    ],
+    'poppit': [
+      'assets/video/poppitarena.mp4',
+      'assets/poppit-p1.jpg',
+      'assets/poppit-p2.jpg',
+      'assets/poppit-p3.jpg',
+      'assets/poppit-p4.jpg',
+    ]
+  };
+
+  const isVideo = (src) => src.toLowerCase().endsWith('.mp4') || src.toLowerCase().endsWith('.webm');
+
+  function updateGallery(gallery, newIndex, skipScroll = false) {
     const thumbs = gallery.querySelectorAll('.gallery-thumb');
-    const mainImg = gallery.querySelector('img[id^="main-img-"]');
+    const mainImg = gallery.querySelector('img[id$="-main-img"]');
+    const mainVid = gallery.querySelector('video[id$="-main-vid"]');
+    if (!thumbs.length) return;
     
     // Wrap around logic
     if (newIndex >= thumbs.length) newIndex = 0;
     if (newIndex < 0) newIndex = thumbs.length - 1;
     
     const targetThumb = thumbs[newIndex];
+    const src = targetThumb.getAttribute('data-full');
     
-    // Update main preview image
-    mainImg.src = targetThumb.getAttribute('data-full');
-    mainImg.setAttribute('data-index', newIndex);
+    // Memory: Save old video's progress before swapping
+    const oldIndex = parseInt(gallery.getAttribute('data-current-index') || 0);
+    const oldSrc = thumbs[oldIndex] ? thumbs[oldIndex].getAttribute('data-full') : null;
+    
+    // Only save progress if we are actually swapping away from an active video
+    if (oldSrc && isVideo(oldSrc) && !skipScroll) {
+        videoProgress[oldSrc] = mainVid.currentTime;
+    }
+
+    gallery.setAttribute('data-current-index', newIndex); 
+    
+    // Swap Displays and Restore Memory
+    if (isVideo(src)) {
+        mainImg.classList.add('hidden');
+        mainVid.classList.remove('hidden');
+        
+        if (mainVid.getAttribute('src') !== src) {
+            mainVid.setAttribute('src', src);
+            mainVid.load();
+            mainVid.onloadedmetadata = () => {
+                if (videoProgress[src]) mainVid.currentTime = videoProgress[src];
+                mainVid.play().catch(() => {});
+            };
+        } else {
+            if (videoProgress[src]) mainVid.currentTime = videoProgress[src];
+            mainVid.play().catch(() => {});
+        }
+    } else {
+        mainVid.classList.add('hidden');
+        mainVid.pause();
+        mainImg.classList.remove('hidden');
+        mainImg.src = src;
+    }
 
     // Update thumbnail styles
     thumbs.forEach(t => {
@@ -323,87 +393,175 @@ document.addEventListener('DOMContentLoaded', () => {
     targetThumb.classList.remove('border-transparent', 'opacity-60');
     targetThumb.classList.add('border-accent', 'opacity-100');
     
-    // FIX: Strictly scroll ONLY the thumbnail container horizontally (prevents vertical page jumping)
-    const thumbContainer = targetThumb.parentElement;
-    const scrollPos = targetThumb.offsetLeft - (thumbContainer.clientWidth / 2) + (targetThumb.clientWidth / 2);
-    thumbContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    // Smooth Horizontal Scroll (Skipped on first load)
+    if (!skipScroll) {
+        const thumbWrap = targetThumb.parentElement; 
+        const thumbContainer = thumbWrap.parentElement;
+        const scrollPos = thumbWrap.offsetLeft - (thumbContainer.clientWidth / 2) + (thumbWrap.clientWidth / 2);
+        thumbContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
+    }
 
-    // Reset the auto-slide timer
     startAutoSlide(gallery);
   }
 
-  // Helper function to handle the 4-second Auto-Slide Carousel
   function startAutoSlide(gallery) {
     const galleryId = gallery.getAttribute('data-gallery-id');
     clearInterval(autoSlideTimers[galleryId]);
     
     autoSlideTimers[galleryId] = setInterval(() => {
-      // Pause the carousel if the user is currently viewing this gallery in Fullscreen
       if (activeGalleryElement === gallery && !lightbox.classList.contains('hidden')) return;
       
-      const mainImg = gallery.querySelector('img[id^="main-img-"]');
-      const currentIndex = parseInt(mainImg.getAttribute('data-index') || 0);
+      const currentIndex = parseInt(gallery.getAttribute('data-current-index') || 0);
+      const images = galleryData[galleryId];
+      
+      if (images && isVideo(images[currentIndex])) return;
+
       updateGallery(gallery, currentIndex + 1);
-    }, 4000); // 4000ms = 4 seconds!
+    }, 4000); 
   }
 
-  // 1. Initialize all galleries on the page
+  // 1. Initialize and Generate
   document.querySelectorAll('.project-gallery').forEach(gallery => {
-    startAutoSlide(gallery);
+    const galleryId = gallery.getAttribute('data-gallery-id');
+    const images = galleryData[galleryId];
 
-    // Thumbnail Clicks
-    gallery.querySelectorAll('.gallery-thumb').forEach((thumb, index) => {
-      thumb.addEventListener('click', () => updateGallery(gallery, index));
-    });
-
-    // Inline Prev/Next Button Clicks
-    gallery.querySelectorAll('.gallery-nav-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Crucial: Stop the click from opening the fullscreen lightbox!
-        const dir = parseInt(btn.getAttribute('data-dir'));
-        const mainImg = gallery.querySelector('img[id^="main-img-"]');
-        const currentIndex = parseInt(mainImg.getAttribute('data-index') || 0);
-        updateGallery(gallery, currentIndex + dir);
+    if (images && images.length > 0) {
+      let thumbsHtml = '';
+      
+      images.forEach((src, index) => {
+        const isActive = index === 0 ? 'border-accent opacity-100' : 'border-transparent opacity-60 hover:opacity-100';
+        
+        if (isVideo(src)) {
+            thumbsHtml += `
+            <div class="relative flex-shrink-0 snap-start w-28 h-20 cursor-pointer">
+              <video draggable="false" src="${src}#t=0.1" data-full="${src}" class="gallery-thumb select-none w-full h-full object-cover rounded-lg shadow-sm border-[3px] ${isActive} transition-opacity" muted playsinline></video>
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <i class="fas fa-play-circle text-white/90 text-3xl drop-shadow-md"></i>
+              </div>
+            </div>`;
+        } else {
+            thumbsHtml += `
+            <div class="relative flex-shrink-0 snap-start w-28 h-20 cursor-pointer">
+              <img draggable="false" src="${src}" data-full="${src}" class="gallery-thumb select-none w-full h-full object-cover rounded-lg shadow-sm border-[3px] ${isActive} transition-opacity" />
+            </div>`;
+        }
       });
+
+      gallery.innerHTML = `
+        <div class="main-preview-container w-full h-[300px] sm:h-[450px] rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] mb-4 bg-gray-100 dark:bg-[#1a1917] relative group flex items-center justify-center cursor-zoom-in">
+          <img id="${galleryId}-main-img" draggable="false" src="" class="select-none w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02] hidden" />
+          <video id="${galleryId}-main-vid" src="" class="w-full h-full object-contain hidden pointer-events-none" muted loop playsinline></video>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-black/20">
+            <i class="fas fa-expand text-white text-4xl drop-shadow-lg"></i>
+          </div>
+          <button class="gallery-nav-btn absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10" data-dir="-1"><i class="fas fa-chevron-left"></i></button>
+          <button class="gallery-nav-btn absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10" data-dir="1"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="flex gap-3 overflow-x-auto pb-2 snap-x" style="scrollbar-width: none;">
+          ${thumbsHtml}
+        </div>
+      `;
+    }
+
+    gallery.querySelectorAll('.gallery-thumb').forEach((thumb, index) => {
+      thumb.parentElement.addEventListener('click', () => updateGallery(gallery, index));
     });
 
-    // Click main image to open Fullscreen Lightbox
-    const mainPreview = gallery.querySelector('img[id^="main-img-"]');
-    mainPreview.addEventListener('click', () => {
-      if (!lightbox) return;
-      activeGalleryElement = gallery; // Remember exactly which gallery we are looking at
-      
-      const thumbs = gallery.querySelectorAll('.gallery-thumb');
-      currentGalleryImages = Array.from(thumbs).map(t => t.getAttribute('data-full'));
-      currentImageIndex = parseInt(mainPreview.getAttribute('data-index'));
+    const mainContainer = gallery.querySelector('.main-preview-container');
+    if (mainContainer) {
+      mainContainer.addEventListener('click', (e) => {
+        if (e.target.closest('.gallery-nav-btn')) {
+            const dir = parseInt(e.target.closest('.gallery-nav-btn').getAttribute('data-dir'));
+            const currentIndex = parseInt(gallery.getAttribute('data-current-index') || 0);
+            updateGallery(gallery, currentIndex + dir);
+            return;
+        }
 
-      lightboxImg.src = currentGalleryImages[currentImageIndex];
-      
-      lightbox.classList.remove('hidden');
-      setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
-      document.body.style.overflow = 'hidden'; // Stop background page scrolling
-    });
+        if (!lightbox) return;
+        activeGalleryElement = gallery; 
+        
+        const thumbs = gallery.querySelectorAll('.gallery-thumb');
+        currentGalleryImages = Array.from(thumbs).map(t => t.getAttribute('data-full'));
+        currentImageIndex = parseInt(gallery.getAttribute('data-current-index') || 0);
+        
+        const currentSrc = currentGalleryImages[currentImageIndex];
+        if (isVideo(currentSrc)) {
+            const mainVid = gallery.querySelector('video[id$="-main-vid"]');
+            videoProgress[currentSrc] = mainVid.currentTime;
+            mainVid.pause();
+        }
+
+        loadLightboxMedia(currentImageIndex);
+        
+        lightbox.classList.remove('hidden');
+        setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
+        document.body.style.overflow = 'hidden'; 
+      });
+    }
+
+    // NEW: INSTANT INITIALIZATION! 
+    // This forces the gallery to securely load the very first frame immediately on startup.
+    if (images && images.length > 0) {
+        updateGallery(gallery, 0, true);
+    }
   });
 
   // 2. Lightbox Navigation (Buttons & Keyboard)
+  function loadLightboxMedia(index) {
+    const src = currentGalleryImages[index];
+    if (isVideo(src)) {
+        lightboxImg.classList.add('hidden');
+        lightboxVid.classList.remove('hidden');
+
+        if (lightboxVid.getAttribute('src') !== src) {
+            lightboxVid.setAttribute('src', src);
+            lightboxVid.load();
+            lightboxVid.onloadedmetadata = () => {
+                if (videoProgress[src]) lightboxVid.currentTime = videoProgress[src];
+                lightboxVid.play().catch(()=>{});
+            };
+        } else {
+            if (videoProgress[src]) lightboxVid.currentTime = videoProgress[src];
+            lightboxVid.play().catch(()=>{});
+        }
+    } else {
+        lightboxVid.classList.add('hidden');
+        lightboxVid.pause();
+        lightboxImg.classList.remove('hidden');
+        lightboxImg.src = src;
+    }
+  }
+
+  function slideLightbox(direction) {
+    if (currentGalleryImages.length === 0) return;
+    
+    const oldSrc = currentGalleryImages[currentImageIndex];
+    if (isVideo(oldSrc)) {
+        videoProgress[oldSrc] = lightboxVid.currentTime;
+        lightboxVid.pause();
+    }
+
+    currentImageIndex = (currentImageIndex + direction + currentGalleryImages.length) % currentGalleryImages.length;
+    loadLightboxMedia(currentImageIndex);
+  }
+
   function closeLightbox() {
-    // FIX: Sync the main gallery IMMEDIATELY while the screen is still black!
+    const currentSrc = currentGalleryImages[currentImageIndex];
+    if (isVideo(currentSrc)) {
+        videoProgress[currentSrc] = lightboxVid.currentTime;
+        lightboxVid.pause();
+    }
+
     if (activeGalleryElement) {
-      updateGallery(activeGalleryElement, currentImageIndex);
-      activeGalleryElement = null; // Clear it out
+      updateGallery(activeGalleryElement, currentImageIndex, true); // Added skipScroll here too!
+      activeGalleryElement = null; 
     }
 
     lightbox.classList.add('opacity-0');
     setTimeout(() => {
       lightbox.classList.add('hidden');
-      document.body.style.overflow = ''; // Restore background scrolling
+      document.body.style.overflow = ''; 
     }, 300);
-  }
-
-  function slideLightbox(direction) {
-    if (currentGalleryImages.length === 0) return;
-    currentImageIndex = (currentImageIndex + direction + currentGalleryImages.length) % currentGalleryImages.length;
-    lightboxImg.src = currentGalleryImages[currentImageIndex];
   }
 
   document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
