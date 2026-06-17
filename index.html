@@ -1033,9 +1033,352 @@
 
     </section>
 
-    <!-- NEW: Trang Page -->
+    <!-- Trang Page -->
     <section class="page w-full" id="page-member-trang">
       <p class="page-heading">Curriculum Vitae</p>
+      
+      <div id="trang-cv" class="mb-20 max-w-4xl mx-auto text-left">
+        <!-- Section Title & Contact Info -->
+        <div class="flex flex-col md:flex-row items-center md:items-center gap-6 mb-12">
+          
+          <div class="flex-shrink-0">
+            <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shadow-lg border-4 border-gray-100 dark:border-[#242220]">
+              <img draggable="false" src="assets/trang_icon.jpg" alt="Nguyen Vu Thuy Trang" class="select-none w-full h-full object-cover scale-110 origin-center translate-y-1 translate-x-1" />
+            </div>
+          </div>
+
+          <div class="text-center md:text-left">
+            <h2 class="highlight-section mb-2">Nguyen Vu Thuy Trang</h2>
+            <p class="text-sm sm:text-base font-bold text-accent mb-4 tracking-widest uppercase">
+              Game Developer
+            </p>
+            
+            <div class="flex flex-wrap justify-center md:justify-start items-center gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-[#8a8580]">
+              <a href="mailto:trang.ngvt@gmail.com" class="hover:text-accent transition-colors">
+                <i class="fas fa-envelope mr-1"></i> trang.ngvt@gmail.com
+              </a>
+              <a href="tel:+84338372007" class="hover:text-accent transition-colors">
+                <i class="fas fa-phone-alt mr-1"></i> 033 837 2007
+              </a>
+              <a href="https://deguner.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">
+                <i class="fas fa-globe mr-1"></i> Website
+              </a>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Experience
+          </h3>
+
+          <div class="mb-8 relative pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Monstio Studio</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Nov 2023 - Dec 2025</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-3">2D Artist</div>
+            <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+              <li>Designed custom brand mascots.</li>
+              <li>Created assets for commercial key visuals, packaging. (brands: LOF KUN, Masan, Orion, CellphoneS, Greenfeed,...)</li>
+              <li>Produced social media posts such as comics and studio original projects.</li>
+            </ul>
+          </div>
+
+          <div class="mb-8 relative pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Freelance Illustrator</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2026 - Present</span>
+            </div>
+            <div class="text-sm font-semibold text-accent mb-3">2D Artist</div>
+            <ul class="list-disc list-outside ml-4 text-sm text-gray-600 dark:text-[#8a8580] space-y-2 leading-relaxed">
+              <li>Mainly focus on: POSM, Character design, Illustration.</li>
+              <li>Working on original projects.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-5 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Skills
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-1 gap-y-3 gap-x-6 text-sm pl-2">
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Artistics:</span> Character design, Illustration, Simple animation
+            </div>
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Personal:</span> Teamwork, Time management, Fast Learner, Communication, Multi-tasker
+            </div>
+            <div class="text-gray-600 dark:text-[#8a8580]">
+              <span class="font-bold text-accent mr-1">Language:</span> Vietnamese (native), English
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Softwares / Tools
+          </h3>
+          
+          <!-- Flex row wrapper to keep everything perfectly in line -->
+          <div class="flex flex-wrap items-center gap-5 sm:gap-6 pl-2 pb-6">
+            
+            <div class="group relative flex flex-col items-center justify-center cursor-default">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
+                <img src="assets/icons/photoshop.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                <i class="fas fa-gamepad text-2xl text-gray-400 group-hover:text-accent transition-colors" style="display: none;"></i>
+              </div>
+              <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none">Godot</span>
+            </div>
+
+            <div class="group relative flex flex-col items-center justify-center cursor-default">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
+                <img src="assets/icons/ai.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              </div>
+              <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none">Unity</span>
+            </div>
+
+            <div class="group relative flex flex-col items-center justify-center cursor-default">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
+                <img src="assets/icons/procreate.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                <i class="fas fa-paint-brush text-2xl text-gray-400 group-hover:text-accent transition-colors" style="display: none;"></i>
+              </div>
+              <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none">Aseprite</span>
+            </div>
+
+            <div class="group relative flex flex-col items-center justify-center cursor-default">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
+                <img src="assets/icons/procreate-dream.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                <i class="fas fa-image text-2xl text-gray-400 group-hover:text-accent transition-colors" style="display: none;"></i>
+              </div>
+              <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none">Photoshop</span>
+            </div>
+
+            <div class="group relative flex flex-col items-center justify-center cursor-default">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
+                <img src="assets/icons/blender.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              </div>
+              <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none">GitHub</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-5 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Education
+          </h3>
+          <div class="mb-6 pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Bachelor of Business Administration/Marketing</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">Graduated 2023</span>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-[#8a8580] mt-1">University of Economics Ho Chi Minh City (ISB-UEH)</div>
+            <div class="text-sm text-gray-500 dark:text-[#8a8580] mt-1">Distinction Degree</div>
+          </div>
+
+          <div class="pl-4 border-l-2 border-gray-300 dark:border-[#242220]">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Basic Digital Painting Course</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2023</span>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-[#8a8580] mt-1">IGU ART</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold uppercase tracking-widest mb-5 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
+            Awards
+          </h3>
+          
+          <div class="mb-6 pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Best Art</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2025</span>
+            </div>
+            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">Global Game Jam</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              Competed in a 36-hrs Game Jam themed "Bubble" against 430 participants across 130 games.
+            </p>
+          </div>
+
+          <div class="mb-6 pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Third Place Overall</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2024</span>
+            </div>
+            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">Global Game Jam</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              Competed in a 36-hrs Game Jam themed "Make Me Laugh" against 300+ participants across 70+ games.
+            </p>
+          </div>
+          
+          <div class="pl-4 border-l-2 border-accent">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+              <h4 class="font-bold text-base text-gray-900 dark:text-[#e8e6e3]">Jam Champion</h4>
+              <span class="text-xs text-gray-500 dark:text-[#8a8580] font-bold uppercase tracking-wider mt-1 sm:mt-0">2022</span>
+            </div>
+            <div class="text-sm font-semibold text-gray-500 dark:text-[#8a8580] mb-2">Game UIT Hackathon</div>
+            <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+              Competed in a 24-hrs Game Jam themed "Environmental Protection" against ~300 participants across 73 teams.
+            </p>
+          </div>
+
+          
+        </div>
+
+      
+      
+      
+      
+      </div>
+      <p class="page-heading mt-16">Portfolio</p>
+      <div id="kiet-portfolio" class="max-w-4xl mx-auto">
+        <div class="space-y-16">
+          
+          <!-- 1. Deep-Dive Layout -->
+          <div id="portfolio-meowknight" class="scroll-mt-28 mb-20">
+            
+            <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
+              Meow Knight
+            </h3>
+
+            <div class="flex flex-col lg:flex-row gap-8 mb-8">
+              
+              <div class="w-full lg:w-3/5 rounded-xl overflow-hidden shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-black aspect-video relative">
+                <video controls class="w-full h-full object-cover">
+                  <source src="assets/video/meowknight-title.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+              <div class="w-full lg:w-2/5 flex flex-col justify-top">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
+                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">C#</span>
+                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Roguelite</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+                  A mid-core procedural dungeon crawler. I was responsible for the core combat loop, procedural generation algorithms, and behavior tree implementation for all enemy AI.
+                </p>
+              </div>
+            </div>
+
+            <div class="project-gallery" data-gallery-id="meowknight"></div>
+          </div>
+
+          <div id="portfolio-poppit" class="scroll-mt-28 mb-20">
+            
+            <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
+              Poppit Arena
+            </h3>
+
+            <div class="flex flex-col lg:flex-row gap-8 mb-8">
+              
+              <div class="w-full lg:w-3/5 rounded-xl overflow-hidden shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-black aspect-video relative">
+                <video controls class="w-full h-full object-cover">
+                  <source src="assets/video/poppitarena.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+              <div class="w-full lg:w-2/5 flex flex-col justify-top">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
+                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">GDScript</span>
+                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">P2P Multiplayer</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
+                  A mid-core procedural dungeon crawler. I was responsible for the core combat loop, procedural generation algorithms, and behavior tree implementation for all enemy AI.
+                </p>
+              </div>
+            </div>
+
+            <div class="project-gallery" data-gallery-id="poppit"></div>
+          </div>
+
+          <!-- Tiny Projects -->
+          <!-- 1. Tiny Little Games (Clickable External Links) -->
+          <div id="portfolio-tiny-games" class="scroll-mt-28 mb-16">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2">
+              Tiny Little Games
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              <a href="https://deguner.itch.io/down-the-rabbit-hole" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
+                <div class="overflow-hidden bg-black">
+                  <video src="assets/video/rabbithole.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
+                </div>
+                <div class="p-4">
+                  <div class="flex justify-between items-start mb-1">
+                    <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] group-hover:text-accent transition-colors">Down The Rabbit Hole</h4>
+                    <i class="fas fa-external-link-alt text-gray-400 dark:text-[#8a8580] group-hover:text-accent transition-colors text-sm ml-2 mt-0.5"></i>
+                  </div>
+                  <p class="text-xs text-gray-600 dark:text-[#8a8580] mb-3">2D game, theme "Deeper & Deeper", inspired by Jump King.</p>
+                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
+                </div>
+              </a>
+
+              <a href="https://deguner.itch.io/yin-yang-bird" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
+                <div class="overflow-hidden bg-black">
+                  <video src="assets/video/yinyang.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
+                </div>
+                <div class="p-4">
+                  <div class="flex justify-between items-start mb-1">
+                    <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] group-hover:text-accent transition-colors">Yin Yang Bird</h4>
+                    <i class="fas fa-external-link-alt text-gray-400 dark:text-[#8a8580] group-hover:text-accent transition-colors text-sm ml-2 mt-0.5"></i>
+                  </div>
+                  <p class="text-xs text-gray-600 dark:text-[#8a8580] mb-3">2D game, theme "Balance", inspired by Flappy Bird.</p>
+                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
+                </div>
+              </a>
+
+              <a href="https://deguner.itch.io/break-in" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
+                <div class="overflow-hidden bg-black">
+                  <video src="assets/video/breakin.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
+                </div>
+                <div class="p-4">
+                  <div class="flex justify-between items-start mb-1">
+                    <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] group-hover:text-accent transition-colors">Break In</h4>
+                    <i class="fas fa-external-link-alt text-gray-400 dark:text-[#8a8580] group-hover:text-accent transition-colors text-sm ml-2 mt-0.5"></i>
+                  </div>
+                  <p class="text-xs text-gray-600 dark:text-[#8a8580] mb-3">2D game, theme "Break", inspired by programming exercise - Guess The Number.</p>
+                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
+                </div>
+              </a>
+
+              <a href="https://deguner.itch.io/script-me" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
+                <div class="overflow-hidden bg-black">
+                  <!-- Swapped back to Image, added security attributes -->
+                  <img src="assets/scriptme.jpg" draggable="false" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></img>
+                </div>
+                <div class="p-4">
+                  <div class="flex justify-between items-start mb-1">
+                    <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] group-hover:text-accent transition-colors">Script Me</h4>
+                    <i class="fas fa-external-link-alt text-gray-400 dark:text-[#8a8580] group-hover:text-accent transition-colors text-sm ml-2 mt-0.5"></i>
+                  </div>
+                  <p class="text-xs text-gray-600 dark:text-[#8a8580] mb-3">2D game, theme "Machines".</p>
+                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+          <!-- 2. Prototypes & Others (Combined Slideshow) -->
+          <div id="portfolio-prototypes" class="scroll-mt-28 mb-20">
+            <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-4 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
+              Prototypes & Others
+            </h3>
+            
+            <!-- This empty shell will automatically build the slideshow! -->
+            <div class="project-gallery" data-gallery-id="prototypes"></div>
+          </div>
+
+        </div>
+      </div>
       <!-- Interactive 3D Model Card -->
       <div id="portfolio-3d-models" class="scroll-mt-28 mb-20">
         <h3 class="text-xl font-bold text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2">
