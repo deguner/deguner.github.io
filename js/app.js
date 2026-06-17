@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. Audio & Sound System
-   ========================================================================== */
+/*[cite: 8] */
 const UI_Audio = (() => {
   let ctx = null;
   let isPlaying = false;
@@ -47,23 +45,17 @@ const UI_Audio = (() => {
   return { play, toggle };
 })();
 
-/* ==========================================================================
-   2. Navigation & UI Logic
-   ========================================================================== */
 function navigateTo(pageId, sectionId = null) {
   const targetPage = document.getElementById('page-' + pageId);
   const isAlreadyOnPage = targetPage && targetPage.classList.contains('active');
 
-  // 1. Hide all pages and show the target page
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   if (targetPage) targetPage.classList.add('active');
 
-  // 2. Update direct nav items
   document.querySelectorAll('.nav-item[data-page], .nav-child[data-page]').forEach(el => {
     el.classList.toggle('active', el.dataset.page === pageId);
   });
 
-  // 3. Activate and expand parent groups in the sidebar
   document.querySelectorAll('.nav-group-header, .nav-item[data-group]').forEach(parent => {
     const children = parent.nextElementSibling;
     if (children) {
@@ -80,7 +72,6 @@ function navigateTo(pageId, sectionId = null) {
 
   closeMobileNav();
 
-  // 4. Update the URL Hash
   if (pageId === 'work' && !sectionId) {
     if (window.location.hash) {
       window.history.pushState(null, '', window.location.pathname); 
@@ -92,7 +83,6 @@ function navigateTo(pageId, sectionId = null) {
     }
   }
 
-  // 5. Handle Scrolling
   if (sectionId) {
     if (isAlreadyOnPage) {
       const sectionEl = document.getElementById(sectionId);
@@ -154,12 +144,8 @@ function closeMobileNav() {
   if (sidebar) sidebar.classList.remove('open');
 }
 
-/* ==========================================================================
-   3. Initialization & Event Listeners
-   ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   
-  // --- Routing & Menus ---
   document.querySelectorAll('.nav-item[data-page], .nav-child[data-page]').forEach(el => {
     el.addEventListener('click', () => navigateTo(el.dataset.page));
   });
@@ -182,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   handleInitialRoute();
 
-  // --- Relaxing UI Sounds ---
   document.querySelectorAll('.nav-item').forEach(el => {
     el.addEventListener('mouseenter', () => UI_Audio.play(1200, 200, 0.015));
     el.addEventListener('click', () => UI_Audio.play(800, 100, 0.025));
@@ -203,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => UI_Audio.play(600, 100, 0.025));
   });
 
-  // --- Toggles ---
   const soundBtn = document.getElementById('sound-toggle');
   const soundIcon = document.getElementById('sound-icon');
   const soundLabel = document.getElementById('sound-label');
@@ -236,7 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
     themeBtn.addEventListener('click', () => UI_Audio.play(600, 100, 0.025));
   }
 
-  // --- Card Hover, Tilt & Shine Effect ---
   document.querySelectorAll('.member-card').forEach(card => {
     const MAX_TILT = parseFloat(card.dataset.tilt) || 10;
     const avatar   = card.querySelector('.member-avatar');
@@ -265,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', () => UI_Audio.play(300, 100, 0.035));
   });
 
-  // --- Card Action Buttons Logic ---
   document.querySelectorAll('.card-action-btn').forEach(btn => {
     btn.addEventListener('mouseenter', () => UI_Audio.play(900, 450, 0.015));
 
@@ -283,14 +265,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('popstate', handleInitialRoute);
 
-  // Disable right-click on all images to deter downloading
   document.addEventListener('contextmenu', function(e) {
-    if (e.target.nodeName === 'IMG') {
+    if (e.target.nodeName === 'IMG' || e.target.nodeName === 'VIDEO') {
       e.preventDefault();
     }
   });
 
-  // --- Gallery & Lightbox System ---
   const lightbox = document.getElementById('global-lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxVid = document.getElementById('lightbox-vid');
@@ -301,9 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const videoProgress = {};
 
-  // ==========================================
-  // 🎨 GALLERY DATA 
-  // ==========================================
   const galleryData = {
     'meowknight': [
       'assets/video/meowknight-title.mp4',
@@ -333,7 +310,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
-  // Safe check for video extensions
   const isVideo = (src) => {
     if (!src) return false;
     return src.toLowerCase().endsWith('.mp4') || src.toLowerCase().endsWith('.webm');
@@ -345,25 +321,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainVid = gallery.querySelector('video[id$="-main-vid"]');
     if (!thumbs.length) return;
     
-    // Wrap around logic
     if (newIndex >= thumbs.length) newIndex = 0;
     if (newIndex < 0) newIndex = thumbs.length - 1;
     
     const targetThumb = thumbs[newIndex];
     const src = targetThumb.getAttribute('data-full');
     
-    // Memory: Save old video's progress before swapping
     const oldIndex = parseInt(gallery.getAttribute('data-current-index') || 0);
     const oldSrc = thumbs[oldIndex] ? thumbs[oldIndex].getAttribute('data-full') : null;
     
-    // Only save progress if we are actually swapping away from an active video
     if (oldSrc && isVideo(oldSrc) && !skipScroll) {
         videoProgress[oldSrc] = mainVid.currentTime;
     }
 
     gallery.setAttribute('data-current-index', newIndex); 
     
-    // Swap Displays and Restore Memory
     if (isVideo(src)) {
         mainImg.classList.add('hidden');
         mainVid.classList.remove('hidden');
@@ -386,7 +358,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mainImg.src = src;
     }
 
-    // Update thumbnail styles
     thumbs.forEach(t => {
       t.classList.remove('border-accent', 'opacity-100');
       t.classList.add('border-transparent', 'opacity-60');
@@ -394,7 +365,6 @@ document.addEventListener('DOMContentLoaded', () => {
     targetThumb.classList.remove('border-transparent', 'opacity-60');
     targetThumb.classList.add('border-accent', 'opacity-100');
     
-    // Smooth Horizontal Scroll
     if (!skipScroll) {
         const thumbWrap = targetThumb.parentElement; 
         const thumbContainer = thumbWrap.parentElement;
@@ -421,7 +391,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4000); 
   }
 
-  // Initialize and Generate Gallery HTML
   document.querySelectorAll('.project-gallery').forEach(gallery => {
     const galleryId = gallery.getAttribute('data-gallery-id');
     const images = galleryData[galleryId];
@@ -435,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isVideo(src)) {
             thumbsHtml += `
             <div class="relative flex-shrink-0 snap-start w-28 h-20 cursor-pointer">
-              <video draggable="false" oncontextmenu="return false;" disablePictureInPicture controlsList="nodownload" src="${src}#t=0.1" data-full="${src}" class="gallery-thumb select-none w-full h-full object-cover rounded-lg shadow-sm border-[3px] ${isActive} transition-opacity pointer-events-none" muted playsinline></video>
+              <video draggable="false" oncontextmenu="return false;" oncopy="return false;" disablePictureInPicture controlsList="nodownload" src="${src}#t=0.1" data-full="${src}" class="gallery-thumb select-none w-full h-full object-cover rounded-lg shadow-sm border-[3px] ${isActive} transition-opacity pointer-events-none" muted playsinline></video>
               <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <i class="fas fa-play-circle text-white/90 text-3xl drop-shadow-md"></i>
               </div>
@@ -443,15 +412,15 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             thumbsHtml += `
             <div class="relative flex-shrink-0 snap-start w-28 h-20 cursor-pointer">
-              <img draggable="false" oncontextmenu="return false;" src="${src}" data-full="${src}" class="gallery-thumb select-none w-full h-full object-cover rounded-lg shadow-sm border-[3px] ${isActive} transition-opacity pointer-events-none" />
+              <img src="${src}" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" data-full="${src}" class="gallery-thumb select-none w-full h-full object-cover rounded-lg shadow-sm border-[3px] ${isActive} transition-opacity pointer-events-none" />
             </div>`;
         }
       });
 
       gallery.innerHTML = `
         <div class="main-preview-container w-full h-[300px] sm:h-[450px] rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] mb-4 bg-gray-100 dark:bg-[#1a1917] relative group flex items-center justify-center cursor-zoom-in">
-          <img id="${galleryId}-main-img" draggable="false" oncontextmenu="return false;" src="" class="select-none w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02] hidden" />
-          <video id="${galleryId}-main-vid" draggable="false" oncontextmenu="return false;" disablePictureInPicture controlsList="nodownload" src="" class="w-full h-full object-contain hidden pointer-events-none" muted loop playsinline></video>
+          <img id="${galleryId}-main-img" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" src="" class="select-none w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02] hidden" />
+          <video id="${galleryId}-main-vid" draggable="false" oncontextmenu="return false;" oncopy="return false;" disablePictureInPicture controlsList="nodownload" src="" class="w-full h-full object-contain hidden pointer-events-none" muted loop playsinline></video>
           <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-black/20">
             <i class="fas fa-expand text-white text-4xl drop-shadow-lg"></i>
           </div>
@@ -505,7 +474,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Lightbox Navigation (Buttons & Keyboard)
   function loadLightboxMedia(index) {
     const src = currentGalleryImages[index];
     if (isVideo(src)) {
@@ -545,7 +513,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeLightbox() {
-    // 1. Save video progress if applicable
     if (currentGalleryImages && currentGalleryImages.length > 0) {
       const currentSrc = currentGalleryImages[currentImageIndex];
       if (currentSrc && isVideo(currentSrc)) {
@@ -554,13 +521,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 2. Restore active gallery state
     if (activeGalleryElement) {
       updateGallery(activeGalleryElement, currentImageIndex, true); 
       activeGalleryElement = null; 
     }
 
-    // 3. Safely reset the 3D Model logic
     const lbModel = document.getElementById('lightbox-model');
     const pBtn = document.getElementById('lightbox-prev');
     const nBtn = document.getElementById('lightbox-next');
@@ -577,14 +542,12 @@ document.addEventListener('DOMContentLoaded', () => {
       animBox.classList.remove('flex');
     }
 
-    // 4. Close the overlay
     lightbox.classList.add('opacity-0');
     setTimeout(() => {
       lightbox.classList.add('hidden');
       document.body.style.overflow = ''; 
     }, 300);
 
-    // Ensure the Animation UI is properly hidden on close
     if (animBox) {
       animBox.style.display = 'none';
     }
@@ -602,9 +565,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ==========================================================================
-   4. 3D Model Lightbox & Animation Logic
-   ========================================================================== */
 window.openModelLightbox = function(btn) {
   const src = btn.getAttribute('data-src');
   if (!src) return;
@@ -619,7 +579,6 @@ window.openModelLightbox = function(btn) {
   const animContainer = document.getElementById('model-animation-container');
   const animSelect = document.getElementById('animation-select');
 
-  // 1. Hide Standard Media Types & Arrows
   if (lightboxImg) lightboxImg.classList.add('hidden');
   if (lightboxVid) {
       lightboxVid.classList.add('hidden');
@@ -628,23 +587,20 @@ window.openModelLightbox = function(btn) {
   if (prevBtn) prevBtn.style.display = 'none';
   if (nextBtn) nextBtn.style.display = 'none';
 
-  // 2. Prepare the Animation UI
   if (animContainer) animContainer.style.display = 'none';
   if (animSelect) animSelect.innerHTML = '<option value="">Loading...</option>';
 
-  // 3. Show and Load the 3D Model
   if (lightboxModel) {
     lightboxModel.classList.remove('hidden');
     lightboxModel.src = src;
     
-    // 4. Bulletproof Animation Loader (Bypasses caching issues)
     let attempts = 0;
     const checkAnimations = setInterval(() => {
       attempts++;
       const animations = lightboxModel.availableAnimations;
       
       if (animations && animations.length > 0) {
-        clearInterval(checkAnimations); // Stop checking
+        clearInterval(checkAnimations); 
         
         if (animSelect && animContainer) {
           animSelect.innerHTML = ''; 
@@ -661,12 +617,10 @@ window.openModelLightbox = function(btn) {
           lightboxModel.play();
         }
       } else if (attempts > 20) {
-        // Stop checking after 2 seconds if no animations exist
         clearInterval(checkAnimations); 
       }
     }, 100);
 
-    // 5. Handle manual animation changes
     if (animSelect) {
       animSelect.onchange = (e) => {
         lightboxModel.animationName = e.target.value;
@@ -675,7 +629,6 @@ window.openModelLightbox = function(btn) {
     }
   }
 
-  // 6. Reveal the Lightbox!
   if (lightbox) {
     lightbox.classList.remove('hidden');
     setTimeout(() => lightbox.classList.remove('opacity-0'), 10);

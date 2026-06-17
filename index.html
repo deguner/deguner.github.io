@@ -1,3 +1,4 @@
+<!--[cite: 6] -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DEGUNER — Indie Game Duo</title>
 
-  <!-- Tailwind CDN v3 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,37 +19,32 @@
     }
   </script>
 
-  <!-- Font Awesome & Inter -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Custom overrides -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="font-sans bg-white text-gray-900 flex min-h-screen transition-colors duration-300">
 
-  <!-- Mobile hamburger -->
   <button id="mobile-nav-toggle" aria-label="Open navigation">&#9776;</button>
 
-  <!-- ══════════════════════ SIDEBAR ══════════════════════ -->
   <aside id="sidebar">
-
-    <!-- Brand — clicking goes to home page -->
     <div
       id="site-title"
       class="cursor-pointer select-none"
       data-page="work"
       title="Home"
     >
-      <div class="site-name"><span>DEGUNER</span></div>
+      <div class="site-name">
+        <span class="brand-border">
+          <span class="de-er">DE</span><span class="gun">GUN</span><span class="de-er">ER</span>
+        </span>
+      </div>
       <div class="site-tagline">Indie Game Duo</div>
     </div>
 
-    <!-- Nav -->
     <nav class="flex flex-col gap-0">
-
-      <!-- GAMES expandable -->
       <button class="nav-item" data-group="games" data-page="game-page">
         Our Games <span class="nav-arrow">›</span>
       </button>
@@ -61,12 +56,10 @@
         <div class="nav-child" data-page="game-that-xmas">That Xmas</div>
       </div>
 
-      <!-- Illustration -->
       <button class="nav-item" data-page="blog">Blog</button>
 
       <div class="nav-divider"></div>
 
-      <!-- ABOUT US expandable -->
       <button class="nav-item" data-group="members" data-page="about-us">
         About Us <span class="nav-arrow">›</span>
       </button>
@@ -77,7 +70,6 @@
 
       <div class="nav-divider"></div>
 
-      <!-- Toggles -->
       <div class="flex items-center gap-3 pt-1">
         <button id="sound-toggle" title="Toggle sound">
           <i class="fas fa-volume-up" id="sound-icon"></i>
@@ -91,10 +83,7 @@
 
     </nav>
 
-    <!-- Anchored Bottom Section (Divider + Socials) -->
     <div class="mt-auto w-full">
-      <!-- <div class="nav-divider mb-5"></div> -->
-      
       <div class="flex items-center gap-5 pl-1 pb-1">
         <a href="https://www.facebook.com/deguner" target="_blank" rel="noopener noreferrer" class="social-btn text-gray-500 dark:text-[#8a8580] hover:text-accent dark:hover:text-accent transition-colors text-xl" title="Facebook">
           <i class="fab fa-facebook"></i>
@@ -107,85 +96,72 @@
 
   </aside>
 
-  <!-- ══════════════════════ MAIN ══════════════════════ -->
   <main id="main">
 
-    <!-- Our Games (Main Hub Page) -->
     <section class="page w-full" id="page-game-page">
       <div class="max-w-xl mx-auto text-center mb-10">
         <p class="text-xs font-bold tracking-widest uppercase text-accent mb-3">The Games</p>
         <h1 class="highlight-section">Our Games</h1>
         <p class="about-sub mt-3">
-          Welcome to our games showcase!
+          Welcome to showcase.
         </p>
         <p class="about-sub">
-          Click on any game for the full description.
+          Click on any game for full description.
         </p>
 
       </div>
 
-      <!-- Game Cards Grid -->
       <div class="flex flex-wrap justify-center gap-6">
 
-        <!-- Card 1: Envicard -->
         <div 
           class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
           onclick="navigateTo('game-envicard')"
         >
-          <!-- Background Image -->
-          <img draggable="false" src="assets/envicard_title.jpg" alt="Envicard" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          
-          <!-- Lighter Gradient Overlay -->
+          <img src="assets/envicard_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-          
-          <!-- Title Rectangle -->
           <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
             Envicard
           </div>
         </div>
 
-        <!-- Card 2: Make Me Laugh -->
         <div 
           class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
           onclick="navigateTo('game-make-me-laugh')"
         >
-          <img draggable="false" src="assets/mml_title.jpg" alt="Make Me Laugh" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img src="assets/mml_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
             Make Me Laugh
           </div>
         </div>
 
-        <!-- Card 3: Bong Bang -->
         <div 
           class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
           onclick="navigateTo('game-bong-bang')"
         >
-          <img draggable="false" src="assets/bongbang_title.jpg" alt="Bong Bang" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img src="assets/bongbang_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
             Bong Bang
           </div>
         </div>
 
-        <!-- Card 4: Foodiemon -->
         <div 
           class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
           onclick="navigateTo('game-foodiemon')"
         >
-          <img draggable="false" src="assets/foodiemon_title.jpg" alt="Foodiemon" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img src="assets/foodiemon_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
             Foodiemon
           </div>
         </div>
 
-        <!-- Card 5: That Xmas -->
         <div 
           class="game-card relative rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-2xl transition-all duration-300 border-[1.5px] border-gray-200 dark:border-[#242220]" 
           onclick="navigateTo('game-that-xmas')"
         >
-          <img draggable="false" src="assets/thatxmas_title.jpg" alt="That Xmas" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <img src="assets/thatxmas_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 bg-white dark:bg-[#111110] border-l-4 border-accent px-3 py-1.5 rounded shadow text-sm font-bold text-gray-900 dark:text-[#e8e6e3] uppercase tracking-wider transition-transform duration-300 group-hover:-translate-y-1">
             That Xmas
@@ -195,15 +171,14 @@
       </div>
     </section>
 
-    <!-- Game: MAKE ME LAUGH -->
     <section class="page w-full" id="page-game-make-me-laugh">
       
       <div class="w-full rounded-2xl overflow-hidden mb-8 shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-100 dark:bg-[#1a1917]">
-        <img draggable="false" src="assets/mml_title.jpg" alt="Game Banner" class="select-none w-full h-auto block" />
+        <img src="assets/mml_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto block" />
       </div>
 
       <p class="text-base text-center text-gray-600 dark:text-[#8a8580] mb-8 leading-relaxed">
-          This is a game about two cute zodiacs trying to craft the Happy Potion.
+          Game about two zodiacs crafting a potion.
       </p>
 
       <div class="mb-16">
@@ -213,7 +188,7 @@
         
         <div class="flex flex-col md:flex-row gap-8 items-center">
           <div class="w-full md:w-1/2 rounded-xl overflow-hidden">
-            <img draggable="false" src="assets/roles.jpg" alt="The Team" class="select-none w-full h-auto object-cover" />
+            <img src="assets/roles.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto object-cover" />
           </div>
           
           <div class="w-full md:w-1/2">
@@ -232,11 +207,8 @@
         <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
           The Process
         </h3>
-        <!-- <p class="text-base text-gray-600 dark:text-[#8a8580] mb-4 leading-relaxed">
-          We started with a massive brainstorming session, mapping out different ways to force a player to laugh using quirky physics and unexpected UI interactions.
-        </p> -->
         <div class="w-full rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220]">
-          <img draggable="false" src="assets/brainstorm.jpg" alt="Brainstorming Process" class="select-none w-full h-full" />
+          <img src="assets/brainstorm.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-full" />
         </div>
       </div>
 
@@ -247,18 +219,15 @@
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
           
-          <!-- Feature Component 1 -->
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <!-- Added rounded-xl directly to the image since the wrapper has no frame -->
-            <img draggable="false" src="assets/LOGO.gif" alt="Feature 1 GIF" class="select-none w-full h-64 object-cover rounded-xl shadow-md" />
+            <img src="assets/LOGO.gif" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-64 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 1</h4>
             </div>
           </div>
 
-          <!-- Feature Component 2 -->
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img draggable="false" src="assets/LOGO.gif" alt="Feature 2 GIF" class="select-none w-full h-64 object-cover rounded-xl shadow-md" />
+            <img src="assets/LOGO.gif" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-64 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 2</h4>
             </div>
@@ -269,14 +238,13 @@
       
     </section>
 
-    <!-- Game: ENVICARD -->
     <section class="page w-full" id="page-game-envicard">
       <div class="w-full rounded-2xl overflow-hidden mb-8 shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-100 dark:bg-[#1a1917]">
-        <img draggable="false" src="assets/envicard_title.jpg" alt="Game Banner" class="select-none w-full h-auto block" />
+        <img src="assets/envicard_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto block" />
       </div>
 
       <p class="text-base text-center text-gray-600 dark:text-[#8a8580] mb-8 leading-relaxed">
-          Envicard is a strategy card game targeting the "environment protection" topic.
+          Strategy card game targeting environmental protection.
       </p>
 
       <div class="mb-16">
@@ -285,7 +253,7 @@
         </h3>
         <div class="flex flex-col md:flex-row gap-8 items-center">
           <div class="w-full md:w-1/2 rounded-xl overflow-hidden">
-            <img draggable="false" src="assets/roles.jpg" alt="The Team" class="select-none w-full h-auto object-cover" />
+            <img src="assets/roles.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto object-cover" />
           </div>
           <div class="w-full md:w-1/2">
             <ul class="list-disc list-outside ml-5 text-base text-gray-600 dark:text-[#8a8580] space-y-4 leading-relaxed">
@@ -298,31 +266,19 @@
         </div>
       </div>
 
-      <!-- <div class="mb-16">
-        <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
-          The Process
-        </h3>
-        <p class="text-base text-gray-600 dark:text-[#8a8580] mb-4 leading-relaxed">
-          Process description goes here. Describe how the team brainstormed and executed the core ideas.
-        </p> 
-        <div class="w-full rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220]">
-          <img draggable="false" src="assets/notfound.jpg" alt="Brainstorming Process" class="select-none w-full h-auto object-cover max-h-[600px]" />
-        </div>
-      </div> -->
-
       <div class="mb-10">
         <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
           Key Features
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img draggable="false" src="assets/notfound.jpg" alt="Feature 1 GIF" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
+            <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 1</h4>
             </div>
           </div>
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img draggable="false" src="assets/notfound.jpg" alt="Feature 2 GIF" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
+            <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 2</h4>
             </div>
@@ -331,14 +287,13 @@
       </div>
     </section>
 
-    <!-- Game: BONG BANG -->
     <section class="page w-full" id="page-game-bong-bang">
       <div class="w-full rounded-2xl overflow-hidden mb-8 shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-100 dark:bg-[#1a1917]">
-        <img draggable="false" src="assets/bongbang_title.jpg" alt="Game Banner" class="select-none w-full h-auto block" />
+        <img src="assets/bongbang_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto block" />
       </div>
 
       <p class="text-base text-center text-gray-600 dark:text-[#8a8580] mb-8 leading-relaxed">
-          Bubble shooter, bubble protagonist, bubble slimy thingy,... everything's bubble.
+          Bubble shooter elements.
       </p>
 
       <div class="mb-16">
@@ -347,7 +302,7 @@
         </h3>
         <div class="flex flex-col md:flex-row gap-8 items-center">
           <div class="w-full md:w-1/2 rounded-xl overflow-hidden">
-            <img draggable="false" src="assets/roles.jpg" alt="The Team" class="select-none w-full h-auto object-cover" />
+            <img src="assets/roles.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto object-cover" />
           </div>
           <div class="w-full md:w-1/2">
             <ul class="list-disc list-outside ml-5 text-base text-gray-600 dark:text-[#8a8580] space-y-4 leading-relaxed">
@@ -361,31 +316,19 @@
         </div>
       </div>
 
-      <!-- <div class="mb-16">
-        <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
-          The Process
-        </h3>
-        <p class="text-base text-gray-600 dark:text-[#8a8580] mb-4 leading-relaxed">
-          Process description goes here. Describe how the team brainstormed and executed the core ideas.
-        </p> 
-        <div class="w-full rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220]">
-          <img draggable="false" src="assets/notfound.jpg" alt="Brainstorming Process" class="select-none w-full h-auto object-cover max-h-[600px]" />
-        </div>
-      </div> -->
-
       <div class="mb-10">
         <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
           Key Features
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img draggable="false" src="assets/notfound.jpg" alt="Feature 1 GIF" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
+            <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 1</h4>
             </div>
           </div>
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img draggable="false" src="assets/notfound.jpg" alt="Feature 2 GIF" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
+            <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 2</h4>
             </div>
@@ -394,10 +337,9 @@
       </div>
     </section>
 
-    <!-- Game: FOODIEMON -->
     <section class="page w-full" id="page-game-foodiemon">
       <div class="w-full rounded-2xl overflow-hidden mb-8 shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-100 dark:bg-[#1a1917]">
-        <img draggable="false" src="assets/foodiemon_title.jpg" alt="Game Banner" class="select-none w-full h-auto block" />
+        <img src="assets/foodiemon_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto block" />
       </div>
 
       <p class="text-base text-center text-gray-600 dark:text-[#8a8580] mb-8 leading-relaxed">
@@ -410,7 +352,7 @@
         </h3>
         <div class="flex flex-col md:flex-row gap-8 items-center">
           <div class="w-full md:w-1/2 rounded-xl overflow-hidden">
-            <img draggable="false" src="assets/roles.jpg" alt="The Team" class="select-none w-full h-auto object-cover" />
+            <img src="assets/roles.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto object-cover" />
           </div>
           <div class="w-full md:w-1/2">
             <ul class="list-disc list-outside ml-5 text-base text-gray-600 dark:text-[#8a8580] space-y-4 leading-relaxed">
@@ -428,13 +370,8 @@
         <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
           The Process
         </h3>
-        <!-- 
-        <p class="text-base text-gray-600 dark:text-[#8a8580] mb-4 leading-relaxed">
-          Process description goes here. Describe how the team brainstormed and executed the core ideas.
-        </p> 
-        -->
         <div class="w-full rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220]">
-          <img draggable="false" src="assets/notfound.jpg" alt="Brainstorming Process" class="select-none w-full h-auto object-cover max-h-[600px]" />
+          <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto object-cover max-h-[600px]" />
         </div>
       </div>
 
@@ -444,13 +381,13 @@
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img draggable="false" src="assets/notfound.jpg" alt="Feature 1 GIF" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
+            <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 1</h4>
             </div>
           </div>
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img draggable="false" src="assets/notfound.jpg" alt="Feature 2 GIF" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
+            <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 2</h4>
             </div>
@@ -459,14 +396,13 @@
       </div>
     </section>
 
-    <!-- Game: THAT XMAS -->
     <section class="page w-full" id="page-game-that-xmas">
       <div class="w-full rounded-2xl overflow-hidden mb-8 shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-100 dark:bg-[#1a1917]">
-        <img draggable="false" src="assets/thatxmas_title.jpg" alt="Game Banner" class="select-none w-full h-auto block" />
+        <img src="assets/thatxmas_title.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto block" />
       </div>
 
       <p class="text-base text-center text-gray-600 dark:text-[#8a8580] mb-8 leading-relaxed">
-        Bring back your childhood through an old monitor. Solve the puzzles to complete the "special mission".
+        Bring back childhood via monitor elements. Solve puzzles.
       </p>
 
       <div class="mb-16">
@@ -475,7 +411,7 @@
         </h3>
         <div class="flex flex-col md:flex-row gap-8 items-center">
           <div class="w-full md:w-1/2 rounded-xl overflow-hidden">
-            <img draggable="false" src="assets/roles.jpg" alt="The Team" class="select-none w-full h-auto object-cover" />
+            <img src="assets/roles.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-auto object-cover" />
           </div>
           <div class="w-full md:w-1/2">
             <ul class="list-disc list-outside ml-5 text-base text-gray-600 dark:text-[#8a8580] space-y-4 leading-relaxed">
@@ -489,31 +425,19 @@
         </div>
       </div>
 
-      <!-- <div class="mb-16">
-        <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
-          The Process
-        </h3>
-        <p class="text-base text-gray-600 dark:text-[#8a8580] mb-4 leading-relaxed">
-          Process description goes here. Describe how the team brainstormed and executed the core ideas.
-        </p> 
-        <div class="w-full rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220]">
-          <img draggable="false" src="assets/notfound.jpg" alt="Brainstorming Process" class="select-none w-full h-auto object-cover max-h-[600px]" />
-        </div>
-      </div> -->
-
       <div class="mb-10">
         <h3 class="text-2xl font-black uppercase tracking-widest mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 text-gray-900 dark:text-[#e8e6e3]">
           Key Features
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img draggable="false" src="assets/notfound.jpg" alt="Feature 1 GIF" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
+            <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 1</h4>
             </div>
           </div>
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img draggable="false" src="assets/notfound.jpg" alt="Feature 2 GIF" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
+            <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
             <div class="pt-3">
               <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 2</h4>
             </div>
@@ -522,32 +446,28 @@
       </div>
     </section>
 
-    <!-- Blog -->
     <section class="page" id="page-blog">
       <p class="page-heading">Blog</p>
       <div class="w-full rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220]">
-        <img draggable="false" src="assets/notfound.jpg" alt="Brainstorming Process" class="w-full h-auto object-cover max-h-[600px]" />
+        <img src="assets/notfound.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="w-full h-auto object-cover max-h-[600px]" />
       </div>
     </section>
 
-    <!-- About Us -->
     <section class="page w-full" id="page-about-us">
 
       <div class="max-w-xl mx-auto text-center mb-6">
         <p class="text-xs font-bold tracking-widest uppercase text-accent mb-3">The Team</p>
         <h1 class="highlight-section">Meet The Duo</h1>
         <p class="about-sub mt-3">
-          Each person wears many hats - and wears them well!
+          Multi-role members.
         </p>
       </div>
 
-      <!-- Cards row -->
       <div class="flex flex-wrap justify-center items-start gap-8">
 
-        <!-- Card 1: Kiet -->
-        <div class="member-card cursor-pointer" data-tilt="5" onclick="navigateTo('member-kiet')"">
+        <div class="member-card cursor-pointer" data-tilt="5" onclick="navigateTo('member-kiet')">
           <div class="member-avatar">
-            <img draggable="false" src="assets/kiet_portrait.jpg" alt="Tukibee" class="select-none" />
+            <img src="assets/kiet_portrait.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none" />
             <div class="card-actions">
               <button class="card-action-btn" data-target-page="member-kiet" data-target-section="kiet-cv">CV</button>
               <button class="card-action-btn" data-target-page="member-kiet" data-target-section="kiet-portfolio">Portfolio</button>
@@ -565,10 +485,9 @@
           </div>
         </div>
 
-        <!-- Card 2: Trang -->
-        <div class="member-card cursor-pointer" data-tilt="5" onclick="navigateTo('member-trang')"">
+        <div class="member-card cursor-pointer" data-tilt="5" onclick="navigateTo('member-trang')">
           <div class="member-avatar">
-            <img draggable="false" src="assets/trang_portrait.jpg" alt="Mouchee" class="select-none" />
+            <img src="assets/trang_portrait.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none" />
             <div class="card-actions">
               <button class="card-action-btn" data-target-page="member-trang" data-target-section="trang-cv">CV</button>
               <button class="card-action-btn" data-target-page="member-trang" data-target-section="trang-portfolio">Portfolio</button>
@@ -593,12 +512,11 @@
       <p class="page-heading">Curriculum Vitae</p>
       
       <div id="kiet-cv" class="mb-20 max-w-4xl mx-auto text-left">
-        <!-- Section Title & Contact Info -->
         <div class="flex flex-col md:flex-row items-center md:items-center gap-6 mb-12">
           
           <div class="flex-shrink-0">
             <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shadow-lg border-4 border-gray-100 dark:border-[#242220]">
-              <img draggable="false" src="assets/kiet_icon.jpg" alt="Nguyen Tuan Kiet" class="select-none w-full h-full object-cover scale-110 origin-center translate-y-1 translate-x-1" />
+              <img src="assets/kiet_icon.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-full object-cover scale-110 origin-center translate-y-1 translate-x-1" />
             </div>
           </div>
 
@@ -815,7 +733,7 @@
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-sm pl-2">
             <div class="text-gray-600 dark:text-[#8a8580]">
-              <span class="font-bold text-accent mr-1">Languages:</span> Vietnamese, English
+              <span class="font-bold text-accent mr-1">Languages:</span> Vietnamese (native), English
             </div>
             <div class="text-gray-600 dark:text-[#8a8580]">
               <span class="font-bold text-accent mr-1">Engines:</span> Godot, RPG Maker, Unity, Renpy
@@ -889,7 +807,6 @@
       <div id="kiet-portfolio" class="max-w-4xl mx-auto">
         <div class="space-y-16">
           
-          <!-- 1. Deep-Dive Layout -->
           <div id="portfolio-meowknight" class="scroll-mt-28 mb-20">
             
             <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
@@ -899,9 +816,9 @@
             <div class="flex flex-col lg:flex-row gap-8 mb-8">
               
               <div class="w-full lg:w-3/5 rounded-xl overflow-hidden shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-black aspect-video relative">
-                <video controls class="w-full h-full object-cover">
+                <video controls draggable="false" oncontextmenu="return false;" disablePictureInPicture controlsList="nodownload" class="w-full h-full object-cover">
                   <source src="assets/video/meowknight-title.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
+                  Video tag not supported.
                 </video>
               </div>
 
@@ -911,8 +828,8 @@
                   <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">C#</span>
                   <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Roguelite</span>
                 </div>
-                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
-                  A mid-core procedural dungeon crawler. I was responsible for the core combat loop, procedural generation algorithms, and behavior tree implementation for all enemy AI.
+                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed text-justify">
+                  A light-hearted 2D roguelite game. Control the Meow Knight to conquer the dungeon with random room layout and multiple different challenges.
                 </p>
               </div>
             </div>
@@ -929,9 +846,9 @@
             <div class="flex flex-col lg:flex-row gap-8 mb-8">
               
               <div class="w-full lg:w-3/5 rounded-xl overflow-hidden shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-black aspect-video relative">
-                <video controls class="w-full h-full object-cover">
+                <video controls draggable="false" oncontextmenu="return false;" disablePictureInPicture controlsList="nodownload" class="w-full h-full object-cover">
                   <source src="assets/video/poppitarena.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
+                  Video tag not supported.
                 </video>
               </div>
 
@@ -941,8 +858,8 @@
                   <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">GDScript</span>
                   <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">P2P Multiplayer</span>
                 </div>
-                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
-                  A mid-core procedural dungeon crawler. I was responsible for the core combat loop, procedural generation algorithms, and behavior tree implementation for all enemy AI.
+                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed text-justify">
+                  A Peer-to-Peer 2D game with lobby, match making,... with character customization and stuff. Be the best runner or a bummer. 
                 </p>
               </div>
             </div>
@@ -950,8 +867,6 @@
             <div class="project-gallery" data-gallery-id="poppit"></div>
           </div>
 
-          <!-- Tiny Projects -->
-          <!-- 1. Tiny Little Games (Clickable External Links) -->
           <div id="portfolio-tiny-games" class="scroll-mt-28 mb-16">
             <h3 class="text-xl font-bold text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2">
               Tiny Little Games
@@ -960,7 +875,7 @@
               
               <a href="https://deguner.itch.io/down-the-rabbit-hole" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
                 <div class="overflow-hidden bg-black">
-                  <video src="assets/video/rabbithole.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
+                  <video src="assets/video/rabbithole.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
                 </div>
                 <div class="p-4">
                   <div class="flex justify-between items-start mb-1">
@@ -974,7 +889,7 @@
 
               <a href="https://deguner.itch.io/yin-yang-bird" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
                 <div class="overflow-hidden bg-black">
-                  <video src="assets/video/yinyang.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
+                  <video src="assets/video/yinyang.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
                 </div>
                 <div class="p-4">
                   <div class="flex justify-between items-start mb-1">
@@ -988,7 +903,7 @@
 
               <a href="https://deguner.itch.io/break-in" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
                 <div class="overflow-hidden bg-black">
-                  <video src="assets/video/breakin.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
+                  <video src="assets/video/breakin.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
                 </div>
                 <div class="p-4">
                   <div class="flex justify-between items-start mb-1">
@@ -1002,8 +917,7 @@
 
               <a href="https://deguner.itch.io/script-me" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
                 <div class="overflow-hidden bg-black">
-                  <!-- Swapped back to Image, added security attributes -->
-                  <img src="assets/scriptme.jpg" draggable="false" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></img>
+                  <img src="assets/scriptme.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center" />
                 </div>
                 <div class="p-4">
                   <div class="flex justify-between items-start mb-1">
@@ -1018,13 +932,11 @@
             </div>
           </div>
 
-          <!-- 2. Prototypes & Others (Combined Slideshow) -->
           <div id="portfolio-prototypes" class="scroll-mt-28 mb-20">
             <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-4 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
               Prototypes & Others
             </h3>
             
-            <!-- This empty shell will automatically build the slideshow! -->
             <div class="project-gallery" data-gallery-id="prototypes"></div>
           </div>
 
@@ -1033,17 +945,15 @@
 
     </section>
 
-    <!-- Trang Page -->
     <section class="page w-full" id="page-member-trang">
       <p class="page-heading">Curriculum Vitae</p>
       
       <div id="trang-cv" class="mb-20 max-w-4xl mx-auto text-left">
-        <!-- Section Title & Contact Info -->
         <div class="flex flex-col md:flex-row items-center md:items-center gap-6 mb-12">
           
           <div class="flex-shrink-0">
             <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden shadow-lg border-4 border-gray-100 dark:border-[#242220]">
-              <img draggable="false" src="assets/trang_icon.jpg" alt="Nguyen Vu Thuy Trang" class="select-none w-full h-full object-cover scale-110 origin-center translate-y-1 translate-x-1" />
+              <img src="assets/trang_icon.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-full object-cover scale-110 origin-center translate-y-1 translate-x-1" />
             </div>
           </div>
 
@@ -1122,43 +1032,39 @@
             Softwares / Tools
           </h3>
           
-          <!-- Flex row wrapper to keep everything perfectly in line -->
           <div class="flex flex-wrap items-center gap-5 sm:gap-6 pl-2 pb-6">
             
             <div class="group relative flex flex-col items-center justify-center cursor-default">
               <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
-                <img src="assets/icons/photoshop.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-                <i class="fas fa-gamepad text-2xl text-gray-400 group-hover:text-accent transition-colors" style="display: none;"></i>
+                <img src="assets/icons/photoshop.png" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
               </div>
               <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none whitespace-nowrap left-1/2 -translate-x-1/2">Photoshop</span>
             </div>
 
             <div class="group relative flex flex-col items-center justify-center cursor-default">
               <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
-                <img src="assets/icons/ai.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                <img src="assets/icons/ai.png" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
               </div>
               <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none whitespace-nowrap left-1/2 -translate-x-1/2">Adobe Illustration</span>
             </div>
 
             <div class="group relative flex flex-col items-center justify-center cursor-default">
               <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
-                <img src="assets/icons/procreate.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-                <i class="fas fa-paint-brush text-2xl text-gray-400 group-hover:text-accent transition-colors" style="display: none;"></i>
+                <img src="assets/icons/procreate.png" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
               </div>
               <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none whitespace-nowrap left-1/2 -translate-x-1/2">Procreate</span>
             </div>
 
             <div class="group relative flex flex-col items-center justify-center cursor-default">
               <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
-                <img src="assets/icons/procreate-dream.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-                <i class="fas fa-image text-2xl text-gray-400 group-hover:text-accent transition-colors" style="display: none;"></i>
+                <img src="assets/icons/procreate-dream.png" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
               </div>
               <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none whitespace-nowrap left-1/2 -translate-x-1/2">Procreate Dream</span>
             </div>
 
             <div class="group relative flex flex-col items-center justify-center cursor-default">
               <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 dark:bg-[#1a1917] border-[1.5px] border-gray-200 dark:border-[#242220] flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-hover:border-accent dark:group-hover:border-accent group-hover:shadow-md">
-                <img src="assets/icons/blender.png" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                <img src="assets/icons/blender.png" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="w-7 h-7 sm:w-8 sm:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
               </div>
               <span class="absolute -bottom-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[0.65rem] font-bold text-gray-600 dark:text-[#8a8580] tracking-wider uppercase pointer-events-none whitespace-nowrap left-1/2 -translate-x-1/2">Blender</span>
             </div>
@@ -1228,16 +1134,11 @@
           
         </div>
 
-      
-      
-      
-      
       </div>
       <p class="page-heading mt-16">Portfolio</p>
       <div id="trang-portfolio" class="max-w-4xl mx-auto">
         <div class="space-y-16">
           
-          <!-- 1. Deep-Dive Layout -->
           <div id="portfolio-meowknight" class="scroll-mt-28 mb-20">
             
             <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
@@ -1247,9 +1148,9 @@
             <div class="flex flex-col lg:flex-row gap-8 mb-8">
               
               <div class="w-full lg:w-3/5 rounded-xl overflow-hidden shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-black aspect-video relative">
-                <video controls class="w-full h-full object-cover">
+                <video controls draggable="false" oncontextmenu="return false;" disablePictureInPicture controlsList="nodownload" oncopy="return false;" class="w-full h-full object-cover">
                   <source src="assets/video/meowknight-title.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
+                  Video tag not supported.
                 </video>
               </div>
 
@@ -1259,8 +1160,8 @@
                   <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">C#</span>
                   <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Roguelite</span>
                 </div>
-                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
-                  A mid-core procedural dungeon crawler. I was responsible for the core combat loop, procedural generation algorithms, and behavior tree implementation for all enemy AI.
+                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed text-justify">
+                  A light-hearted 2D roguelite game. Control the Meow Knight to conquer the dungeon with random room layout and multiple different challenges.
                 </p>
               </div>
             </div>
@@ -1277,9 +1178,9 @@
             <div class="flex flex-col lg:flex-row gap-8 mb-8">
               
               <div class="w-full lg:w-3/5 rounded-xl overflow-hidden shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-black aspect-video relative">
-                <video controls class="w-full h-full object-cover">
+                <video controls draggable="false" oncontextmenu="return false;" disablePictureInPicture controlsList="nodownload" oncopy="return false;" class="w-full h-full object-cover">
                   <source src="assets/video/poppitarena.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
+                  Video tag not supported.
                 </video>
               </div>
 
@@ -1289,8 +1190,8 @@
                   <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">GDScript</span>
                   <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">P2P Multiplayer</span>
                 </div>
-                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed">
-                  A mid-core procedural dungeon crawler. I was responsible for the core combat loop, procedural generation algorithms, and behavior tree implementation for all enemy AI.
+                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed text-justify">
+                  A Peer-to-Peer 2D game with lobby, match making,... with character customization and stuff. Be the best runner or a bummer. 
                 </p>
               </div>
             </div>
@@ -1298,8 +1199,6 @@
             <div class="project-gallery" data-gallery-id="poppit"></div>
           </div>
 
-          <!-- Tiny Projects -->
-          <!-- 1. Tiny Little Games (Clickable External Links) -->
           <div id="portfolio-tiny-games" class="scroll-mt-28 mb-16">
             <h3 class="text-xl font-bold text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2">
               Tiny Little Games
@@ -1308,7 +1207,7 @@
               
               <a href="https://deguner.itch.io/down-the-rabbit-hole" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
                 <div class="overflow-hidden bg-black">
-                  <video src="assets/video/rabbithole.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
+                  <video src="assets/video/rabbithole.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
                 </div>
                 <div class="p-4">
                   <div class="flex justify-between items-start mb-1">
@@ -1322,7 +1221,7 @@
 
               <a href="https://deguner.itch.io/yin-yang-bird" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
                 <div class="overflow-hidden bg-black">
-                  <video src="assets/video/yinyang.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
+                  <video src="assets/video/yinyang.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
                 </div>
                 <div class="p-4">
                   <div class="flex justify-between items-start mb-1">
@@ -1336,7 +1235,7 @@
 
               <a href="https://deguner.itch.io/break-in" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
                 <div class="overflow-hidden bg-black">
-                  <video src="assets/video/breakin.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
+                  <video src="assets/video/breakin.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
                 </div>
                 <div class="p-4">
                   <div class="flex justify-between items-start mb-1">
@@ -1350,8 +1249,7 @@
 
               <a href="https://deguner.itch.io/script-me" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
                 <div class="overflow-hidden bg-black">
-                  <!-- Swapped back to Image, added security attributes -->
-                  <img src="assets/scriptme.jpg" draggable="false" oncontextmenu="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></img>
+                  <img src="assets/scriptme.jpg" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center" />
                 </div>
                 <div class="p-4">
                   <div class="flex justify-between items-start mb-1">
@@ -1366,19 +1264,17 @@
             </div>
           </div>
 
-          <!-- 2. Prototypes & Others (Combined Slideshow) -->
           <div id="portfolio-prototypes" class="scroll-mt-28 mb-20">
             <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-4 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
               Prototypes & Others
             </h3>
             
-            <!-- This empty shell will automatically build the slideshow! -->
             <div class="project-gallery" data-gallery-id="prototypes"></div>
           </div>
 
         </div>
       </div>
-      <!-- Interactive 3D Model Card -->
+      
       <div id="portfolio-3d-models" class="scroll-mt-28 mb-20">
         <h3 class="text-xl font-bold text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2">
           3D Models & Assets
@@ -1406,27 +1302,24 @@
 
     </section>
     
-    <!-- Default landing -->
     <section class="page active" id="page-work">
       <p class="page-heading">Featured Work</p>
 
       <div class="w-full mb-10 rounded-xl overflow-hidden">
-        <!-- Just replace 'assets/your-gif-here.gif' with your actual file name -->
-        <img draggable="false" src="assets/LOGO.gif" alt="Featured Gameplay" class="ml-auto mr-auto select-none w-[70%] h-auto object-cover block" />
+        <img src="assets/LOGO.gif" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="ml-auto mr-auto select-none w-[70%] h-auto object-cover block bg-white rounded-xl" />
       </div>
     </section>
 
   </main>
 
-  <!-- LIGHT BOX - To show image in fullscreen -->
   <div id="global-lightbox" class="fixed inset-0 z-[999] hidden bg-gray-100/95 dark:bg-black/95 backdrop-blur-sm flex items-center justify-center opacity-0 transition-opacity duration-300">
     
     <button id="lightbox-close" class="absolute top-4 right-4 sm:top-6 sm:right-8 text-gray-800 dark:text-gray-400 hover:text-accent dark:hover:text-accent text-4xl sm:text-5xl transition-colors select-none z-[60]">&times;</button>
     
     <button id="lightbox-prev" class="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 text-gray-800 dark:text-gray-400 hover:text-accent dark:hover:text-accent text-5xl sm:text-7xl transition-colors select-none z-[60]">&#8249;</button>
     
-    <img id="lightbox-img" src="" alt="Fullscreen View" draggable="false" oncontextmenu="return false;" class="hidden max-h-[90vh] max-w-[90vw] object-contain select-none shadow-2xl z-50" />
-    <video id="lightbox-vid" src="" class="hidden max-h-[90vh] max-w-[90vw] object-contain shadow-2xl z-50" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;" loop></video>
+    <img id="lightbox-img" src="" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="hidden max-h-[90vh] max-w-[90vw] object-contain select-none shadow-2xl z-50" />
+    <video id="lightbox-vid" src="" class="hidden max-h-[90vh] max-w-[90vw] object-contain shadow-2xl z-50" controls controlsList="nodownload" disablePictureInPicture oncontextmenu="return false;" oncopy="return false;" draggable="false" loop></video>
     
     <model-viewer 
       id="lightbox-model" 

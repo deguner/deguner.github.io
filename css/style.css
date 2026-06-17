@@ -1,10 +1,4 @@
-/* ==========================================================================
-   DEGUNER — Custom styles
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. CSS Variables & Base Reset
-   -------------------------------------------------------------------------- */
+/*[cite: 7] */
 :root {
   --sidebar-w:   280px;
   --accent:      #d22731;
@@ -20,7 +14,7 @@
 html { 
   font-size: 16px; 
   scroll-behavior: smooth; 
-  scroll-padding-top: 120px; /* Adjust this number to make it aim higher/lower */
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -36,9 +30,6 @@ a { color: inherit; text-decoration: none; transition: color 0.15s; }
 a:hover { color: var(--muted); }
 img { display: block; max-width: 100%; height: auto; }
 
-/* --------------------------------------------------------------------------
-   2. Sidebar
-   -------------------------------------------------------------------------- */
 #sidebar {
   width: var(--sidebar-w);
   flex-shrink: 0;
@@ -57,9 +48,6 @@ img { display: block; max-width: 100%; height: auto; }
 
 #main { margin-left: var(--sidebar-w); flex: 1; min-height: 100vh; }
 
-/* --------------------------------------------------------------------------
-   3. Brand
-   -------------------------------------------------------------------------- */
 .site-name {
   font-size: 1.5rem;
   font-weight: 900;
@@ -71,16 +59,31 @@ img { display: block; max-width: 100%; height: auto; }
   user-select: none;
 }
 
-.site-name span {
+.brand-border {
   display: inline-block;
   border-bottom: 3px solid var(--accent);
   padding-bottom: 2px;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
-.site-name:hover span {
+.de-er, .gun {
+  transition: color 0.2s ease;
+}
+
+.gun {
   color: var(--accent);
+}
+
+.site-name:hover .brand-border {
   border-color: transparent;
+}
+
+.site-name:hover .de-er {
+  color: var(--accent);
+}
+
+.site-name:hover .gun {
+  color: var(--ink);
 }
 
 .site-tagline {
@@ -92,9 +95,6 @@ img { display: block; max-width: 100%; height: auto; }
   margin-top: 6px;
 }
 
-/* --------------------------------------------------------------------------
-   4. Navigation
-   -------------------------------------------------------------------------- */
 nav { display: flex; flex-direction: column; }
 
 .nav-item,
@@ -158,9 +158,6 @@ nav { display: flex; flex-direction: column; }
 
 .sidebar-footer { display: none; }
 
-/* --------------------------------------------------------------------------
-   5. Toggle buttons
-   -------------------------------------------------------------------------- */
 #sound-toggle,
 #theme-toggle {
   display: inline-flex;
@@ -221,9 +218,6 @@ nav { display: flex; flex-direction: column; }
   cursor: pointer;
 }
 
-/* --------------------------------------------------------------------------
-   6. Page Content
-   -------------------------------------------------------------------------- */
 .page {
   display: none;
   padding: 3rem 3.5rem 5rem;
@@ -281,9 +275,6 @@ nav { display: flex; flex-direction: column; }
   line-height: 1.75;
 }
 
-/* --------------------------------------------------------------------------
-   7. Member Cards — 3-D tilt + diagonal shine ON AVATAR ONLY
-   -------------------------------------------------------------------------- */
 .member-card {
   width: 350px;               
   border-radius: 14px;
@@ -314,16 +305,14 @@ nav { display: flex; flex-direction: column; }
   transition: transform 0.05s linear, box-shadow 0.15s ease-out, border-color 0.25s;
 }
 
-/* No full-card ::after overlay anymore */
 .member-card::after { content: none; }
 
-/* ── Avatar: contains the shine ── */
 .member-avatar {
   width: 100%;
   height: 300px;
   position: relative;
   background: #f3f4f6;
-  overflow: hidden;                 /* clips shine to avatar bounds */
+  overflow: hidden;                 
   border-bottom: 1.5px solid var(--border);
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
@@ -338,7 +327,6 @@ nav { display: flex; flex-direction: column; }
 }
 .member-card:hover .member-avatar img { transform: scale(1.08); }
 
-/* Diagonal shine — pseudo on avatar, clipped by overflow:hidden */
 .member-avatar::after {
   content: "";
   position: absolute;
@@ -358,7 +346,6 @@ nav { display: flex; flex-direction: column; }
 }
 .member-card:hover .member-avatar::after { opacity: 1; }
 
-/* Info block */
 .member-info {
   height: 300px;
   padding: 1.2rem 1.25rem 1.4rem;
@@ -443,14 +430,11 @@ body.dark .card-action-btn:hover {
   color: #0d0d0d;
 }
 
-/* --------------------------------------------------------------------------
-   8. TRUE Dark Theme — warm, readable, friendly
-   -------------------------------------------------------------------------- */
 body.dark {
   --surface: #0d0d0d;
-  --ink:     #e8e6e3;      /* warm off-white, easier on eyes than pure #fff */
-  --muted:   #8a8580;      /* warm mid-grey  */
-  --border:  #242220;      /* very dark warm-grey */
+  --ink:     #e8e6e3;      
+  --muted:   #8a8580;      
+  --border:  #242220;      
 }
 
 body.dark { background: #0d0d0d !important; }
@@ -460,7 +444,6 @@ body.dark #sidebar {
   border-right-color: #1c1a18;
 }
 
-/* Nav text warm tones */
 body.dark .nav-item        { color: #d6d3cf; }
 body.dark .nav-child       { color: #6b6762; }
 body.dark .nav-children    { border-left-color: #242220; }
@@ -468,19 +451,16 @@ body.dark .nav-item:hover,
 body.dark .nav-child:hover { color: var(--accent); }
 body.dark .site-tagline    { color: #5e5b57; }
 
-/* Page text */
 body.dark .page-heading    { color: #5e5b57; }
 body.dark .about-sub       { color: #8a8580; }
 body.dark .highlight-section { color: #e8e6e3; }
 
-/* Cards */
 body.dark .member-card     { background: #111110; border-color: #242220; }
 body.dark .member-info     { background: #111110; }
 body.dark .member-avatar   { background: #1a1917; border-bottom-color: #242220; }
 body.dark .member-name     { color: #e8e6e3; }
 body.dark .member-desc     { color: #8a8580; }
 
-/* Shine softer on dark */
 body.dark .member-avatar::after {
   background: linear-gradient(
     115deg,
@@ -492,16 +472,13 @@ body.dark .member-avatar::after {
   );
 }
 
-/* Role tags dark */
 body.dark .role-tag.programmer { background: #162032; color: #7db8f7; }
 body.dark .role-tag.designer   { background: #1e1230; color: #c4a0f5; }
 body.dark .role-tag.artist     { background: #0e2218; color: #72d99a; }
 
-/* Images */
 body.dark .image-grid img,
 body.dark .image-full { background: #181715; }
 
-/* Toggles */
 body.dark #sound-toggle,
 body.dark #theme-toggle {
   color: #c8c5c0;
@@ -514,15 +491,22 @@ body.dark #theme-toggle:hover {
   border-color: #e8e6e3;
 }
 
-/* Brighten site title in dark mode */
-body.dark .site-name span {
-  color: #ffffff;
+body.dark .brand-border {
   border-bottom-color: var(--accent);
 }
 
-/* --------------------------------------------------------------------------
-   9. Responsive
-   -------------------------------------------------------------------------- */
+body.dark .de-er {
+  color: #ffffff;
+}
+
+body.dark .site-name:hover .de-er {
+  color: var(--accent);
+}
+
+body.dark .site-name:hover .gun {
+  color: #ffffff;
+}
+
 @media (max-width: 768px) {
   #sidebar {
     transform: translateX(-100%);
@@ -541,9 +525,6 @@ body.dark .site-name span {
   .member-card { width: 100%; }
 }
 
-/* --------------------------------------------------------------------------
-   10. Game Cards
-   -------------------------------------------------------------------------- */
 .game-card {
   width: 100%;
   height: var(--game-card-h);
