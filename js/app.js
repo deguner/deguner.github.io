@@ -412,14 +412,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             thumbsHtml += `
             <div class="relative flex-shrink-0 snap-start w-28 h-20 cursor-pointer">
-              <img src="${src}" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" data-full="${src}" class="gallery-thumb select-none w-full h-full object-cover rounded-lg shadow-sm border-[3px] ${isActive} transition-opacity pointer-events-none" />
+              <img src="${src}" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.webp';" draggable="false" oncontextmenu="return false;" oncopy="return false;" data-full="${src}" class="gallery-thumb select-none w-full h-full object-cover rounded-lg shadow-sm border-[3px] ${isActive} transition-opacity pointer-events-none" />
             </div>`;
         }
       });
 
       gallery.innerHTML = `
         <div class="main-preview-container w-full h-[300px] sm:h-[450px] rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] mb-4 bg-gray-100 dark:bg-[#1a1917] relative group flex items-center justify-center cursor-zoom-in">
-          <img id="${galleryId}-main-img" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.jpg';" draggable="false" oncontextmenu="return false;" oncopy="return false;" src="" class="select-none w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02] hidden" />
+          <img id="${galleryId}-main-img" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.webp';" draggable="false" oncontextmenu="return false;" oncopy="return false;" src="" class="select-none w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.02] hidden" />
           <video id="${galleryId}-main-vid" draggable="false" oncontextmenu="return false;" oncopy="return false;" disablePictureInPicture controlsList="nodownload" src="" class="w-full h-full object-contain hidden pointer-events-none" muted loop playsinline></video>
           <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-black/20">
             <i class="fas fa-expand text-white text-4xl drop-shadow-lg"></i>
