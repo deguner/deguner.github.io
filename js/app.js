@@ -286,16 +286,16 @@ document.addEventListener('DOMContentLoaded', () => {
       'assets/video/meowknight-title.mp4',
       'assets/video/meowknight-1.mp4',
       'assets/video/meowknight-2.mp4',
-      'assets/meowknight-p1.jpg',
-      'assets/meowknight-p2.jpg',
-      'assets/meowknight-p3.jpg',
+      'assets/meowknight-p1.webp',
+      'assets/meowknight-p2.webp',
+      'assets/meowknight-p3.webp',
     ],
     'poppit': [
       'assets/video/poppitarena.mp4',
-      'assets/poppit-p1.jpg',
-      'assets/poppit-p2.jpg',
-      'assets/poppit-p3.jpg',
-      'assets/poppit-p4.jpg',
+      'assets/poppit-p1.webp',
+      'assets/poppit-p2.webp',
+      'assets/poppit-p3.webp',
+      'assets/poppit-p4.webp',
     ],
     'prototypes': [
       'assets/video/minions.mp4',
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'assets/video/ball.mp4',
       'assets/video/wizard.mp4',
       'assets/video/light.mp4',
-      'assets/light-p.jpg',
+      'assets/light-p.webp',
     ]
   };
 
