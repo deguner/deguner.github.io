@@ -507,22 +507,44 @@ body.dark .site-name:hover .gun {
   color: #ffffff;
 }
 
+/* Mobile Layout */
 @media (max-width: 768px) {
   #sidebar {
     transform: translateX(-100%);
-    border-right-color: var(--border);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1); 
   }
-  #sidebar.open { transform: translateX(0); }
-  #mobile-nav-toggle { display: flex; }
-  #main { margin-left: 0; }
-  .page { padding: 4rem 1.25rem 3.5rem; }
-  .image-grid { columns: 1; }
-  .member-card { width: 260px; }
+  
+  #sidebar.open { 
+    transform: translateX(0); 
+  }
+  
+  #mobile-nav-toggle { 
+    display: flex; 
+  }
+  
+  #main { 
+    margin-left: 0; 
+    width: 100%;
+  }
+  
+  .page { 
+    padding: 5rem 1.25rem 3.5rem; /* Increased top padding so the hamburger menu doesn't overlap text */
+  }
+  
+  .image-grid { 
+    columns: 1; 
+  }
+  
+  .member-card { 
+    width: 100%; 
+    max-width: 350px;
+  }
 }
 
 @media (max-width: 480px) {
-  .page { padding: 3.5rem 1rem 3rem; }
-  .member-card { width: 100%; }
+  .page { 
+    padding: 4.5rem 1rem 3rem; 
+  }
 }
 
 .game-card {
