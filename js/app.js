@@ -705,11 +705,72 @@ document.addEventListener('DOMContentLoaded', () => {
       'assets/chardes/8.webp'
     ],
     'illustration': [
-      'assets/notfound5.webp',
-      'assets/notfound6.webp',
-      'assets/notfound7.webp'
+      'assets/illustration/4.webp',
+      'assets/illustration/5.webp',
+      'assets/illustration/6.webp',
+      'assets/illustration/1.webp',
+      'assets/illustration/2.webp',
+      'assets/illustration/3.webp',
+      'assets/illustration/7.webp',
+      'assets/illustration/8.webp',
+      'assets/illustration/9.webp',
+      'assets/illustration/10.webp',
+      'assets/illustration/11.webp',
+      'assets/illustration/12.webp',
+      'assets/illustration/13.webp',
     ]
   };
+
+  function buildLeftToRightGalleries() {
+    const wrappers = document.querySelectorAll('.art-gallery-wrapper');
+    if (wrappers.length === 0) return;
+
+    // 1. Use matchMedia to perfectly mimic CSS @media queries (Tailwind breakpoints)
+    let cols = 1; 
+    if (window.matchMedia('(min-width: 1024px)').matches) {
+      cols = 3; // lg: 3 columns
+    } else if (window.matchMedia('(min-width: 640px)').matches) {
+      cols = 2; // sm: 2 columns
+    }
+
+    wrappers.forEach(wrapper => {
+      const collectionTitle = wrapper.getAttribute('data-showcase');
+      const images = showcaseList[collectionTitle];
+      
+      if (images) {
+        // Create empty arrays for each column
+        const columnsHtml = Array.from({ length: cols }, () => '');
+        
+        // Deal images left-to-right (Round-Robin)
+        images.forEach((src, index) => {
+          const colIndex = index % cols; 
+          
+          columnsHtml[colIndex] += `
+            <div class="mb-4 rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] group cursor-zoom-in relative art-item" data-collection="${collectionTitle}" data-index="${index}">
+              <img src="${src}" data-full="${src}" class="w-full h-auto block transition-transform duration-500 group-hover:scale-105" alt="${collectionTitle}" draggable="false" oncontextmenu="return false;" oncopy="return false;">
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                <i class="fas fa-expand text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+              </div>
+            </div>
+          `;
+        });
+        
+        // 2. Bypass Tailwind's compiler entirely by using inline CSS styles for the grid!
+        wrapper.className = 'art-gallery-wrapper grid gap-4';
+        wrapper.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+        wrapper.innerHTML = columnsHtml.map(col => `<div class="flex flex-col">${col}</div>`).join('');
+      }
+    });
+
+    attachLightboxListeners();
+  }
+
+  // Make sure your resize listener is still at the bottom to trigger this when the window shifts!
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(buildLeftToRightGalleries, 200);
+  });
 
   const wrappers = document.querySelectorAll('.art-gallery-wrapper');
   
