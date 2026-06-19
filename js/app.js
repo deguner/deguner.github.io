@@ -726,11 +726,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wrappers.length === 0) return;
 
     // 1. Use matchMedia to perfectly mimic CSS @media queries (Tailwind breakpoints)
-    let cols = 1; 
+    let cols = 3; 
     if (window.matchMedia('(min-width: 1024px)').matches) {
       cols = 3; // lg: 3 columns
     } else if (window.matchMedia('(min-width: 640px)').matches) {
       cols = 2; // sm: 2 columns
+    } else {
+      cols = 1;
     }
 
     wrappers.forEach(wrapper => {
@@ -834,7 +836,56 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  /* ==========================================================================
+     Standalone Media Lightbox Trigger (Video & GIF)
+     ========================================================================== */
+  window.openStandaloneMedia = function(element) {
+    // 1. Automatically find the video or image source inside the clicked card
+    let src = element.getAttribute('data-src');
+    if (!src) {
+      const vid = element.querySelector('video');
+      const img = element.querySelector('img');
+      // Remove any #t= metadata from video src so it plays from the beginning
+      if (vid) src = (vid.getAttribute('src') || vid.currentSrc).split('#')[0];
+      else if (img) src = img.getAttribute('data-full') || img.getAttribute('src');
+    }
+
+    if (!src) return;
+
+    // 2. Hide 3D Model UI
+    const lbModel = document.getElementById('lightbox-model');
+    const animContainer = document.getElementById('model-animation-container');
+    if (lbModel) { lbModel.classList.add('hidden'); lbModel.src = ""; }
+    if (animContainer) animContainer.style.display = 'none';
+
+    // 3. Hide navigation arrows (since this is a single, standalone item)
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    if (prevBtn) prevBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+
+    // 4. Hook into your global gallery system
+    currentGalleryImages = [src];
+    currentImageIndex = 0;
+    activeGalleryElement = null;
+
+    // 5. Load it using your existing robust media function!
+    loadLightboxMedia(0);
+
+    // 6. Unmute the lightbox video (since autoplaying previews are usually muted)
+    if (lightboxVid) lightboxVid.muted = false;
+
+    // 7. Reveal the Lightbox
+    if (lightbox) {
+      lightbox.classList.remove('hidden');
+      setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
+      document.body.style.overflow = 'hidden'; 
+    }
+  };
 });
+
+
 
 window.openModelLightbox = function(btn) {
   const src = btn.getAttribute('data-src');
