@@ -730,7 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     wrappers.forEach(wrapper => {
       const collectionTitle = wrapper.getAttribute('data-showcase');
-      const images = showcaseList[collectionTitle];
+      const images = showcaseList[collectionTitle]; // Assuming showcaseList is defined elsewhere
       
       if (images) {
         // Create 3 empty arrays
@@ -750,15 +750,22 @@ document.addEventListener('DOMContentLoaded', () => {
           `;
         });
         
-        // Apply Grid CSS locking it to 3 columns
-        wrapper.className = 'art-gallery-wrapper grid gap-4';
-        wrapper.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
-        wrapper.innerHTML = columnsHtml.map(col => `<div class="flex flex-col">${col}</div>`).join('');
+        // Apply Flex CSS 
+        wrapper.className = 'art-gallery-wrapper flex flex-row gap-4 w-full';
+        
+        // IMPORTANT: Ensure wrapper.style is cleared of old grid properties if they were applied elsewhere
+        wrapper.style.gridTemplateColumns = ''; 
+        wrapper.style.display = ''; 
+        
+        // Wrap each column's HTML in a flex-col div, and use 'flex-1' so they equally share the 3-column width
+        wrapper.innerHTML = columnsHtml.map(col => `<div class="flex flex-col flex-1 w-full">${col}</div>`).join('');
       }
     });
 
-    attachLightboxListeners();
-  }
+    if (typeof attachLightboxListeners === 'function') {
+      attachLightboxListeners();
+    }
+}
 
   function attachLightboxListeners() {
     document.querySelectorAll('.art-gallery-wrapper .art-item').forEach((item) => {
@@ -794,69 +801,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Build the gallery immediately on load
   buildLeftToRightGalleries();
-
-  const wrappers = document.querySelectorAll('.art-gallery-wrapper');
-  
-  if (wrappers.length > 0) {
-    // 2. Loop through each wrapper found in the HTML
-    // 2. Loop through each wrapper found in the HTML
-    wrappers.forEach(wrapper => {
-      const collectionTitle = wrapper.getAttribute('data-showcase');
-      const images = showcaseList[collectionTitle];
-      
-      if (images) {
-        let masonryItemsHtml = '';
-        
-        // Build the masonry items
-        // NOTE: 'break-inside-avoid mb-4' keeps items intact in columns, 'w-full h-auto' keeps exact aspect ratio
-        images.forEach((src, index) => {
-          masonryItemsHtml += `
-            <div class="break-inside-avoid mb-4 rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] group cursor-zoom-in relative art-item" data-collection="${collectionTitle}" data-index="${index}">
-              <img src="${src}" data-full="${src}" class="w-full h-auto block transition-transform duration-500 group-hover:scale-105" alt="${collectionTitle}" draggable="false" oncontextmenu="return false;" oncopy="return false;">
-              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center pointer-events-none">
-                <i class="fas fa-expand text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
-              </div>
-            </div>
-          `;
-        });
-        
-        // Inject into the specific wrapper
-        wrapper.innerHTML = masonryItemsHtml;
-      }
-    });
-
-    // 3. Connect to the Lightbox
-    document.querySelectorAll('.art-gallery-wrapper .art-item').forEach((item) => {
-      item.addEventListener('click', () => {
-        const collectionName = item.getAttribute('data-collection');
-        const clickedIndex = parseInt(item.getAttribute('data-index'));
-        
-        // Load ONLY the images from the clicked collection into the lightbox
-        currentGalleryImages = showcaseList[collectionName];
-        currentImageIndex = clickedIndex;
-        activeGalleryElement = null; 
-        
-        const prevBtn = document.getElementById('lightbox-prev');
-        const nextBtn = document.getElementById('lightbox-next');
-        const animContainer = document.getElementById('model-animation-container');
-        const lightboxModel = document.getElementById('lightbox-model');
-        
-        if (lightboxModel) { lightboxModel.classList.add('hidden'); lightboxModel.src = ""; }
-        if (animContainer) animContainer.style.display = 'none';
-        if (prevBtn) prevBtn.style.display = ''; 
-        if (nextBtn) nextBtn.style.display = '';
-
-        loadLightboxMedia(currentImageIndex);
-        
-        const lightbox = document.getElementById('global-lightbox');
-        if (lightbox) {
-          lightbox.classList.remove('hidden');
-          setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
-          document.body.style.overflow = 'hidden'; 
-        }
-      });
-    });
-  }
 
   /* ==========================================================================
      Standalone Media Lightbox Trigger (Video & GIF)
