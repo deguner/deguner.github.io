@@ -504,16 +504,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryId = gallery.getAttribute('data-gallery-id');
     clearInterval(autoSlideTimers[galleryId]);
     
-    autoSlideTimers[galleryId] = setInterval(() => {
-      if (activeGalleryElement === gallery && !lightbox.classList.contains('hidden')) return;
+    // autoSlideTimers[galleryId] = setInterval(() => {
+    //   if (activeGalleryElement === gallery && !lightbox.classList.contains('hidden')) return;
       
-      const currentIndex = parseInt(gallery.getAttribute('data-current-index') || 0);
-      const images = galleryData[galleryId];
+    //   const currentIndex = parseInt(gallery.getAttribute('data-current-index') || 0);
+    //   const images = galleryData[galleryId];
       
-      if (images && isVideo(images[currentIndex])) return;
+    //   if (images && isVideo(images[currentIndex])) return;
 
-      updateGallery(gallery, currentIndex + 1);
-    }, 4000); 
+    //   updateGallery(gallery, currentIndex + 1);
+    // }, 4000); 
   }
 
   document.querySelectorAll('.project-gallery').forEach(gallery => {
@@ -694,59 +694,50 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   
   const showcaseList = {
-    'chardes': {
-      'assets/chardes/1.webp': '2x2',
-      'assets/chardes/2.webp': '1x1',
-      'assets/chardes/3.webp': '1x1',
-      'assets/chardes/4.webp': '2x1',
-      'assets/chardes/5.webp': '2x1',
-      'assets/chardes/6.webp': '1x1',
-      'assets/chardes/7.webp': '2x2',
-      'assets/chardes/8.webp': '1x1',
-    },
-    'illustration': {
-      'assets/notfound5.webp': '1x1',
-      'assets/notfound6.webp': '2x1',
-      'assets/notfound7.webp': '1x1'
-    }
+    'chardes': [
+      'assets/chardes/1.webp',
+      'assets/chardes/2.webp',
+      'assets/chardes/3.webp',
+      'assets/chardes/4.webp',
+      'assets/chardes/5.webp',
+      'assets/chardes/6.webp',
+      'assets/chardes/7.webp',
+      'assets/chardes/8.webp'
+    ],
+    'illustration': [
+      'assets/notfound5.webp',
+      'assets/notfound6.webp',
+      'assets/notfound7.webp'
+    ]
   };
 
   const wrappers = document.querySelectorAll('.art-gallery-wrapper');
   
   if (wrappers.length > 0) {
-    const sizeClasses = {
-      '1x1': '',
-      '2x1': 'col-span-2',
-      '1x2': 'row-span-2',
-      '2x2': 'col-span-2 row-span-2'
-    };
-
+    // 2. Loop through each wrapper found in the HTML
     // 2. Loop through each wrapper found in the HTML
     wrappers.forEach(wrapper => {
       const collectionTitle = wrapper.getAttribute('data-showcase');
       const images = showcaseList[collectionTitle];
       
       if (images) {
-        let gridItemsHtml = '';
-        let index = 0;
+        let masonryItemsHtml = '';
         
-        // Build the grid items for this specific collection
-        Object.entries(images).forEach(([src, size]) => {
-          const gridClass = sizeClasses[size] || '';
-          
-          gridItemsHtml += `
-            <div class="${gridClass} rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] group cursor-zoom-in relative art-item" data-collection="${collectionTitle}" data-index="${index}">
-              <img src="${src}" data-full="${src}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="${collectionTitle}" draggable="false" oncontextmenu="return false;" oncopy="return false;">
+        // Build the masonry items
+        // NOTE: 'break-inside-avoid mb-4' keeps items intact in columns, 'w-full h-auto' keeps exact aspect ratio
+        images.forEach((src, index) => {
+          masonryItemsHtml += `
+            <div class="break-inside-avoid mb-4 rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] group cursor-zoom-in relative art-item" data-collection="${collectionTitle}" data-index="${index}">
+              <img src="${src}" data-full="${src}" class="w-full h-auto block transition-transform duration-500 group-hover:scale-105" alt="${collectionTitle}" draggable="false" oncontextmenu="return false;" oncopy="return false;">
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center pointer-events-none">
                 <i class="fas fa-expand text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
               </div>
             </div>
           `;
-          index++;
         });
         
         // Inject into the specific wrapper
-        wrapper.innerHTML = gridItemsHtml;
+        wrapper.innerHTML = masonryItemsHtml;
       }
     });
 
@@ -757,7 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const clickedIndex = parseInt(item.getAttribute('data-index'));
         
         // Load ONLY the images from the clicked collection into the lightbox
-        currentGalleryImages = Object.keys(showcaseList[collectionName]);
+        currentGalleryImages = showcaseList[collectionName];
         currentImageIndex = clickedIndex;
         activeGalleryElement = null; 
         
