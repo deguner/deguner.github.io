@@ -71,15 +71,36 @@
 
       <div class="nav-divider"></div>
 
-      <div class="flex items-center gap-3 pt-1">
-        <button id="sound-toggle" title="Toggle sound">
-          <i class="fas fa-volume-up" id="sound-icon"></i>
-          <span id="sound-label">Sound On</span>
-        </button>
-        <button id="theme-toggle" title="Toggle theme">
-          <i class="fas fa-sun" id="theme-icon"></i>
-          <span id="theme-label">Light</span>
-        </button>
+      <div class="flex flex-col gap-4 pt-1">
+        
+        <div class="flex items-center gap-3">
+          <button id="sound-toggle" title="Toggle sound">
+            <i class="fas fa-volume-up" id="sound-icon"></i>
+            <span id="sound-label">Sound On</span>
+          </button>
+          <button id="theme-toggle" title="Toggle theme">
+            <i class="fas fa-sun" id="theme-icon"></i>
+            <span id="theme-label">Light</span>
+          </button>
+        </div>
+
+        <div id="bgm-widget" class="hidden items-center justify-between p-2.5 rounded-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-50 dark:bg-[#1a1917] transition-colors duration-300">
+          <div class="flex flex-col overflow-hidden mr-2">
+            <span class="text-[0.6rem] font-bold uppercase tracking-widest text-accent mb-0.5">Now Playing</span>
+            <span id="bgm-name" class="text-xs font-bold text-gray-900 dark:text-[#e8e6e3] truncate w-24">Track Name</span>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <button id="bgm-toggle" class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-white dark:bg-[#111110] border-[1.5px] border-gray-200 dark:border-[#242220] text-gray-600 dark:text-[#8a8580] hover:text-accent dark:hover:text-accent transition-all shadow-sm cursor-pointer pointer-events-auto">
+              <i id="bgm-icon" class="fas fa-play text-xs ml-0.5"></i>
+            </button>
+            
+            <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.3" class="w-12 h-1 bg-gray-300 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-accent" title="Volume">
+          </div>
+          
+          <audio id="bgm-audio" loop preload="none"></audio>
+        </div>
+
       </div>
 
     </nav>
@@ -222,15 +243,17 @@
           
           <div class="transition-transform duration-300 hover:-translate-y-1">
             <video src="assets/video/mml-narrative.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
-            <div class="pt-3">
-              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Narrative Sequence</h4>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">Narrative Sequence</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">The panel will change based on the characters and previous panel</div>
             </div>
           </div>
 
           <div class="transition-transform duration-300 hover:-translate-y-1">
             <video src="assets/video/mml-swap.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
-            <div class="pt-3">
-              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Swapping</h4>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">Swapping</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">You can swap characters, character to panel or panel to another panel</div>
             </div>
           </div>
 
@@ -323,17 +346,37 @@
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img src="assets/notfound.webp" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.webp';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
-            <div class="pt-3">
-              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 1</h4>
+            <video src="assets/video/bongbang-bubble.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">Bubble Shooter</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">Defeated enemies will be covered in bubbles</div>
             </div>
           </div>
+
           <div class="transition-transform duration-300 hover:-translate-y-1">
-            <img src="assets/notfound.webp" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.webp';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-48 object-cover rounded-xl shadow-md" />
-            <div class="pt-3">
-              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Feature 2</h4>
+            <video src="assets/video/bongbang-powerup.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">Power-up?</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">Bursh the bubbles may drop power-ups, or, a bomb</div>
             </div>
           </div>
+
+          <div class="transition-transform duration-300 hover:-translate-y-1">
+            <video src="assets/video/bongbang-challenge.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">Different Challenge</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">A different gamemode, challenge lying in the dungeon</div>
+            </div>
+          </div>
+          
+          <div class="transition-transform duration-300 hover:-translate-y-1">
+            <video src="assets/video/bongbang-boss.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">The Boss</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">Yup, THE boss</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -425,29 +468,34 @@
           
           <div class="transition-transform duration-300 hover:-translate-y-1">
             <video src="assets/video/xmas-pc.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
-            <div class="pt-3">
-              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Puzzle Layers</h4>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">Multiple Users</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">Puzzles are distributed across multiple different screens</div>
+              <!-- <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Puzzle Layers</h4> -->
             </div>
           </div>
 
           <div class="transition-transform duration-300 hover:-translate-y-1">
             <video src="assets/video/xmas-simulate.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
-            <div class="pt-3">
-              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">PC Simulation</h4>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">PC Simulation</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">Move, scale any window you would like to</div>
             </div>
           </div>
 
           <div class="transition-transform duration-300 hover:-translate-y-1">
             <video src="assets/video/xmas-puzzle.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
-            <div class="pt-3">
-              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Lots of Clues</h4>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">Lots Of Puzzle</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">Many different puzzles in many different forms</div>
             </div>
           </div>
 
           <div class="transition-transform duration-300 hover:-translate-y-1">
             <video src="assets/video/xmas-mini.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" oncontextmenu="return false;" draggable="false" oncopy="return false;" class="select-none w-full h-auto object-cover rounded-xl shadow-md"></video>
-            <div class="pt-3">
-              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center text-lg">Mini Games</h4>
+            <div class="pt-3 text-center">
+              <strong class="text-gray-900 dark:text-[#e8e6e3]">Mini Games</strong>
+              <div class="text-gray-900 dark:text-[#e8e6e3]">Mini games beside the deduction main gameplay</div>
             </div>
           </div>
         
@@ -1151,167 +1199,113 @@
       <div id="trang-portfolio" class="max-w-4xl mx-auto">
         <div class="space-y-16">
           
-          <div id="portfolio-meowknight" class="scroll-mt-28 mb-20">
+          <div id="portfolio-character-design" class="scroll-mt-28">
             
             <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
-              Meow Knight
+              Character Design
             </h3>
-
-            <div class="flex flex-col lg:flex-row gap-8 mb-8">
               
-              <div class="w-full lg:w-3/5 rounded-xl overflow-hidden shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-black aspect-video relative">
-                <video controls draggable="false" oncontextmenu="return false;" oncopy="return false;" disablePictureInPicture controlsList="nodownload" class="w-full h-full object-cover">
-                  <source src="assets/video/meowknight-title.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              <div class="w-full lg:w-2/5 flex flex-col justify-top">
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
-                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">C#</span>
-                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Roguelite</span>
-                </div>
-                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed text-justify">
-                  A mid-core procedural dungeon crawler. I was responsible for the core combat loop, procedural generation algorithms, and behavior tree implementation for all enemy AI.
-                </p>
-              </div>
-            </div>
-
-            <div class="project-gallery" data-gallery-id="meowknight"></div>
+            <div class="project-gallery" data-gallery-id="fable"></div>
+            <div class="project-gallery" data-gallery-id="province"></div>
+            <div class="art-gallery-wrapper grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[150px] sm:auto-rows-[200px] grid-flow-dense" data-showcase="chardes"></div>
           </div>
 
-          <div id="portfolio-poppit" class="scroll-mt-28 mb-20">
+          <div id="portfolio-illustration" class="scroll-mt-28">
             
             <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
-              Poppit Arena
+              Illustration & Fanart
             </h3>
-
-            <div class="flex flex-col lg:flex-row gap-8 mb-8">
               
-              <div class="w-full lg:w-3/5 rounded-xl overflow-hidden shadow-lg border-[1.5px] border-gray-200 dark:border-[#242220] bg-black aspect-video relative">
-                <video controls draggable="false" oncontextmenu="return false;" oncopy="return false;" disablePictureInPicture controlsList="nodownload" class="w-full h-full object-cover">
-                  <source src="assets/video/poppitarena.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              <div class="w-full lg:w-2/5 flex flex-col justify-top">
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
-                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">GDScript</span>
-                  <span class="text-xs font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">P2P Multiplayer</span>
-                </div>
-                <p class="text-sm text-gray-600 dark:text-[#8a8580] leading-relaxed text-justify">
-                  A mid-core procedural dungeon crawler. I was responsible for the core combat loop, procedural generation algorithms, and behavior tree implementation for all enemy AI.
-                </p>
-              </div>
-            </div>
-
-            <div class="project-gallery" data-gallery-id="poppit"></div>
-          </div>
-
-          <div id="portfolio-tiny-games" class="scroll-mt-28 mb-16">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2">
-              Tiny Little Games
-            </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              
-              <a href="https://deguner.itch.io/down-the-rabbit-hole" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
-                <div class="overflow-hidden bg-black">
-                  <video src="assets/video/rabbithole.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
-                </div>
-                <div class="p-4">
-                  <div class="flex justify-between items-start mb-1">
-                    <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] group-hover:text-accent transition-colors">Down The Rabbit Hole</h4>
-                    <i class="fas fa-external-link-alt text-gray-400 dark:text-[#8a8580] group-hover:text-accent transition-colors text-sm ml-2 mt-0.5"></i>
-                  </div>
-                  <p class="text-xs text-gray-600 dark:text-[#8a8580] mb-3">2D game, theme "Deeper & Deeper", inspired by Jump King.</p>
-                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
-                </div>
-              </a>
-
-              <a href="https://deguner.itch.io/yin-yang-bird" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
-                <div class="overflow-hidden bg-black">
-                  <video src="assets/video/yinyang.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
-                </div>
-                <div class="p-4">
-                  <div class="flex justify-between items-start mb-1">
-                    <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] group-hover:text-accent transition-colors">Yin Yang Bird</h4>
-                    <i class="fas fa-external-link-alt text-gray-400 dark:text-[#8a8580] group-hover:text-accent transition-colors text-sm ml-2 mt-0.5"></i>
-                  </div>
-                  <p class="text-xs text-gray-600 dark:text-[#8a8580] mb-3">2D game, theme "Balance", inspired by Flappy Bird.</p>
-                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
-                </div>
-              </a>
-
-              <a href="https://deguner.itch.io/break-in" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
-                <div class="overflow-hidden bg-black">
-                  <video src="assets/video/breakin.mp4" autoplay loop muted playsinline disablePictureInPicture controlsList="nodownload" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center"></video>
-                </div>
-                <div class="p-4">
-                  <div class="flex justify-between items-start mb-1">
-                    <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] group-hover:text-accent transition-colors">Break In</h4>
-                    <i class="fas fa-external-link-alt text-gray-400 dark:text-[#8a8580] group-hover:text-accent transition-colors text-sm ml-2 mt-0.5"></i>
-                  </div>
-                  <p class="text-xs text-gray-600 dark:text-[#8a8580] mb-3">2D game, theme "Break", inspired by programming exercise - Guess The Number.</p>
-                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
-                </div>
-              </a>
-
-              <a href="https://deguner.itch.io/script-me" target="_blank" rel="noopener noreferrer" class="group relative z-0 block rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] hover:border-accent dark:hover:border-accent bg-gray-50 dark:bg-[#1a1917] transition-all duration-300 hover:-translate-y-1 transform-gpu backface-hidden cursor-pointer">
-                <div class="overflow-hidden bg-black">
-                  <img src="assets/scriptme.webp" alt="Documents Not Found" onerror="this.onerror=null; this.src='assets/notfound.webp';" draggable="false" oncontextmenu="return false;" oncopy="return false;" class="select-none w-full h-[200px] object-cover transition-transform duration-500 group-hover:scale-105 rotate-[0.01deg] pointer-events-none transform-gpu backface-hidden origin-center" />
-                </div>
-                <div class="p-4">
-                  <div class="flex justify-between items-start mb-1">
-                    <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] group-hover:text-accent transition-colors">Script Me</h4>
-                    <i class="fas fa-external-link-alt text-gray-400 dark:text-[#8a8580] group-hover:text-accent transition-colors text-sm ml-2 mt-0.5"></i>
-                  </div>
-                  <p class="text-xs text-gray-600 dark:text-[#8a8580] mb-3">2D game, theme "Machines".</p>
-                  <span class="text-[0.65rem] font-bold uppercase tracking-widest text-accent bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded">Godot</span>
-                </div>
-              </a>
-
-            </div>
-          </div>
-
-          <div id="portfolio-prototypes" class="scroll-mt-28 mb-20">
-            <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-4 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
-              Prototypes & Others
-            </h3>
-            
-            <div class="project-gallery" data-gallery-id="prototypes"></div>
-          </div>
-
-        </div>
-      </div>
-      
-      <div id="portfolio-3d-models" class="scroll-mt-28 mb-20">
-        <h3 class="text-xl font-bold text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2">
-          3D Models & Assets
-        </h3>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="project-fable" data-gallery-id=""></div>
           
-          <div class="group relative z-0 rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-200 dark:bg-[#111110] transition-transform duration-300 hover:-translate-y-1">
-            <div class="w-full h-[250px] relative">
-              <model-viewer src="assets/model/rawrberry.glb" autoplay camera-controls auto-rotate auto-rotate-delay="500" interaction-prompt="none" class="w-full h-full outline-none pointer-events-auto"></model-viewer>
-              
-              <button onclick="openModelLightbox(this)" class="absolute top-2 right-2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-accent text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer pointer-events-auto" data-src="assets/model/rawrberry.glb" title="View Fullscreen">
-                <i class="fas fa-expand drop-shadow-lg pointer-events-none"></i>
-              </button>
-            </div>
+          </div>
+
+          <div id="portfolio-animation" class="scroll-mt-28 mb-20">
             
-            <div class="py-3 bg-gray-50 dark:bg-[#1a1917] flex items-center justify-center border-t-[1.5px] border-gray-200 dark:border-[#242220]">
-              <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center m-0">Rawrberry</h4>
+            <h3 class="text-2xl font-black text-gray-900 dark:text-[#e8e6e3] mb-6 border-b-2 border-gray-100 dark:border-[#242220] pb-2 uppercase tracking-wide">
+              3D & Animation
+            </h3>
+              
+            <!-- <div class="project-fable" data-gallery-id=""></div> -->
+             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          
+              <div class="group relative z-0 rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-200 dark:bg-[#111110] transition-transform duration-300 hover:-translate-y-1">
+                <div class="w-full h-[250px] relative">
+                  <model-viewer src="assets/model/rawrberry.glb" autoplay camera-controls auto-rotate auto-rotate-delay="500" interaction-prompt="none" class="w-full h-full outline-none pointer-events-auto"></model-viewer>
+                  
+                  <button onclick="openModelLightbox(this)" class="absolute top-2 right-2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-accent text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer pointer-events-auto" data-src="assets/model/rawrberry.glb" title="View Fullscreen">
+                    <i class="fas fa-expand drop-shadow-lg pointer-events-none"></i>
+                  </button>
+                </div>
+                
+                <div class="py-3 bg-gray-50 dark:bg-[#1a1917] flex items-center justify-center border-t-[1.5px] border-gray-200 dark:border-[#242220]">
+                  <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center m-0">Rawrberry</h4>
+                </div>
+              </div>
+              
+              <div class="group relative z-0 rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-200 dark:bg-[#111110] transition-transform duration-300 hover:-translate-y-1">
+                <div class="w-full h-[250px] relative">
+                  <model-viewer animation-name="Bung berry" src="assets/model/chicpea_animated.glb" autoplay camera-controls auto-rotate auto-rotate-delay="500" interaction-prompt="none" class="w-full h-full outline-none pointer-events-auto"></model-viewer>
+                  
+                  <button onclick="openModelLightbox(this)" class="absolute top-2 right-2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-accent text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer pointer-events-auto" data-src="assets/model/chicpea_animated.glb" title="View Fullscreen">
+                    <i class="fas fa-expand drop-shadow-lg pointer-events-none"></i>
+                  </button>
+                </div>
+                
+                <div class="py-3 bg-gray-50 dark:bg-[#1a1917] flex items-center justify-center border-t-[1.5px] border-gray-200 dark:border-[#242220]">
+                  <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center m-0">Chicpea</h4>
+                </div>
+              </div>
+              
+              <div class="group relative z-0 rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-200 dark:bg-[#111110] transition-transform duration-300 hover:-translate-y-1">
+                <div class="w-full h-[250px] relative">
+                  <model-viewer src="assets/model/Potatoon.glb" autoplay camera-controls auto-rotate auto-rotate-delay="500" interaction-prompt="none" class="w-full h-full outline-none pointer-events-auto"></model-viewer>
+                  
+                  <button onclick="openModelLightbox(this)" class="absolute top-2 right-2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-accent text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer pointer-events-auto" data-src="assets/model/Potatoon.glb" title="View Fullscreen">
+                    <i class="fas fa-expand drop-shadow-lg pointer-events-none"></i>
+                  </button>
+                </div>
+                
+                <div class="py-3 bg-gray-50 dark:bg-[#1a1917] flex items-center justify-center border-t-[1.5px] border-gray-200 dark:border-[#242220]">
+                  <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center m-0">Potatoon</h4>
+                </div>
+              </div>
+              
+              <div class="group relative z-0 rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-200 dark:bg-[#111110] transition-transform duration-300 hover:-translate-y-1">
+                <div class="w-full h-[250px] relative">
+                  <model-viewer animation-name="Open" src="assets/model/flower.glb" autoplay camera-controls auto-rotate auto-rotate-delay="500" interaction-prompt="none" class="w-full h-full outline-none pointer-events-auto"></model-viewer>
+                  
+                  <button onclick="openModelLightbox(this)" class="absolute top-2 right-2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-accent text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer pointer-events-auto" data-src="assets/model/flower.glb" title="View Fullscreen">
+                    <i class="fas fa-expand drop-shadow-lg pointer-events-none"></i>
+                  </button>
+                </div>
+                
+                <div class="py-3 bg-gray-50 dark:bg-[#1a1917] flex items-center justify-center border-t-[1.5px] border-gray-200 dark:border-[#242220]">
+                  <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center m-0">Flowee</h4>
+                </div>
+              </div>
+
+              <div class="group relative z-0 rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] bg-gray-200 dark:bg-[#111110] transition-transform duration-300 hover:-translate-y-1">
+                <div class="w-full h-[250px] relative">
+                  <model-viewer src="assets/model/chicpea_home.glb" autoplay camera-controls auto-rotate auto-rotate-delay="500" interaction-prompt="none" class="w-full h-full outline-none pointer-events-auto"></model-viewer>
+                  
+                  <button onclick="openModelLightbox(this)" class="absolute top-2 right-2 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-accent text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer pointer-events-auto" data-src="assets/model/chicpea_home.glb" title="View Fullscreen">
+                    <i class="fas fa-expand drop-shadow-lg pointer-events-none"></i>
+                  </button>
+                </div>
+                
+                <div class="py-3 bg-gray-50 dark:bg-[#1a1917] flex items-center justify-center border-t-[1.5px] border-gray-200 dark:border-[#242220]">
+                  <h4 class="font-bold text-gray-900 dark:text-[#e8e6e3] text-center m-0">Chicpea's House</h4>
+                </div>
+              </div>
+
             </div>
+          
           </div>
 
         </div>
       </div>
       
-
     </section>
     
     <section class="page active" id="page-work">

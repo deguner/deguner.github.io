@@ -45,6 +45,104 @@ const UI_Audio = (() => {
   return { play, toggle };
 })();
 
+/* ==========================================================================
+   BGM System
+   ========================================================================== */
+const BGM_Audio = (() => {
+  // Add your page IDs and specific songs here!
+  const tracks = {
+    'game-foodiemon': { src: 'assets/audio/Weevil - Camiidae.mp3', name: 'Weevil - Camiidae' },
+    'game-bong-bang': { src: 'assets/audio/bongbang.mp3', name: 'キュートテクノポップ - マニーラさん' },
+    'game-envicard': { src: 'assets/audio/envicard.mp3', name: 'かえるのピアノ - こおろぎ' },
+    'game-make-me-laugh': { src: 'assets/audio/cutecute.mp3', name: 'cute cute - shimtoneさん' }
+  };
+
+  let isUserMuted = false;
+  let targetVolume = 0.3;
+  let fadeInterval = null;
+
+  function init() {
+    const toggleBtn = document.getElementById('bgm-toggle');
+    const audioEl = document.getElementById('bgm-audio');
+    const volSlider = document.getElementById('bgm-volume');
+    
+    if (!toggleBtn || !audioEl) return;
+
+    if (volSlider) {
+      volSlider.addEventListener('input', (e) => {
+        targetVolume = parseFloat(e.target.value);
+        if (!audioEl.paused) audioEl.volume = targetVolume;
+      });
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      if (audioEl.paused) {
+        isUserMuted = false;
+        fadeInPlay(audioEl);
+        updateIcon(true);
+      } else {
+        audioEl.pause();
+        isUserMuted = true;
+        updateIcon(false);
+      }
+    });
+  }
+
+  function fadeInPlay(audioEl) {
+    clearInterval(fadeInterval);
+    audioEl.volume = 0;
+    
+    audioEl.play().then(() => {
+      fadeInterval = setInterval(() => {
+        if (audioEl.volume < targetVolume - 0.02) {
+          audioEl.volume += 0.02;
+        } else {
+          audioEl.volume = targetVolume;
+          clearInterval(fadeInterval);
+        }
+      }, 100); 
+    }).catch(() => {
+      updateIcon(false);
+    });
+  }
+
+  function updateIcon(isPlaying) {
+    const icon = document.getElementById('bgm-icon');
+    if (icon) icon.className = isPlaying ? 'fas fa-pause text-xs' : 'fas fa-play text-xs ml-0.5';
+  }
+
+  function playTrackForPage(pageId) {
+    const widget = document.getElementById('bgm-widget');
+    const audioEl = document.getElementById('bgm-audio');
+    const nameEl = document.getElementById('bgm-name');
+    const track = tracks[pageId];
+
+    if (!widget || !audioEl) return;
+
+    if (track) {
+      widget.classList.remove('hidden');
+      widget.classList.add('flex');
+      
+      if (audioEl.getAttribute('src') !== track.src) {
+        audioEl.src = track.src;
+        nameEl.textContent = track.name;
+        
+        if (!isUserMuted) {
+          fadeInPlay(audioEl);
+          updateIcon(true);
+        }
+      }
+    } else {
+      widget.classList.remove('flex');
+      widget.classList.add('hidden');
+      audioEl.pause();
+      updateIcon(false);
+    }
+  }
+
+  return { init, playTrackForPage };
+})();
+
 function navigateTo(pageId, sectionId = null) {
   const targetPage = document.getElementById('page-' + pageId);
   const isAlreadyOnPage = targetPage && targetPage.classList.contains('active');
@@ -70,6 +168,7 @@ function navigateTo(pageId, sectionId = null) {
     }
   });
 
+  BGM_Audio.playTrackForPage(pageId);
   closeMobileNav();
 
   if (pageId === 'work' && !sectionId) {
@@ -145,6 +244,8 @@ function closeMobileNav() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  BGM_Audio.init();
   
   document.querySelectorAll('.nav-item[data-page], .nav-child[data-page]').forEach(el => {
     el.addEventListener('click', () => navigateTo(el.dataset.page));
@@ -307,7 +408,31 @@ document.addEventListener('DOMContentLoaded', () => {
       'assets/video/wizard.mp4',
       'assets/video/light.mp4',
       'assets/light-p.webp',
-    ]
+    ],
+    'fable': [
+      'assets/fable/0.webp',
+      'assets/fable/1.webp',
+      'assets/fable/2.webp',
+      'assets/fable/3.webp',
+      'assets/fable/4.webp',
+      'assets/fable/5.webp',
+      'assets/fable/6.webp',
+      'assets/fable/7.webp',
+    ],
+    'province': [
+      'assets/province/WKF_NAM_DONGBANGSONGCUULONG_14.9-06.webp',
+      'assets/province/WKF_NAM_DONGBANGSONGCUULONG_14.9-07.webp',
+      'assets/province/WKF_NAM_DONGBANGSONGCUULONG_14.9-08.webp',
+      'assets/province/WKF_NAM_DONGBANGSONGCUULONG_14.9-10.webp',
+      'assets/province/WKF_NAM_DONGBANGSONGCUULONG_14.9-11.webp',
+      'assets/province/WKF_NAM_DONGBANGSONGCUULONG_14.9-12.webp',
+      'assets/province/WKF_NAM_DONGBANGSONGCUULONG_14.9-13.webp',
+      'assets/province/WKF_TRUNG_TAYNGUYEN_8.9-01.webp',
+      'assets/province/WKF_TRUNG_TAYNGUYEN_8.9-02.webp',
+      'assets/province/WKF_TRUNG_TAYNGUYEN_8.9-03.webp',
+      'assets/province/WKF_TRUNG_TAYNGUYEN_8.9-04.webp',
+      'assets/province/WKF_TRUNG_TAYNGUYEN_8.9-05.webp',
+    ],
   };
 
   const isVideo = (src) => {
@@ -563,6 +688,100 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowRight') slideLightbox(1);
     if (e.key === 'ArrowLeft') slideLightbox(-1);
   });
+
+  /* ==========================================================================
+     Dynamic Art Mosaic Generator & Lightbox (Key-Value Dictionary)
+     ========================================================================== */
+  
+  const showcaseList = {
+    'chardes': {
+      'assets/chardes/1.webp': '2x2',
+      'assets/chardes/2.webp': '1x1',
+      'assets/chardes/3.webp': '1x1',
+      'assets/chardes/4.webp': '2x1',
+      'assets/chardes/5.webp': '2x1',
+      'assets/chardes/6.webp': '1x1',
+      'assets/chardes/7.webp': '2x2',
+      'assets/chardes/8.webp': '1x1',
+    },
+    'illustration': {
+      'assets/notfound5.webp': '1x1',
+      'assets/notfound6.webp': '2x1',
+      'assets/notfound7.webp': '1x1'
+    }
+  };
+
+  const wrappers = document.querySelectorAll('.art-gallery-wrapper');
+  
+  if (wrappers.length > 0) {
+    const sizeClasses = {
+      '1x1': '',
+      '2x1': 'col-span-2',
+      '1x2': 'row-span-2',
+      '2x2': 'col-span-2 row-span-2'
+    };
+
+    // 2. Loop through each wrapper found in the HTML
+    wrappers.forEach(wrapper => {
+      const collectionTitle = wrapper.getAttribute('data-showcase');
+      const images = showcaseList[collectionTitle];
+      
+      if (images) {
+        let gridItemsHtml = '';
+        let index = 0;
+        
+        // Build the grid items for this specific collection
+        Object.entries(images).forEach(([src, size]) => {
+          const gridClass = sizeClasses[size] || '';
+          
+          gridItemsHtml += `
+            <div class="${gridClass} rounded-xl overflow-hidden shadow-md border-[1.5px] border-gray-200 dark:border-[#242220] group cursor-zoom-in relative art-item" data-collection="${collectionTitle}" data-index="${index}">
+              <img src="${src}" data-full="${src}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="${collectionTitle}" draggable="false" oncontextmenu="return false;" oncopy="return false;">
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                <i class="fas fa-expand text-white text-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-md"></i>
+              </div>
+            </div>
+          `;
+          index++;
+        });
+        
+        // Inject into the specific wrapper
+        wrapper.innerHTML = gridItemsHtml;
+      }
+    });
+
+    // 3. Connect to the Lightbox
+    document.querySelectorAll('.art-gallery-wrapper .art-item').forEach((item) => {
+      item.addEventListener('click', () => {
+        const collectionName = item.getAttribute('data-collection');
+        const clickedIndex = parseInt(item.getAttribute('data-index'));
+        
+        // Load ONLY the images from the clicked collection into the lightbox
+        currentGalleryImages = Object.keys(showcaseList[collectionName]);
+        currentImageIndex = clickedIndex;
+        activeGalleryElement = null; 
+        
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
+        const animContainer = document.getElementById('model-animation-container');
+        const lightboxModel = document.getElementById('lightbox-model');
+        
+        if (lightboxModel) { lightboxModel.classList.add('hidden'); lightboxModel.src = ""; }
+        if (animContainer) animContainer.style.display = 'none';
+        if (prevBtn) prevBtn.style.display = ''; 
+        if (nextBtn) nextBtn.style.display = '';
+
+        loadLightboxMedia(currentImageIndex);
+        
+        const lightbox = document.getElementById('global-lightbox');
+        if (lightbox) {
+          lightbox.classList.remove('hidden');
+          setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
+          document.body.style.overflow = 'hidden'; 
+        }
+      });
+    });
+  }
 });
 
 window.openModelLightbox = function(btn) {
