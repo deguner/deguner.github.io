@@ -725,22 +725,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const wrappers = document.querySelectorAll('.art-gallery-wrapper');
     if (wrappers.length === 0) return;
 
-    // 1. Use matchMedia to perfectly mimic CSS @media queries (Tailwind breakpoints)
-    let cols = 3; 
-    if (window.matchMedia('(min-width: 1024px)').matches) {
-      cols = 3; // lg: 3 columns
-    } else if (window.matchMedia('(min-width: 640px)').matches) {
-      cols = 2; // sm: 2 columns
-    } else {
-      cols = 1;
-    }
+    // 1. Locked to exactly 3 columns
+    const cols = 3; 
 
     wrappers.forEach(wrapper => {
       const collectionTitle = wrapper.getAttribute('data-showcase');
       const images = showcaseList[collectionTitle];
       
       if (images) {
-        // Create empty arrays for each column
+        // Create 3 empty arrays
         const columnsHtml = Array.from({ length: cols }, () => '');
         
         // Deal images left-to-right (Round-Robin)
@@ -757,7 +750,7 @@ document.addEventListener('DOMContentLoaded', () => {
           `;
         });
         
-        // 2. Bypass Tailwind's compiler entirely by using inline CSS styles for the grid!
+        // Apply Grid CSS locking it to 3 columns
         wrapper.className = 'art-gallery-wrapper grid gap-4';
         wrapper.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
         wrapper.innerHTML = columnsHtml.map(col => `<div class="flex flex-col">${col}</div>`).join('');
@@ -767,12 +760,40 @@ document.addEventListener('DOMContentLoaded', () => {
     attachLightboxListeners();
   }
 
-  // Make sure your resize listener is still at the bottom to trigger this when the window shifts!
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(buildLeftToRightGalleries, 200);
-  });
+  function attachLightboxListeners() {
+    document.querySelectorAll('.art-gallery-wrapper .art-item').forEach((item) => {
+      item.addEventListener('click', () => {
+        const collectionName = item.getAttribute('data-collection');
+        const clickedIndex = parseInt(item.getAttribute('data-index'));
+        
+        currentGalleryImages = showcaseList[collectionName];
+        currentImageIndex = clickedIndex;
+        activeGalleryElement = null; 
+        
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
+        const animContainer = document.getElementById('model-animation-container');
+        const lightboxModel = document.getElementById('lightbox-model');
+        
+        if (lightboxModel) { lightboxModel.classList.add('hidden'); lightboxModel.src = ""; }
+        if (animContainer) animContainer.style.display = 'none';
+        if (prevBtn) prevBtn.style.display = ''; 
+        if (nextBtn) nextBtn.style.display = '';
+
+        loadLightboxMedia(currentImageIndex);
+        
+        const lightbox = document.getElementById('global-lightbox');
+        if (lightbox) {
+          lightbox.classList.remove('hidden');
+          setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
+          document.body.style.overflow = 'hidden'; 
+        }
+      });
+    });
+  }
+
+  // Build the gallery immediately on load
+  buildLeftToRightGalleries();
 
   const wrappers = document.querySelectorAll('.art-gallery-wrapper');
   
@@ -884,7 +905,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 });
-
 
 
 window.openModelLightbox = function(btn) {
